@@ -1,0 +1,489 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<script>document.documentElement.lang='en'</script>
+<title>CallForges V2</title>
+<meta name="description" content="Local US, UK and Australian numbers, an auto dialer, and an AI agent that picks up 24/7.">
+<meta name="theme-color" content="#f6f7f9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="icon" type="image/png" href="callforge-mark.png">
+<link rel="stylesheet" href="site.css">
+<style>
+/* Hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(64px,10vw,128px) 0;text-align:center}
+#waves{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-in{position:relative;display:grid;justify-items:center;gap:24px}
+.hero h1 .accent{color:var(--amber)}
+.hero .lede{max-width:40ch;margin-inline:auto}
+.hero .micro{margin-top:-6px}
+
+/* App mock */
+.app{position:relative;margin:clamp(48px,7vw,80px) auto 0;max-width:1080px;border-radius:22px 22px 0 0;border:1px solid var(--line);border-bottom:0;background:#fff;box-shadow:0 -1px 0 rgba(11,13,18,.02),0 40px 100px -40px rgba(11,13,18,.35);text-align:left;overflow:hidden}
+.app-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);font:500 .78rem/1 var(--mono);color:var(--dim)}
+.app-bar i{width:10px;height:10px;border-radius:50%;background:var(--soft)}
+.app-bar span{margin-left:10px}
+.app-body{display:grid;grid-template-columns:240px minmax(0,1fr) 280px;min-height:360px}
+.app-col{padding:18px;min-width:0}
+.app-col+.app-col{border-left:1px solid var(--line)}
+.app h4{margin:0 0 12px;font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.qrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:10px 10px;border-radius:12px;font-size:.88rem}
+.qrow span{display:block;color:var(--dim);font:.72rem/1.3 var(--mono)}
+.qrow.on{background:var(--panel-2)}
+.qrow b{font-weight:500}
+.dotc{width:8px;height:8px;border-radius:50%;background:var(--soft)}
+.dotc.live{background:#18b394;box-shadow:0 0 0 4px rgba(24,179,148,.15)}
+.dotc.ring{background:var(--amber-fill)}
+.callhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.callhead b{font:600 1.15rem/1.2 var(--display);letter-spacing:-.02em}
+.callhead span{display:block;font:.78rem/1.3 var(--mono);color:var(--dim)}
+.bars{display:flex;gap:3px;align-items:center;height:36px;margin-bottom:18px}
+.bars i{flex:1;border-radius:2px;background:var(--fg);opacity:.85;height:30%;animation:b 1.2s ease-in-out infinite;transform-origin:center}
+@keyframes b{50%{height:90%}}
+.line{display:grid;gap:3px;margin-bottom:12px;font-size:.92rem}
+.line small{font:500 .68rem/1 var(--mono);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.sum{border-radius:14px;background:var(--panel-2);padding:14px;display:grid;gap:8px;font-size:.86rem}
+.sum ul{margin:0;padding-left:16px;display:grid;gap:6px}
+.sum .k{font:500 .68rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+@media (max-width:900px){.app-body{grid-template-columns:minmax(0,1fr)}.app-col.q,.app-col.s{display:none}}
+@media (prefers-reduced-motion:reduce){.bars i{animation:none;height:60%}}
+
+/* Duo */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.duo-card{border-radius:var(--r-lg);background:var(--panel-2);padding:clamp(28px,4vw,48px);display:grid;gap:18px;align-content:start;min-height:520px;position:relative;overflow:hidden}
+.duo-card .kick{font:500 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.duo-card h3{font-size:clamp(2rem,3.6vw,3rem);letter-spacing:-.05em;line-height:1}
+.spec{display:grid;gap:2px;margin-top:6px}
+.spec small{font:500 .7rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.spec b{font:600 clamp(2.6rem,5vw,4rem)/1 var(--display);letter-spacing:-.05em}
+.spec span{color:var(--muted)}
+.duo-vis{margin-top:auto;display:grid;gap:8px}
+.pill{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#fff;border-radius:999px;padding:12px 16px;font-size:.88rem;box-shadow:var(--shadow)}
+.pill span{font:.74rem/1 var(--mono);color:var(--dim)}
+.pill.on{outline:2px solid var(--fg)}
+.orb{justify-self:center;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#fff,#e6e9ee 70%);box-shadow:var(--shadow);display:grid;place-items:center;position:relative}
+.orb::before,.orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(255,138,61,.45);animation:ring 2.4s ease-out infinite}
+.orb::after{animation-delay:1.2s}
+@keyframes ring{from{transform:scale(.85);opacity:1}to{transform:scale(1.25);opacity:0}}
+.orb span{font:500 .78rem/1.3 var(--mono);color:var(--muted);text-align:center}
+.orb b{display:block;font:600 1.05rem/1.2 var(--display);color:var(--fg);letter-spacing:-.02em}
+@media (prefers-reduced-motion:reduce){.orb::before,.orb::after{animation:none;opacity:.5}}
+@media (max-width:860px){.duo{grid-template-columns:minmax(0,1fr)}.duo-card{min-height:0}}
+
+/* Tabs */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.tab{border:0;background:transparent;color:var(--muted);font:600 .95rem/1 var(--body);min-height:44px;padding:0 18px;border-radius:999px;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.tab:hover{color:var(--fg);background:var(--panel-2)}
+.tab[aria-selected="true"]{background:var(--fg);color:#fff}
+.tabpanel{border-radius:var(--r-lg);background:var(--panel-2);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:center;padding:clamp(28px,5vw,64px);min-height:440px}
+.tabpanel h3{font-size:clamp(2rem,3.6vw,3rem);letter-spacing:-.05em;line-height:1}
+.tabpanel p{color:var(--muted);margin-top:14px;font-size:1.08rem;max-width:36ch}
+.tv{background:#fff;border-radius:20px;box-shadow:var(--shadow);padding:20px;display:grid;gap:10px}
+.nrow{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line)}
+.nrow:last-child{border-bottom:0}
+.cc{font:500 .85rem/1 var(--mono);color:var(--amber)}
+.nrow b{font-weight:500;font-size:.95rem}
+.nrow span.m{display:block;font:.76rem/1.3 var(--mono);color:var(--dim)}
+.lines{display:grid;gap:8px}
+.ln{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.9rem;padding:10px 12px;border-radius:12px;background:var(--panel-2)}
+.ln.win{background:var(--fg);color:#fff}
+.ln.win span{color:rgba(255,255,255,.7)}
+.ln span{font:.74rem/1 var(--mono);color:var(--dim)}
+.flow{display:grid;gap:8px;font-size:.9rem}
+.fl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nd{padding:9px 12px;border-radius:10px;background:var(--panel-2)}
+.nd.k{background:var(--fg);color:#fff}
+.ar{color:var(--dim);font-family:var(--mono)}
+@media (max-width:860px){.tabpanel{grid-template-columns:minmax(0,1fr);min-height:0}}
+
+/* Specs */
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.specs .spec{padding:28px 24px 0 0}
+.specs .spec+.spec{padding-left:24px;border-left:1px solid var(--line)}
+@media (max-width:860px){.specs{grid-template-columns:repeat(2,minmax(0,1fr))}.specs .spec{padding:24px 0!important;border-left:0!important;border-bottom:1px solid var(--line)}.specs .spec:nth-child(odd){padding-right:16px!important}}
+
+/* Time zones (sticky scroll) */
+#tz{height:300vh;height:300svh}
+.tz-sticky{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:24px}
+.tz-copy{display:grid;gap:28px;align-content:center}
+.tz-stage{position:relative;min-height:320px}
+.tz-ch{position:absolute;inset:0;display:grid;gap:14px;align-content:start;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+.tz-ch.on{opacity:1;transform:none}
+.tz-ch .city{font:500 .8rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tz-ch .clock{font:600 clamp(4rem,9vw,7.5rem)/.9 var(--display);letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.tz-ch .chip{justify-self:start}
+.tz-ch p{color:var(--muted);font-size:1.08rem;max-width:34ch}
+.tz-nav{display:flex;gap:8px}
+.tz-dot{border:1px solid var(--line-2);background:#fff;border-radius:999px;min-height:40px;padding:0 14px;font:500 .8rem/1 var(--mono);color:var(--muted);cursor:pointer}
+.tz-dot.on{background:var(--fg);color:#fff;border-color:var(--fg)}
+#globe2{position:relative;height:min(78vh,720px);opacity:0;transition:opacity 1s ease}
+#globe2.ready{opacity:1}
+#globe2 canvas{display:block;width:100%;height:100%}
+#globe2.fallback{opacity:1;background:radial-gradient(circle at 50% 50%,#fff 0 38%,transparent 38.5%),radial-gradient(circle,rgba(140,158,188,.25),transparent 60%)}
+@media (max-width:860px){
+  .tz-sticky{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);align-items:start;padding-top:24px}
+  #globe2{height:44vh;order:-1}
+  .tz-stage{min-height:230px}
+}
+@media (prefers-reduced-motion:reduce){.tz-ch{transition:none}}
+
+/* Price calculator */
+.calc2{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:8px 0 24px}
+.seg{display:inline-flex;padding:4px;background:#fff;border:1px solid var(--line-2);border-radius:999px;gap:4px}
+.seg button{border:0;background:none;font:600 .92rem/1 var(--body);color:var(--muted);min-height:40px;padding:0 18px;border-radius:999px;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-pressed="true"]{background:var(--fg);color:#fff}
+.seats{display:flex;align-items:center;gap:14px;flex:1;min-width:260px;max-width:520px}
+.seats label{font:500 .74rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.seats input[type=range]{flex:1;min-width:0;accent-color:var(--fg);height:28px}
+.seats input[type=number]{width:84px;min-height:44px;border:1px solid var(--line-2);border-radius:12px;background:#fff;color:var(--fg);font:600 1.05rem var(--mono);padding:0 12px;text-align:center}
+.price-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.pd{border-radius:var(--r-lg);padding:clamp(24px,4vw,44px);display:grid;gap:10px;align-content:start;background:var(--panel-2)}
+.pd.us{background:var(--fg);color:#fff}
+.pd small{font:500 .74rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.pd .amt{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.pd .num{font:600 clamp(3.4rem,8vw,6.4rem)/1 var(--display);letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.pd .per{font-size:1.1rem;opacity:.7;font-weight:500}
+.pd.them .num{color:var(--dim)}
+.pd span.note{opacity:.75;font-size:.95rem}
+.save{display:inline-flex;align-items:center;gap:8px;margin-top:6px;justify-self:start;background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:8px 14px;font:600 .9rem/1 var(--body)}
+.save b{color:#ffb27a}
+@media (max-width:700px){.price-duo{grid-template-columns:minmax(0,1fr)}}
+
+.band{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-radius:var(--r-lg);background:var(--panel-2);padding:clamp(24px,4vw,40px)}
+.band h3{font-size:clamp(1.5rem,3vw,2.2rem)}
+
+/* Pause-motion control (WCAG 2.2.2) */
+.motion-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--muted);font:500 .8rem/1 var(--mono);cursor:pointer}
+.motion-btn:hover{color:var(--fg);border-color:var(--fg)}
+html[data-motion="off"] *{animation-play-state:paused!important}
+</style>
+
+<script>
+/* Open every page at the top unless a #section was requested */
+(function(){try{history.scrollRestoration='manual'}catch(e){}
+ if(location.hash)return;var moved=false;
+ function top(){if(!moved)window.scrollTo({top:0,left:0,behavior:'instant'})}
+ ['wheel','touchstart','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){moved=true},{once:true,passive:true})});
+ top();addEventListener('DOMContentLoaded',top);addEventListener('load',function(){top();setTimeout(top,120);setTimeout(top,400)});addEventListener('pageshow',top);})();
+</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="./" aria-label="CallForges home">
+      <img src="callforge-mark.png" alt="" width="26" height="26">
+      CallForges
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Product</a>
+      <a href="#dialer">Auto Dialer</a>
+      <a href="#agent">AI Agent</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" href="https://app.callforges.com">Log In</a>
+      <a class="btn btn-primary btn-sm" href="https://app.callforges.com"><span class="lg">Start Free Trial</span><span class="sm">Try Free</span></a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#0b0d12" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <span class="eyebrow">Dialer · Auto Dialer · AI Voice Agent</span>
+    <h1>Call like a <span class="accent">local.</span></h1>
+    <p class="lede">Local US, UK and Australian numbers, an auto dialer, and an AI agent that picks up 24/7.</p>
+    <a class="btn btn-primary" href="https://app.callforges.com">Start Free Trial</a>
+    <p class="micro">14-day trial · No card required</p>
+    <button type="button" class="motion-btn" id="motionBtn" aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx="1" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx="1" fill="currentColor"/></svg><span>Pause animation</span></button>
+  </div>
+  <div class="wrap">
+    <div class="app" role="img" aria-label="CallForges app: dialer queue, a live call to London with transcript, and an AI summary">
+      <div class="app-bar"><i></i><i></i><i></i><span>CallForges · Q4 renewals · US, UK, AU</span></div>
+      <div class="app-body">
+        <div class="app-col q">
+          <h4>Queue</h4>
+          <div class="qrow on"><div><b>Oliver Hart</b><span>London +44 · 14:12</span></div><i class="dotc live"></i></div>
+          <div class="qrow"><div><b>Jordan Miles</b><span>Chicago +1 · 08:12 · Up next</span></div><i class="dotc ring"></i></div>
+          <div class="qrow"><div><b>Ryan Patel</b><span>Boston +1 · 09:12</span></div><i class="dotc"></i></div>
+          <div class="qrow"><div><b>Liam O'Connor</b><span>Brisbane +61 · 23:12</span></div><i class="dotc"></i></div>
+        </div>
+        <div class="app-col">
+          <div class="callhead"><div><b>Oliver Hart</b><span>Northgate Legal · +44 20 •••• 2210</span></div><span class="chip live mono" id="callTimer">04:12</span></div>
+          <div class="bars" aria-hidden="true"><i style="animation-delay:-.1s"></i><i style="animation-delay:-.5s"></i><i style="animation-delay:-.3s"></i><i style="animation-delay:-.8s"></i><i style="animation-delay:-.2s"></i><i style="animation-delay:-.6s"></i><i style="animation-delay:-.9s"></i><i style="animation-delay:-.4s"></i><i style="animation-delay:-.7s"></i><i style="animation-delay:-.15s"></i><i style="animation-delay:-.55s"></i><i style="animation-delay:-.35s"></i><i style="animation-delay:-.85s"></i><i style="animation-delay:-.25s"></i><i style="animation-delay:-.65s"></i><i style="animation-delay:-.45s"></i><i style="animation-delay:-.75s"></i><i style="animation-delay:-.05s"></i><i style="animation-delay:-.95s"></i><i style="animation-delay:-.6s"></i></div>
+          <div class="line"><small>You</small>So if we move the demo to Thursday, 3pm your time works?</div>
+          <div class="line"><small>Oliver</small>Thursday works. Send the invite to procurement too.</div>
+        </div>
+        <div class="app-col s">
+          <h4>AI Notes</h4>
+          <div class="sum">
+            <span class="k">Next step</span>
+            <span>Send invite to procurement for Thu 15:00 GMT</span>
+            <span class="k">Signals</span>
+            <ul><li>Budget approved for Q1</li><li>Needs 4 AU numbers</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="dialer">
+  <div class="wrap">
+    <div class="duo">
+      <article class="duo-card">
+        <span class="kick">Auto Dialer</span>
+        <h3>Talk more.<br>Dial less.</h3>
+        <div class="spec"><small>Between calls</small><b>0 clicks</b><span>The next contact rings when you hang up.</span></div>
+        <a class="link-arrow" href="#features" data-tab="dialer">Explore the Dialer</a>
+        <div class="duo-vis" aria-hidden="true">
+          <div class="pill on"><b>Jordan Miles · Chicago</b><span>Connected</span></div>
+          <div class="pill"><b>Emma Clarke · Leeds</b><span>Up next</span></div>
+          <div class="pill"><b>Ryan Patel · Boston</b><span>Queued</span></div>
+        </div>
+      </article>
+      <article class="duo-card" id="agent">
+        <span class="kick">AI Voice Agent</span>
+        <h3>Never miss<br>a call.</h3>
+        <div class="spec"><small>Answers</small><b>24/7</b><span>in 30+ languages, from your own docs.</span></div>
+        <a class="link-arrow" href="#features" data-tab="agent">Meet the Agent</a>
+        <div class="duo-vis" aria-hidden="true">
+          <div class="orb"><span><b>Sydney · 23:40</b>AI agent answering…</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Everything a call needs.</h2></div>
+    <div class="tabs" role="tablist" aria-label="Features">
+      <button class="tab" role="tab" id="t-numbers" aria-controls="p-numbers" aria-selected="true">Numbers</button>
+      <button class="tab" role="tab" id="t-dialer" aria-controls="p-dialer" aria-selected="false" tabindex="-1">Dialer</button>
+      <button class="tab" role="tab" id="t-notes" aria-controls="p-notes" aria-selected="false" tabindex="-1">AI Notes</button>
+      <button class="tab" role="tab" id="t-agent" aria-controls="p-agent" aria-selected="false" tabindex="-1">AI Agent</button>
+      <button class="tab" role="tab" id="t-routing" aria-controls="p-routing" aria-selected="false" tabindex="-1">Routing</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-numbers" aria-labelledby="t-numbers">
+      <div><h3>Local wherever you sell.</h3><p>US, UK and AU numbers in a minute, plus 100+ more countries. Port yours, hassle-free.</p></div>
+      <div class="tv">
+        <div class="nrow"><span class="cc">+1</span><div><b>Austin, US</b><span class="m">+1 512 ••• 2210</span></div><span class="chip live">Active</span></div>
+        <div class="nrow"><span class="cc">+44</span><div><b>Manchester, UK</b><span class="m">+44 161 •••• 4471</span></div><span class="chip live">Active</span></div>
+        <div class="nrow"><span class="cc">+61</span><div><b>Melbourne, AU</b><span class="m">+61 3 •••• 9034</span></div><span class="chip live">Active</span></div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-dialer" aria-labelledby="t-dialer" hidden>
+      <div><h3>No gaps between calls.</h3><p>One contact after another. Voicemails dropped for you.</p></div>
+      <div class="tv lines">
+        <div class="ln"><span>01</span><b>Mia Chen · Seattle</b><span>Voicemail dropped</span></div>
+        <div class="ln win"><span>02</span><b>Jordan Miles · Chicago</b><span>Connected</span></div>
+        <div class="ln"><span>03</span><b>Emma Clarke · Leeds</b><span>Up next</span></div>
+        <div class="ln"><span>04</span><b>Ryan Patel · Boston</b><span>Queued</span></div>
+        <div class="ln"><span>05</span><b>Liam O'Connor · Brisbane</b><span>Queued 09:00</span></div>
+          </div>
+    <div class="tabpanel" role="tabpanel" id="p-notes" aria-labelledby="t-notes" hidden>
+      <div><h3>Every call, written down.</h3><p>Summary, action items and next step, synced to your CRM.</p></div>
+      <div class="tv">
+        <div class="sum" style="background:transparent;padding:0">
+          <span class="k">Summary · Austin +1 · 06:48</span>
+          <span>On Aircall today, contract ends in March. Wants to keep 12 US numbers and add Sydney.</span>
+          <span class="k">Next step</span>
+          <span>Send migration plan by Friday</span>
+          <span class="k">Synced to</span>
+          <span>HubSpot · Deal: Brightline Health</span>
+        </div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-agent" aria-labelledby="t-agent" hidden>
+      <div><h3>Picks up at midnight.</h3><p>Answers from your docs and books the callback for morning.</p></div>
+      <div class="tv">
+        <div class="line"><small>Caller · Sydney 23:40</small>I'm locked out and we go live tomorrow.</div>
+        <div class="line"><small>AI Agent</small>Reset link sent. Want support to call you at 9?</div>
+        <div class="nrow"><span class="cc">09:00</span><div><b>Callback booked</b><span class="m">AU support queue</span></div><span class="chip amber">Queued</span></div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-routing" aria-labelledby="t-routing" hidden>
+      <div><h3>The right team, first ring.</h3><p>Route by country, time zone or VIP status.</p></div>
+      <div class="tv flow">
+        <div class="fl"><span class="nd k">+44 20 · London</span><span class="ar">→</span><span class="nd">UK · 10:42</span></div>
+        <div class="fl"><span class="ar">↳</span><span class="nd">Sales</span><span class="ar">→</span><span class="nd">UK sales team</span></div>
+        <div class="fl"><span class="ar">↳</span><span class="nd">Support</span><span class="ar">→</span><span class="nd">UK &amp; EU queue</span></div>
+        <div class="fl"><span class="ar">↳</span><span class="nd">After hours</span><span class="ar">→</span><span class="nd k">AI agent</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="tz" aria-label="CallForges across time zones, shown for New York, London and Sydney">
+  <div class="wrap tz-sticky">
+    <div class="tz-copy">
+      <h2>One team.<br>Every time zone.</h2>
+      <div class="tz-stage">
+        <div class="tz-ch on" data-ch="0" data-tz="America/New_York"><span class="city">New York · +1</span><span class="clock" data-clock>09:42</span><span class="chip live" data-status>Open for calls</span><p>Your morning call block starts here.</p></div>
+        <div class="tz-ch" data-ch="1" data-tz="Europe/London" aria-hidden="true"><span class="city">London · +44</span><span class="clock" data-clock>14:42</span><span class="chip live" data-status>Open for calls</span><p>Afternoon follow-ups, same list.</p></div>
+        <div class="tz-ch" data-ch="2" data-tz="Australia/Sydney" aria-hidden="true"><span class="city">Sydney · +61</span><span class="clock" data-clock>23:42</span><span class="chip" data-status>After hours</span><p>The AI agent covers the night shift.</p></div>
+      </div>
+      <p class="micro">Three examples. CallForges follows every contact's local time, wherever they are.</p>
+      <div class="tz-nav" role="group" aria-label="Jump to city">
+        <button class="tz-dot on" type="button">New York</button>
+        <button class="tz-dot" type="button">London</button>
+        <button class="tz-dot" type="button">Sydney</button>
+      </div>
+    </div>
+    <div id="globe2" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec" id="price">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:24px"><h2>Start at $15 a seat.</h2><p class="lede">No seat minimum. Set your team size and see what you'd pay.</p></div>
+    <div class="calc2">
+      <div class="seg" role="group" aria-label="Plan">
+        <button type="button" data-plan="starter" aria-pressed="true">Starter</button>
+        <button type="button" data-plan="business" aria-pressed="false">Business</button>
+      </div>
+      <div class="seats">
+        <label for="seatN">Seats</label>
+        <input type="range" id="seatR" min="1" max="50" value="1" aria-label="Seats slider">
+        <input type="number" id="seatN" name="seats" min="1" max="500" value="1" inputmode="numeric" autocomplete="off">
+      </div>
+    </div>
+    <div class="price-duo" aria-live="polite">
+      <div class="pd us"><small id="usLabel">CallForges Starter</small><div class="amt"><span class="num" id="usAmt">$15</span><span class="per">/mo</span></div><span class="note" id="usNote">Local number, 1,000 free minutes a month, AI transcripts.</span><span class="save" id="saveTag">You save <b id="saveAmt">$75</b> a month</span></div>
+      <div class="pd them"><small id="themLabel">Aircall Essentials</small><div class="amt"><span class="num" id="themAmt">$90</span><span class="per">/mo</span></div><span class="note" id="themNote">$30 per seat, 3-seat minimum. You pay for 3.</span></div>
+    </div>
+    <p class="micro" style="margin-top:14px">Per month, billed annually. Aircall list prices, Sept 2026.</p>
+    <div class="cta-row" style="margin-top:28px"><a class="btn btn-ghost" href="pricing.html">See All Plans</a><a class="link-arrow" href="compare.html">CallForges vs Aircall, JustCall, Quo &amp; Dialpad</a></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="band"><h3>Keep your numbers. We port them, hassle-free.</h3><a class="btn btn-primary" href="https://app.callforges.com">Start Free Trial</a></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap split" style="align-items:start">
+    <div class="sec-head"><h2>Questions.</h2></div>
+    <div class="faq">
+      <details><summary>Do I need new hardware?</summary><p>No. CallForges runs on desktop, web, iOS and Android.</p></details>
+      <details><summary>Can I keep my numbers?</summary><p>Yes. We handle the port for you, hassle-free, and your old system keeps working until the move completes.</p></details>
+      <details><summary>Will callers know it's AI?</summary><p>Yes. The agent introduces itself as a virtual assistant and hands off to a person on request.</p></details>
+      <details><summary>What does international cost?</summary><p>1,000 free minutes per user each month to the US, UK, Australia and Canada. After that, per minute at the rate shown before you dial. <a href="fair-usage.html">Fair usage policy</a></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec final" style="padding-top:0">
+  <div class="wrap"><div class="panel">
+    <span class="eyebrow">Free for 14 days</span>
+    <h2>Your next customer is in another time zone.</h2>
+    <div class="cta-row"><a class="btn btn-primary" href="https://app.callforges.com">Start Free Trial</a></div>
+    <p class="micro">No card required · Cancel anytime</p>
+  </div></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><a class="brand" href="./">CallForges</a><p style="color:var(--muted);margin-top:12px;max-width:32ch;font-size:.93rem">Dialer, auto dialer and AI voice agent for teams calling the US, UK and Australia.</p></div>
+      <div><h4>Product</h4><ul><li><a href="#features">Numbers</a></li><li><a href="#dialer">Auto Dialer</a></li><li><a href="#features">AI Notes</a></li><li><a href="#agent">AI Voice Agent</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="pricing.html">Pricing</a></li><li><a href="compare.html">Compare</a></li><li><a href="pricing.html#rates">Rates</a></li><li><a href="#">Help Center</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="fair-usage.html">Fair Usage Policy</a></li></ul></div>
+    </div>
+    <div class="foot-note"><span>© 2026 CallForges</span><span class="mono">+1 · +44 · +61</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="globe2.js"></script>
+<script>
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function(){var n=document.getElementById('nav'),b=document.getElementById('menuBtn');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus()}});b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});n.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){n.classList.remove('open');b.setAttribute('aria-expanded','false')})})})();
+
+/* Call timer */
+(function(){if(RM)return;var s=252,el=document.getElementById('callTimer');setInterval(function(){if(window.CF_PAUSED)return;s++;el.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000)})();
+
+/* Tabs: click, arrow keys, hash deep link */
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function sel(t,focus){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});if(focus)t.focus();try{history.replaceState(null,'','#'+t.id.slice(2))}catch(e){}}
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});t.addEventListener('keydown',function(e){var k=e.key,j=i;if(k==='ArrowRight')j=(i+1)%tabs.length;else if(k==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;else if(k==='Home')j=0;else if(k==='End')j=tabs.length-1;else return;e.preventDefault();sel(tabs[j],true)})});
+  document.querySelectorAll('[data-tab]').forEach(function(a){a.addEventListener('click',function(){var t=document.getElementById('t-'+a.dataset.tab);if(t)sel(t)})});
+  var h=location.hash.slice(1),t=h&&document.getElementById('t-'+h);if(t)sel(t);
+})();
+
+/* Live city clocks */
+(function(){
+  var chs=[].slice.call(document.querySelectorAll('[data-tz]'));
+  function tick(){var d=new Date();chs.forEach(function(c){var p={};new Intl.DateTimeFormat('en-GB',{timeZone:c.dataset.tz,hour:'2-digit',minute:'2-digit',weekday:'short',hourCycle:'h23'}).formatToParts(d).forEach(function(x){p[x.type]=x.value});
+    c.querySelector('[data-clock]').textContent=p.hour+':'+p.minute;var m=+p.hour*60+ +p.minute,wk=p.weekday==='Sat'||p.weekday==='Sun',st=c.querySelector('[data-status]'),txt,cls;
+    if(wk){txt='Weekend';cls='chip'}else if(m>=540&&m<1080){txt='Open for calls';cls='chip live'}else if(m<540&&m>=360){txt='Opens at 09:00';cls='chip amber'}else{txt='After hours · AI agent on';cls='chip amber'}
+    st.textContent=txt;st.className=cls})}
+  tick();setInterval(tick,20000);
+})();
+
+/* Hero generative field: "Carrier Lines". Seeded sine stacks shaped by a speech envelope; one orange carrier. */
+(function(){
+  var cv=document.getElementById('waves'),ctx=cv.getContext('2d'),W,H,dpr;
+  function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  var rnd=mulberry(20260929),L=38,lines=[];
+  for(var j=0;j<L;j++){var h=[];for(var k=0;k<4;k++)h.push({f:(.6+rnd()*2.4)*(k+1),p:rnd()*Math.PI*2,s:(.15+rnd()*.35)*(rnd()<.5?-1:1),a:1/(k+1.2)});lines.push({h:h,o:rnd()})}
+  var burst=[{c:.5,w:.16,a:1},{c:.3,w:.08,a:.45},{c:.72,w:.1,a:.6}];
+  function env(x,t){var e=0;burst.forEach(function(b,i){var c=b.c+Math.sin(t*.07+i*2)*.03;e+=b.a*Math.exp(-Math.pow((x-c)/b.w,2))*(0.75+0.25*Math.sin(t*.9+i*1.7))});return e}
+  function size(){dpr=Math.min(devicePixelRatio||1,2);var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    var top=H*.06,span=H*.66,amp=Math.min(120,H*.12);
+    for(var j=0;j<L;j++){
+      var ln=lines[j],y0=top+span*(j/(L-1)),mid=1-Math.abs(j/(L-1)-.5)*2,orange=j===Math.floor(L*.55);
+      ctx.beginPath();
+      for(var x=0;x<=W;x+=6){var u=x/W,v=0;ln.h.forEach(function(q){v+=q.a*Math.sin(q.f*u*Math.PI*2+q.p+t*q.s)});var y=y0+v*amp*env(u,t+ln.o*6)*(.35+.65*mid);x?ctx.lineTo(x,y):ctx.moveTo(x,y)}
+      ctx.lineWidth=orange?1.6:1;ctx.strokeStyle=orange?'rgba(255,122,46,.85)':'rgba(11,13,18,'+(.05+.09*mid)+')';ctx.stroke();
+    }
+    // fade toward text
+    var g=ctx.createRadialGradient(W/2,H*.26,0,W/2,H*.26,Math.max(W*.36,260));g.addColorStop(0,'rgba(246,247,249,.92)');g.addColorStop(1,'rgba(246,247,249,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  }
+  size();addEventListener('resize',function(){size();if(RM)draw(3)});
+  if(RM){draw(3);return}
+  var vis=true,t0=performance.now(),run=false;
+  function loop(now){if(!vis){run=false;return}if(!window.CF_PAUSED)draw((now-t0)/1000+3);requestAnimationFrame(loop)}
+  function start(){if(!run){run=true;requestAnimationFrame(loop)}}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis)start()}).observe(cv);
+  start();
+})();
+
+/* Price calculator: seats + plan vs Aircall (3-seat minimum) */
+(function(){
+  var P={starter:{us:15,name:'Starter',usNote:'Local number, 1,000 free minutes a month, AI transcripts.',them:30,themName:'Aircall Essentials',themNote:function(b){return '$30 per seat'+b}},
+         business:{us:29,name:'Business',usNote:'Power dialer, AI notes and AI agent minutes included.',them:59,themName:'Aircall Professional + AI',themNote:function(b){return '$50 plan + $9 AI add-on per seat'+b}}};
+  var plan='starter',r=document.getElementById('seatR'),n=document.getElementById('seatN'),fmt=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+  function $(id){return document.getElementById(id)}
+  function upd(){
+    var s=Math.max(1,Math.min(500,parseInt(n.value,10)||1)),p=P[plan],billed=Math.max(3,s),us=p.us*s,them=p.them*billed;
+    $('usLabel').textContent='CallForges '+p.name+' · '+s+(s===1?' seat':' seats');$('usAmt').textContent=fmt.format(us);$('usNote').textContent=p.usNote;
+    $('themLabel').textContent=p.themName;$('themAmt').textContent=fmt.format(them);
+    $('themNote').textContent=p.themNote(s<3?', 3-seat minimum. You pay for 3.':'.');
+    $('saveAmt').textContent=fmt.format(them-us);
+  }
+  document.querySelectorAll('[data-plan]').forEach(function(b){b.addEventListener('click',function(){plan=b.dataset.plan;document.querySelectorAll('[data-plan]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});upd()})});
+  r.addEventListener('input',function(){n.value=r.value;upd()});
+  n.addEventListener('input',function(){r.value=Math.min(50,Math.max(1,n.value||1));upd()});
+  n.addEventListener('blur',function(){n.value=Math.max(1,Math.min(500,parseInt(n.value,10)||1));upd()});
+  upd();
+})();
+
+/* Pause / play all motion */
+(function(){var b=document.getElementById('motionBtn');if(!b)return;if(RM){b.hidden=true;return}
+  b.addEventListener('click',function(){var off=!window.CF_PAUSED;window.CF_PAUSED=off;document.documentElement.dataset.motion=off?'off':'on';b.setAttribute('aria-pressed',off);b.querySelector('span').textContent=off?'Play animation':'Pause animation'})})();
+</script>
+
+</body></html>

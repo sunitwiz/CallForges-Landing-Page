@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f7f9">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CallForges Pricing</title>
+<meta name="description" content="Three plans, no seat minimum. Auto dialer and AI summaries included from Business. 1,000 free minutes per user each month to the US, UK, Australia and Canada. Other calls billed per minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="icon" type="image/png" href="callforge-mark.png">
+<link rel="stylesheet" href="site.css">
+<style>
+body{background:var(--ink)} .x{background:radial-gradient(900px 500px at 85% -10%,rgba(94,230,208,.10),transparent 60%),radial-gradient(700px 400px at 5% 0%,rgba(255,181,71,.07),transparent 60%),var(--ink);background-repeat:no-repeat}
+.p-hero{padding-block:clamp(56px,8vw,96px) 40px;display:grid;gap:20px;max-width:780px}
+.toggle{display:inline-flex;justify-self:start;padding:4px;border:1px solid var(--line-2);border-radius:999px;background:var(--panel);gap:4px}
+.toggle button{border:0;background:none;color:var(--muted);font:600 .92rem/1 var(--body);padding:0 18px;min-height:40px;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--fg);color:#fff}
+.toggle .save{font:500 .72rem/1 var(--mono);color:var(--amber);margin-left:6px}
+.toggle button[aria-pressed="true"] .save{color:#ffb27a}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;margin-top:36px}
+.plan{padding:28px;display:flex;flex-direction:column;gap:18px;position:relative}
+.plan.pop{border:2px solid var(--fg)}
+.badge{position:absolute;top:-12px;left:28px;background:var(--fg);color:#fff;font:600 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+.plan h2{font-size:1.6rem}
+.plan .tagline{color:var(--muted);min-height:3.2em}
+.price{display:flex;align-items:baseline;gap:8px}
+.price b{font:600 3.4rem/1 var(--display);letter-spacing:-.05em}
+.price span{color:var(--muted);font-size:.9rem}
+.billed{font:.78rem/1.3 var(--mono);color:var(--dim);margin-top:-8px}
+.plan .ticks{font-size:.95rem}
+.plan .inc{font:500 .78rem/1 var(--mono);color:var(--teal);letter-spacing:.06em}
+.plan .btn{margin-top:4px}
+@media (max-width:960px){.plans{grid-template-columns:minmax(0,1fr);max-width:520px}.plan .tagline{min-height:0}}
+.ent{margin-top:18px;padding:22px 28px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+.ent p{color:var(--muted);max-width:62ch}
+.ent b{color:var(--fg);font-family:var(--display)}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);padding:clamp(24px,4vw,40px);align-items:center}
+@media (max-width:860px){.calc{grid-template-columns:minmax(0,1fr)}}
+.field{display:grid;gap:10px}
+.field label{font:500 .78rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.seat-row{display:flex;gap:14px;align-items:center}
+input[type=range]{flex:1;accent-color:var(--amber);min-width:0;height:28px}
+input[type=number],select{background:var(--ink-2);color:var(--fg);border:1px solid var(--line-2);border-radius:10px;min-height:44px;padding:0 12px;font:500 1rem var(--mono);width:96px}
+select{width:100%;font-family:var(--body)}
+.total{display:grid;gap:6px;padding:24px;border-radius:var(--r-md);background:var(--panel-2)}
+.total b{font:600 clamp(2.6rem,5vw,3.8rem)/1 var(--display);letter-spacing:-.05em;color:var(--fg)}
+.total span{color:var(--muted)}
+.addons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1100px){.addons{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.addon{padding:24px;display:grid;gap:8px;align-content:start}
+.addon .amt{font:600 1.4rem/1 var(--display)}
+.addon p{color:var(--muted);font-size:.93rem}
+@media (max-width:860px){.addons{grid-template-columns:minmax(0,1fr)}}
+.rates table{min-width:560px}
+.rates td.mono{white-space:nowrap}
+.note{font:.78rem/1.5 var(--mono);color:var(--dim);margin-top:12px}
+</style>
+</head>
+<body>
+<script>
+/* Open every page at the top unless a #section was requested */
+(function(){try{history.scrollRestoration='manual'}catch(e){}
+ if(location.hash)return;var moved=false;
+ function top(){if(!moved)window.scrollTo({top:0,left:0,behavior:'instant'})}
+ ['wheel','touchstart','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){moved=true},{once:true,passive:true})});
+ top();addEventListener('DOMContentLoaded',top);addEventListener('load',function(){top();setTimeout(top,120);setTimeout(top,400)});addEventListener('pageshow',top);})();
+</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="./" aria-label="CallForges home"><img src="callforge-mark.png" alt="" width="26" height="26">CallForges</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="./#features">Product</a><a href="./#dialer">Auto Dialer</a><a href="./#agent">AI Agent</a><a href="pricing.html" aria-current="page">Pricing</a><a href="compare.html">Compare</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" href="https://app.callforges.com">Log In</a>
+      <a class="btn btn-primary btn-sm" href="https://app.callforges.com"><span class="lg">Start Free Trial</span><span class="sm">Try Free</span></a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#0b0d12" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="wrap">
+  <div class="p-hero">
+    <span class="eyebrow">Pricing</span>
+    <h1 style="font-size:clamp(2.6rem,6vw,5rem)">Simple pricing.</h1>
+    <p class="lede">No seat minimums. 1,000 free minutes a month on every plan.</p>
+    <div class="toggle" role="group" aria-label="Billing period">
+      <button type="button" id="bMonthly" aria-pressed="false">Monthly</button>
+      <button type="button" id="bAnnual" aria-pressed="true">Annually<span class="save">Save up to 25%</span></button>
+    </div>
+  </div>
+
+  <div class="plans">
+    <article class="plan panel">
+      <h2>Starter</h2>
+      <p class="tagline">The essentials for small teams calling across borders.</p>
+      <div class="price"><b class="mono" data-m="19" data-a="15">$15</b><span>per user / month</span></div>
+      <p class="billed" data-bill>Billed annually. $19 billed monthly.</p>
+      <a class="btn btn-ghost" href="https://app.callforges.com">Start Free Trial</a>
+      <ul class="ticks">
+        <li>1 local US, UK or AU number per user</li>
+                <li>1,000 free minutes a month to US, UK, AU &amp; Canada</li>
+        <li>Other countries billed per minute</li>
+        <li>Call recording and AI transcripts</li>
+        <li>Voicemail to text</li>
+        <li>AI voice agent, $0.12 per minute</li>
+        <li>Desktop, web and mobile apps</li>
+      </ul>
+    </article>
+    <article class="plan panel pop">
+      <span class="badge">Most popular</span>
+      <h2>Business</h2>
+      <p class="tagline">For sales and support teams that dial every day.</p>
+      <div class="price"><b class="mono" data-m="39" data-a="29">$29</b><span>per user / month</span></div>
+      <p class="billed" data-bill>Billed annually. $39 billed monthly.</p>
+      <a class="btn btn-primary" href="https://app.callforges.com">Start Free Trial</a>
+      <span class="inc">Everything in Starter, plus</span>
+      <ul class="ticks">
+        <li>Power and preview dialer</li>
+        <li>Voicemail drop and local caller ID</li>
+        <li>AI summaries and action items</li>
+        <li>Live transcription</li>
+        <li>IVR and routing by country or language</li>
+        <li>HubSpot, Salesforce, Pipedrive, Zoho</li>
+                <li>100 AI voice agent minutes per user, pooled</li>
+      </ul>
+    </article>
+    <article class="plan panel">
+      <h2>Scale</h2>
+      <p class="tagline">For high-volume teams and multi-country operations.</p>
+      <div class="price"><b class="mono" data-m="59" data-a="45">$45</b><span>per user / month</span></div>
+      <p class="billed" data-bill>Billed annually. $59 billed monthly.</p>
+      <a class="btn btn-ghost" href="https://app.callforges.com">Start Free Trial</a>
+      <span class="inc">Everything in Business, plus</span>
+      <ul class="ticks">
+        <li>Dialer campaigns with custom retry rules</li>
+        <li>Live translation</li>
+        <li>AI coaching and scorecards</li>
+        <li>Keyword alerts and sentiment</li>
+        <li>Advanced analytics and wallboards</li>
+        <li>SSO and audit logs</li>
+                <li>300 AI voice agent minutes per user, pooled</li>
+        <li>Priority support</li>
+      </ul>
+    </article>
+  </div>
+  <div class="ent panel">
+    <p><b>50+ seats or a contact-center setup?</b> Talk to us about volume rates, dedicated numbers and custom SLAs.</p>
+    <a class="btn btn-ghost" href="./#start">Book a Demo</a>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-bottom:0">
+  <div class="sec-head"><h2>What your team would pay.</h2></div>
+  <div class="calc panel">
+    <div style="display:grid;gap:24px">
+      <div class="field">
+        <label for="seats">Seats</label>
+        <div class="seat-row"><input type="range" id="seatsRange" min="1" max="100" value="10" aria-label="Seats slider"><input type="number" id="seats" min="1" max="500" value="10"></div>
+      </div>
+      <div class="field">
+        <label for="planSel">Plan</label>
+        <select id="planSel"><option value="0">Starter</option><option value="1" selected>Business</option><option value="2">Scale</option></select>
+      </div>
+    </div>
+    <div class="total" aria-live="polite">
+      <span class="micro" id="totLabel">Per month, billed annually</span>
+      <b class="mono" id="tot">$290</b>
+      <span id="totSub">You save $1,200 a year compared with monthly billing.</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="compare-plans">
+  <div class="sec-head"><h2>Everything in each plan.</h2></div>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table">
+    <table>
+      <thead><tr><th scope="col">Feature</th><th scope="col">Starter</th><th scope="col" class="us">Business</th><th scope="col">Scale</th></tr></thead>
+      <tbody>
+        <tr class="group"><th colspan="4">Calling</th></tr>
+        <tr><th scope="row">Local numbers (US, UK, AU + 100 more)</th><td>1 per user</td><td class="us">1 per user</td><td>2 per user</td></tr>
+                <tr><th scope="row">Free minutes to US, Canada, UK &amp; Australia</th><td>1,000 / user / month</td><td class="us">1,000 / user / month</td><td>1,000 / user / month</td></tr>
+        <tr><th scope="row">Other countries</th><td>Per minute</td><td class="us">Per minute</td><td>Per minute</td></tr>
+        <tr><th scope="row">Call recording</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr class="group"><th colspan="4">Auto Dialer</th></tr>
+        <tr><th scope="row">Preview dialer</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Power dialer + voicemail drop</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Dialer campaigns and retry rules</th><td class="no">–</td><td class="us">Standard</td><td>Custom</td></tr>
+        <tr><th scope="row">Time-zone aware calling windows</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr class="group"><th colspan="4">AI</th></tr>
+        <tr><th scope="row">Transcripts, 30+ languages</th><td>After the call</td><td class="us">Live</td><td>Live</td></tr>
+        <tr><th scope="row">Summaries and action items</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">AI voice agent (inbound, 24/7)</th><td>$0.12 / min</td><td class="us">100 min / user, pooled</td><td>300 min / user, pooled</td></tr>
+        <tr><th scope="row">Live translation</th><td class="no">–</td><td class="us no">–</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Coaching, scorecards, sentiment</th><td class="no">–</td><td class="us no">–</td><td class="yes">Included</td></tr>
+        <tr class="group"><th colspan="4">Inbound &amp; routing</th></tr>
+        <tr><th scope="row">Business hours and voicemail</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">IVR and language routing</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Queue callbacks</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr class="group"><th colspan="4">Integrations</th></tr>
+        <tr><th scope="row">Slack, Zapier, Google Workspace</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">HubSpot, Salesforce, Pipedrive, Zoho</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr class="group"><th colspan="4">Admin &amp; security</th></tr>
+        <tr><th scope="row">User roles and call analytics</th><td>Basic</td><td class="us">Standard</td><td>Advanced + wallboards</td></tr>
+        <tr><th scope="row">SSO and audit logs</th><td class="no">–</td><td class="us no">–</td><td class="yes">Included</td></tr>
+        <tr class="group"><th colspan="4">Support</th></tr>
+        <tr><th scope="row">Support channels</th><td>Email and chat</td><td class="us">Email and chat</td><td>Priority, with phone</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec wrap" id="rates" style="padding-top:0">
+  <div class="split" style="align-items:start">
+    <div class="sec-head" style="margin:0">
+      <span class="eyebrow">International calling</span>
+      <h2>1,000 free minutes a month. Then per minute.</h2>
+      <p class="lede">Every user gets 1,000 free minutes a month for calls to and from the US, UK, Australia and Canada. After that, and for every other country, you pay per minute at the rate shown before you dial. <a href="fair-usage.html">Fair usage policy</a></p>
+    </div>
+    <div>
+      <div class="table-wrap rates" tabindex="0" role="region" aria-label="Scrollable table">
+        <table>
+          <thead><tr><th scope="col">Destination</th><th scope="col">Landline</th><th scope="col">Mobile</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">United States <span class="mono" style="color:var(--dim)">+1</span></th><td>Free minutes*</td><td>Free minutes*</td></tr>
+            <tr><th scope="row">United Kingdom <span class="mono" style="color:var(--dim)">+44</span></th><td>Free minutes*</td><td>Free minutes*</td></tr>
+            <tr><th scope="row">Australia <span class="mono" style="color:var(--dim)">+61</span></th><td>Free minutes*</td><td>Free minutes*</td></tr>
+            <tr><th scope="row">Canada <span class="mono" style="color:var(--dim)">+1</span></th><td>Free minutes*</td><td>Free minutes*</td></tr>
+            <tr><th scope="row">Ireland <span class="mono" style="color:var(--dim)">+353</span></th><td class="mono">$0.014</td><td class="mono">$0.029</td></tr>
+            <tr><th scope="row">New Zealand <span class="mono" style="color:var(--dim)">+64</span></th><td class="mono">$0.018</td><td class="mono">$0.034</td></tr>
+            <tr><th scope="row">India <span class="mono" style="color:var(--dim)">+91</span></th><td class="mono">$0.011</td><td class="mono">$0.011</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">*Up to 1,000 minutes per user per month, then per minute. Other rates are samples per minute, shown for layout. Final rates publish at launch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="sec-head"><h2>Only if you need them.</h2></div>
+  <div class="addons">
+    <div class="addon panel"><span class="amt mono">$5<small style="font-size:.9rem;color:var(--muted)"> / month</small></span><h3>Extra local number</h3><p>Add a second number in any country, per user or shared by a team.</p></div>
+    <div class="addon panel"><span class="amt mono">$10<small style="font-size:.9rem;color:var(--muted)"> / month</small></span><h3>Toll-free number</h3><p>A free-to-call line for support desks in the countries you serve.</p></div>
+    <div class="addon panel"><span class="amt mono">$0.12<small style="font-size:.9rem;color:var(--muted)"> / min</small></span><h3>AI voice agent minutes</h3><p>Minutes the AI agent spends on calls beyond your plan's pool. Transfers to your team aren't counted.</p></div>
+    <div class="addon panel"><span class="amt mono">Per minute</span><h3>Minutes beyond your pool</h3><p>Billed at the published rate for each destination. No bundles to buy.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="split" style="align-items:start">
+    <div class="sec-head"><h2>Pricing questions.</h2></div>
+    <div class="faq">
+      <details><summary>Is there a seat minimum?</summary><p>No. Start with one seat and add people when you need them.</p></details>
+      <details><summary>Can I mix plans across my team?</summary><p>Yes. Your SDRs can be on Business while your support team stays on Starter.</p></details>
+      <details><summary>How are minutes counted?</summary><p>Per minute, rounded up to the next full minute. Calls to and from the US, UK, Australia and Canada use your 1,000 free minutes first. See the <a href="fair-usage.html">fair usage policy</a> for details.</p></details>
+      <details><summary>Do unused free minutes roll over?</summary><p>No. Your 1,000 minutes reset at the start of each billing month.</p></details>
+      <details><summary>How is the AI voice agent billed?</summary><p>Per minute the agent spends talking, at $0.12. Business and Scale include a pool of minutes each month. Time after a transfer to a person counts as a normal call.</p></details>
+      <details><summary>Can I cancel?</summary><p>Monthly plans cancel anytime. Annual plans can change or downgrade at renewal.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec final" style="padding-top:0">
+  <div class="wrap"><div class="panel">
+    <span class="eyebrow">Free for 14 days</span>
+    <h2>Try Business free for 14 days.</h2>
+    <p class="lede">No card required.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="https://app.callforges.com">Start Free Trial</a><a class="btn btn-ghost" href="compare.html">Compare With Aircall, JustCall, Quo &amp; Dialpad</a></div>
+  </div></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><a class="brand" href="./">CallForges</a><p style="color:var(--muted);margin-top:12px;max-width:34ch;font-size:.93rem">Dialer, auto dialer and AI voice agent for teams calling the US, UK and Australia.</p></div>
+      <div><h4>Product</h4><ul><li><a href="./#features">Numbers</a></li><li><a href="./#dialer">Auto Dialer</a></li><li><a href="./#features">AI Notes</a></li><li><a href="./#agent">AI Voice Agent</a></li><li><a href="./#features">Routing</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="pricing.html">Pricing</a></li><li><a href="compare.html">Compare</a></li><li><a href="#rates">Rates</a></li><li><a href="#">Help Center</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="fair-usage.html">Fair Usage Policy</a></li></ul></div>
+    </div>
+    <div class="foot-note"><span>© 2026 CallForges</span><span class="mono">+1 · +44 · +61</span></div>
+  </div>
+</footer>
+<script>
+(function(){var n=document.getElementById('nav'),b=document.getElementById('menuBtn');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus()}});b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})})();
+(function(){
+  var annual=true, P=[[19,15],[39,29],[59,45]], names=['Starter','Business','Scale'];
+  var bm=document.getElementById('bMonthly'), ba=document.getElementById('bAnnual');
+  var seats=document.getElementById('seats'), range=document.getElementById('seatsRange'), sel=document.getElementById('planSel');
+  var tot=document.getElementById('tot'), lab=document.getElementById('totLabel'), sub=document.getElementById('totSub');
+  function fmt(n){return '$'+n.toLocaleString('en-US')}
+  function calc(){
+    var s=Math.max(1,Math.min(500,parseInt(seats.value,10)||1)), p=P[+sel.value];
+    var per=annual?p[1]:p[0]; tot.textContent=fmt(per*s);
+    lab.textContent='Per month for '+s+' '+(s===1?'seat':'seats')+' on '+names[+sel.value]+(annual?', billed annually':', billed monthly');
+    var save=(p[0]-p[1])*s*12;
+    sub.textContent=annual?'You save '+fmt(save)+' a year compared with monthly billing.':'Switch to annual billing to save '+fmt(save)+' a year.';
+  }
+  function setBill(a){
+    annual=a; ba.setAttribute('aria-pressed',a); bm.setAttribute('aria-pressed',!a);
+    document.querySelectorAll('.price b').forEach(function(b){b.textContent='$'+(a?b.dataset.a:b.dataset.m)});
+    document.querySelectorAll('[data-bill]').forEach(function(el){var b=el.parentNode.querySelector('.price b');el.textContent=a?'Billed annually. $'+b.dataset.m+' billed monthly.':'Billed monthly. $'+b.dataset.a+' with annual billing.'});
+    calc();
+  }
+  bm.addEventListener('click',function(){setBill(false)}); ba.addEventListener('click',function(){setBill(true)});
+  range.addEventListener('input',function(){seats.value=range.value;calc()});
+  seats.addEventListener('input',function(){range.value=Math.min(100,seats.value||1);calc()});
+  sel.addEventListener('change',calc);
+  calc();
+})();
+</script>
+</body>
+</html>
