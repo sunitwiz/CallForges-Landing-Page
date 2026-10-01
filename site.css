@@ -1,3 +1,4 @@
+@font-face{font-family:"Geist Fallback";src:local("Arial");size-adjust:104%;ascent-override:93%;descent-override:22%;line-gap-override:0%}
 /* CallForges V2 — daylight: cool paper white, ink-black pills, one signal-orange accent.
    Layout: short headlines, big numerals, large soft panels holding product UI; lots of air. */
 :root{
@@ -16,8 +17,8 @@
   --amber-ink:#ffffff;
   --teal:#066b5b;
   --rose:#c23a52;
-  --display:"Geist", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --body:"Geist", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --display:"Geist", "Geist Fallback", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --body:"Geist", "Geist Fallback", "Helvetica Neue", Arial, system-ui, sans-serif;
   --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --r-sm:10px; --r-md:16px; --r-lg:28px;
   --wrap:1200px;
@@ -152,3 +153,10 @@ thead th.us{color:var(--amber)}
   .nav-cta{gap:6px}
   .nav-cta .btn{padding:0 12px}
 }
+
+/* Breadcrumbs */
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px;padding:0;font:.85rem/1.4 var(--body);color:var(--dim)}
+.crumbs li+li::before{content:"/";margin-right:8px;color:var(--line-2)}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--fg);text-decoration:underline}
+.crumbs [aria-current]{color:var(--fg)}

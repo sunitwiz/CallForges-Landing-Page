@@ -1,0 +1,27 @@
+{
+  "name": "CallForges",
+  "short_name": "CallForges",
+  "description": "Cloud dialer, auto dialer and AI voice agent for teams calling the US, UK and Australia.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f6f7f9",
+  "theme_color": "#f6f7f9",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
