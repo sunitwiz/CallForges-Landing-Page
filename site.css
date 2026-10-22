@@ -64,7 +64,8 @@ p{margin:0}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font:700 1.12rem/1 var(--display);letter-spacing:-.03em}
 .brand img{width:26px;height:26px;border-radius:6px}
 .nav-links{display:flex;gap:24px;margin-right:auto}
-.nav-links a{text-decoration:none;color:var(--muted);font-size:.93rem;padding:8px 0}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.93rem;padding:8px 0;white-space:nowrap}
+@media (max-width:1000px){.nav-links{gap:18px}}
 .nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--fg)}
 .nav-cta{display:flex;gap:10px;align-items:center}
 .nav-cta .btn{white-space:nowrap}

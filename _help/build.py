@@ -1,8 +1,8 @@
 """Builds the help center (help.html, help/collections, help/articles) from _help/src/<provider>.html.
 
 Run from anywhere: python3 _help/build.py. Screenshots are read from help/img/<provider>-<view>.png;
-a section whose screenshot is missing is built without one. The top-level attio.html shell gives the
-site nav and footer."""
+a section whose screenshot is missing is built without one. fair-usage.html gives the site nav and
+footer; the help pages add a search box to that nav."""
 import html
 import json
 import os
@@ -31,7 +31,15 @@ def absolutize(fragment):
     return re.sub(r'\b(href|src)="([^"]*)"', fix, fragment)
 
 
-body_top = absolutize(body_top)
+NAV_SEARCH = '''<div class="nav-search" role="search">
+<svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.5 12.5 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+<input id="helpSearch" type="search" placeholder="Search help…" aria-label="Search help articles" role="combobox" aria-controls="helpResults" aria-expanded="false" aria-autocomplete="list" autocomplete="off" spellcheck="false">
+<ul id="helpResults" class="help-results" role="listbox" hidden></ul>
+</div>
+'''
+body_top = absolutize(body_top).replace('<a href="/help">Help</a>', '<a href="/help" aria-current="page">Help</a>')
+links_end = body_top.index('</nav>', body_top.index('class="nav-links"')) + len('</nav>\n')
+body_top = body_top[:links_end] + NAV_SEARCH + body_top[links_end:]
 body_end = absolutize(body_end).replace('</body>', '<script src="/help/search.js" defer></script>\n</body>')
 
 COLLECTION = {
@@ -106,18 +114,6 @@ def head(title, desc, path, ld):
 '''
 
 
-def band(big):
-    title = '<h1>How can we help?</h1>' if big else ''
-    cls = 'help-band' if big else 'help-band compact'
-    return f'''<section class="{cls}"><div class="wrap">{title}
-<div class="help-search" role="search">
-<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M12.5 12.5 16 16" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
-<input id="helpSearch" type="search" placeholder="Search for articles…" aria-label="Search help articles" role="combobox" aria-controls="helpResults" aria-expanded="false" aria-autocomplete="list" autocomplete="off" spellcheck="false">
-<ul id="helpResults" class="help-results" role="listbox" hidden></ul>
-</div></div></section>
-'''
-
-
 def crumbs(items):
     lis = ''.join(f'<li><a href="{u}">{html.escape(n)}</a></li>' if u else f'<li aria-current="page">{html.escape(n)}</li>' for n, u in items)
     return f'<nav class="help-crumbs" aria-label="Breadcrumb"><ol>{lis}</ol></nav>\n'
@@ -143,7 +139,8 @@ home_items = [('All collections', None)]
 n = len(ARTICLES)
 write('help.html', head('CallForges Help Center', 'Guides for CallForges: connecting your CRM, logging calls and importing contacts.', '/help',
                         {'@context': 'https://schema.org', '@graph': [breadcrumb_ld([('Home', '/'), ('Help Center', '/help')])]})
-      + body_top + '<main id="main">\n' + band(True) + '<div class="help-main">\n'
+      + body_top + '<main id="main">\n' + '<div class="help-main">\n'
+      + '<div class="collection-head"><h1>How can we help?</h1><p>Guides for setting up and using CallForges.</p></div>\n'
       + f'<div class="collections"><a class="collection" href="/help/collections/{COLLECTION["slug"]}">{ICON}<div><h2>{COLLECTION["title"]}</h2><p>{COLLECTION["desc"]}</p><span class="count">{n} articles</span></div></a></div>\n'
       + STILL + '</div>\n</main>' + body_end)
 
@@ -153,7 +150,7 @@ lis = ''.join(f'<li><a href="/help/articles/{a["slug"]}"><div><strong>{a["name"]
 write(f'help/collections/{COLLECTION["slug"]}.html',
       head(f'{COLLECTION["title"]} | CallForges Help Center', COLLECTION['desc'], f'/help/collections/{COLLECTION["slug"]}',
            {'@context': 'https://schema.org', '@graph': [breadcrumb_ld([('Help Center', '/help'), (COLLECTION['title'], f'/help/collections/{COLLECTION["slug"]}')])]})
-      + body_top + '<main id="main">\n' + band(False) + '<div class="help-main">\n' + crumbs(c_items)
+      + body_top + '<main id="main">\n' + '<div class="help-main">\n' + crumbs(c_items)
       + f'<div class="collection-head"><h1>{COLLECTION["title"]}</h1><p>{COLLECTION["desc"]} {n} articles.</p></div>\n'
       + f'<ul class="article-list">{lis}</ul>\n' + STILL + '</div>\n</main>' + body_end)
 
@@ -191,7 +188,7 @@ for a in ARTICLES:
          'author': {'@type': 'Organization', 'name': 'CallForges'}, 'publisher': {'@type': 'Organization', 'name': 'CallForges', 'logo': {'@type': 'ImageObject', 'url': SITE + '/logo.png'}}, 'mainEntityOfPage': SITE + path},
         breadcrumb_ld([('Help Center', '/help'), (COLLECTION['title'], f'/help/collections/{COLLECTION["slug"]}'), (f'{a["name"]} integration', path)])]}
     page = (head(f'{a["name"]} integration | CallForges Help Center', a['desc'], path, ld)
-            + body_top + '<main id="main">\n' + band(False) + '<div class="help-main">\n' + crumbs(items)
+            + body_top + '<main id="main">\n' + '<div class="help-main">\n' + crumbs(items)
             + '<article class="article">\n'
             + f'<h1>{a["name"]} integration</h1>\n<p class="lead">{lead}</p>\n'
             + f'<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">Written by CallForges Support · Updated {UPDATED}</p>\n'
