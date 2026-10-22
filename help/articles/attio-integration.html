@@ -84,6 +84,8 @@
 </ol>
 <p>If the Attio workspace is already connected to another CallForges workspace, CallForges asks before moving it. That other workspace then stops logging calls to Attio.</p>
 <p>If Attio later asks CallForges to sign in again (for example, after the app was removed in Attio), the Connection tab shows <strong>Reconnect</strong>. Calls made in the meantime wait and are sent once you reconnect.</p>
+<figure><img src="/help/img/attio-connect.png" alt="Attio before it is connected: click Connect." width="1600" height="700" loading="lazy" decoding="async"><figcaption>Attio before it is connected: click Connect.</figcaption></figure>
+<figure><img src="/help/img/attio-connection.png" alt="The Connection tab after connecting Attio." width="1600" height="703" loading="lazy" decoding="async"><figcaption>The Connection tab after connecting Attio.</figcaption></figure>
 <h2 id="map-users">Map users</h2>
 <p>Calls are logged only for CallForges users who are matched to an Attio workspace member. Open the <strong>Map users</strong> tab:</p>
 <ol>
@@ -92,6 +94,7 @@
   <li>Click <strong>Save</strong>.</li>
 </ol>
 <p>Calls by an unmapped user are skipped, and each skip shows up in Activity with the reason. Use <strong>Show unmapped only</strong> to find the users who still need a match. After you map them, you can send their skipped calls from Activity.</p>
+<figure><img src="/help/img/attio-map-users.png" alt="Map users: match each CallForges user to their Attio member." width="1600" height="1200" loading="lazy" decoding="async"><figcaption>Map users: match each CallForges user to their Attio member.</figcaption></figure>
 <h2 id="logging">Call logging settings</h2>
 <p>Open the <strong>Settings</strong> tab, change what you need and click <strong>Save changes</strong>.</p>
 <h3>Workflow: what each call becomes</h3>
@@ -115,6 +118,7 @@
 <p>Leave <strong>Log calls on all numbers</strong> on to log calls on every number your workspace owns, including numbers bought later. Turn it off to pick the numbers to log. Calls on numbers that aren't picked are skipped.</p>
 <h3>When calls are logged</h3>
 <p>A call is written to Attio within a few minutes of ending, so the disposition and notes the user adds after the call are included. If the call is changed later, for example a new disposition, the note or Calls record is updated to match.</p>
+<figure><img src="/help/img/attio-settings-workflow.png" alt="Settings → Workflow: choose what each kind of call becomes in Attio." width="1600" height="803" loading="lazy" decoding="async"><figcaption>Settings → Workflow: choose what each kind of call becomes in Attio.</figcaption></figure>
 <h2 id="unknown">Unknown numbers</h2>
 <p>CallForges finds the Attio person by phone number. In <strong>Settings → General</strong>:</p>
 <ul>
@@ -122,6 +126,7 @@
   <li><strong>Use the phone number as the new person's name</strong>: used when CallForges has no name for the caller. When this is off, the new person is named "Unknown caller". This applies only while creating people is on.</li>
   <li><strong>Add Attio people to CallForges Contacts</strong>: when a call reaches someone who is in Attio but not in your CallForges Contacts, CallForges adds them to Contacts and links the two. Off by default.</li>
 </ul>
+<figure><img src="/help/img/attio-settings-general.png" alt="Settings → General: unknown numbers, Contacts and what each entry includes." width="1600" height="995" loading="lazy" decoding="async"><figcaption>Settings → General: unknown numbers, Contacts and what each entry includes.</figcaption></figure>
 <h2 id="contacts">Import contacts</h2>
 <p>The <strong>Contacts</strong> tab lists the people in your Attio workspace who have a phone number, read live from Attio. Each row shows whether the person is already in CallForges, with a link to open them in Attio.</p>
 <ol>
@@ -130,6 +135,7 @@
   <li>Click <strong>Import</strong> and choose an existing CallForges list or name a new one.</li>
 </ol>
 <p>Imported people become CallForges contacts linked to their Attio records, ready to call from a campaign or the dialer. Click <strong>Sync now</strong> to bring in later changes. CallForges doesn't copy your Attio data on a schedule; it reads Attio only when you open the tab, import or sync.</p>
+<figure><img src="/help/img/attio-contacts.png" alt="The Contacts tab: your Attio people with a phone number, ready to import." width="1600" height="1432" loading="lazy" decoding="async"><figcaption>The Contacts tab: your Attio people with a phone number, ready to import.</figcaption></figure>
 <h2 id="past-calls">Log past calls</h2>
 <p>Connecting logs the calls that happen from then on. To send calls your workspace made before you connected, use <strong>Settings → Log past calls</strong>:</p>
 <ol>
@@ -138,14 +144,17 @@
   <li>Confirm. A progress bar shows the calls being sent.</li>
 </ol>
 <p>Past calls are sent in the background and never delay the logging of new calls. To stop a run, open Activity, go to the <strong>Queued</strong> tab and click <strong>Stop queued</strong>.</p>
+<figure><img src="/help/img/attio-log-past-calls.png" alt="Log past calls: pick how far back, then confirm." width="1600" height="496" loading="lazy" decoding="async"><figcaption>Log past calls: pick how far back, then confirm.</figcaption></figure>
 <h2 id="activity">Activity</h2>
 <p>The <strong>Activity</strong> tab lists every call and what happened to it in Attio: logged (and whether as a note or a Calls record), queued, failed or skipped, with the reason. You can retry one call, or use <strong>Retry all</strong> for every failed or skipped call that matches your filters. <strong>Never logged</strong> lists calls that were never sent to Attio.</p>
+<figure><img src="/help/img/attio-activity.png" alt="Activity: what happened to each call in Attio." width="1600" height="978" loading="lazy" decoding="async"><figcaption>Activity: what happened to each call in Attio.</figcaption></figure>
 <h2 id="disconnect">Disconnect</h2>
 <ol>
   <li>Open <strong>Integrations → Attio</strong>.</li>
   <li>Click <strong>Disconnect</strong> and confirm.</li>
 </ol>
 <p>Calls stop being logged to Attio and the user mapping is cleared. CallForges gives up its access to your Attio workspace. Notes and Calls records already written stay in Attio, and your logging settings are kept in case you reconnect. You can also remove the CallForges app from your Attio workspace settings at any time; CallForges then shows Reconnect.</p>
+<figure><img src="/help/img/attio-disconnect.png" alt="The Disconnect confirmation." width="928" height="574" loading="lazy" decoding="async"><figcaption>The Disconnect confirmation.</figcaption></figure>
 <h2 id="access">What CallForges can access</h2>
 <p>When you click Allow, CallForges asks Attio for these permissions on your workspace:</p>
 <div class="tbl"><table>
@@ -165,7 +174,6 @@
 <div class="stillhelp"><p><strong>Still need help?</strong>Write to us and a person on our team will answer.</p><a class="btn btn-primary btn-sm" href="mailto:hello@callforges.com">Email support</a></div>
 </div>
 </main>
-
 
 <footer class="foot">
   <div class="wrap">
