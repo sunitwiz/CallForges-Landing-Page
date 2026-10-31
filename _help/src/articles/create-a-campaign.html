@@ -1,0 +1,68 @@
+<!--
+collection: power-dialer
+title: Create a campaign
+desc: Set up a power or parallel dialer campaign: the dialer type, the number you call from, your leads and the hours leads may be called.
+order: 1
+-->
+<p class="lead">A campaign is a list of leads that CallForges dials for you, one after another. You choose how it dials, which number it calls from, who it calls and when.</p>
+<h2 id="before">Before you start</h2>
+<ul>
+  <li>Your role needs <strong>Create and edit campaigns</strong>. Owners, admins and members have it by default.</li>
+  <li>You need an active phone number. If you have none, the form shows <strong>You need an active phone number to place calls.</strong> with <strong>Get a number</strong>.</li>
+  <li>Have your leads ready: a contact list in CallForges, or a CSV file with at least a phone number column.</li>
+</ul>
+<h2 id="create">Create the campaign</h2>
+<ol>
+  <li>Open <strong>Campaigns</strong> and click <strong>Create campaign</strong>.</li>
+  <li>The form opens as <strong>Untitled Campaign</strong>. Click the name at the top to rename it.</li>
+  <li>Under <strong>Dialer Type</strong>, choose:
+    <ul>
+      <li><strong>Power Dialer</strong>: calls one lead at a time.</li>
+      <li><strong>Parallel Dialer</strong>: calls several leads at once and connects you to the first who answers. Then set <strong>Number of parallel calls</strong>, <strong>Re-dial cancelled leads</strong> and, if you like, a <strong>Voicemail drop</strong> to play when a voicemail box answers.</li>
+    </ul>
+  </li>
+  <li>Under <strong>Call Via</strong>, pick the number your leads see. Your own numbers are offered first.</li>
+  <li>Set <strong>Cooldown duration between two calls</strong>, in seconds.</li>
+  <li>Under <strong>Audience</strong>, add your leads (see below).</li>
+  <li>Choose the options at the bottom (see below).</li>
+  <li>Click <strong>Create Campaign</strong>.</li>
+</ol>
+<p>If something is missing, CallForges tells you what to add, such as a contact list or a valid calling window. The new campaign opens as a <strong>Draft</strong>. Nothing is dialed until you start it.</p>
+<p class="note">You can't change the dialer type after the campaign is created.</p>
+<h2 id="audience">Add your leads</h2>
+<p><strong>Select a list</strong> uses a contact list you already have:</p>
+<ol>
+  <li>Click <strong>Select a list</strong>.</li>
+  <li>Open <strong>List</strong> and pick one. Each list shows how many contacts it holds. Choose <strong>Create new list</strong> to make one here.</li>
+</ol>
+<p><strong>Upload leads</strong> imports a CSV file:</p>
+<ol>
+  <li>Click <strong>Upload leads</strong> and choose your .csv file. CallForges detects the columns.</li>
+  <li>Check how each column is mapped. Rows without a phone number are skipped. Existing contacts are matched by phone, then by email.</li>
+  <li>Under <strong>Add to</strong>, choose <strong>New list</strong> and name it, or <strong>Existing list</strong>.</li>
+  <li>Under <strong>Existing contacts</strong>, choose <strong>Update with CSV values</strong> or <strong>Keep as-is, only add to list</strong>.</li>
+  <li>Click the <strong>Import</strong> button, which shows how many contacts it will import, then <strong>Done</strong>. That list is now the campaign's audience.</li>
+</ol>
+<h2 id="options">Recording, Do Not Call and calling hours</h2>
+<ul>
+  <li><strong>Enable default call recording for all calls in this campaign</strong>: records every connected call. It starts from your caller number's own recording setting.</li>
+  <li><strong>Respect Do-Not-Call (DNC) lists</strong>: contacts on your Do Not Call list are not dialed. Their status shows <strong>Do not call</strong>.</li>
+  <li><strong>Use the lead/contact's local time zone to call during their active hours</strong>: pick the <strong>Active Days</strong>, a <strong>Start Time</strong> and an <strong>End Time</strong>. These are the lead's own local hours.</li>
+</ul>
+<p>When a lead's turn comes outside their hours, the lead is skipped and shows <strong>Out of timezone</strong>. It is not called again in this campaign. A lead with no time zone is always called. A US number uses its area code's time zone.</p>
+<p class="note">Start the campaign during your leads' hours, or many of them may be skipped as Out of timezone.</p>
+<h2 id="after">Change the campaign later</h2>
+<p>On the campaign's page:</p>
+<ul>
+  <li><strong>Edit</strong> opens <strong>Edit campaign</strong>. Use <strong>Add a list</strong> or <strong>Pick contacts</strong> to add leads, and drag rows to change the dial order. Leads are dialed top to bottom. Click <strong>Save</strong>. A contact already in the campaign is not added twice.</li>
+  <li><strong>Settings</strong> opens <strong>Campaign settings</strong>: the name, the <strong>Caller number</strong>, <strong>Dialing behavior</strong> (<strong>Ring timeout</strong>, <strong>Wrap-up time</strong>, <strong>Cooldown between calls</strong>, <strong>Record calls</strong>, <strong>Skip Do-Not-Call contacts</strong>, and <strong>Auto-advance</strong> on a power campaign) and the <strong>Calling window</strong>. Click <strong>Save changes</strong>.</li>
+</ul>
+<p>If the campaign is running, Edit and Settings first ask <strong>Pause campaign to edit?</strong>. The current call finishes, and nothing new is dialed until you resume. On a completed or ended campaign, Edit is read-only and Settings is greyed out.</p>
+<h2 id="follow-up">Call the same leads again</h2>
+<p>To call back leads from an earlier campaign, for example everyone who didn't answer:</p>
+<ol>
+  <li>Open the campaign and tick the leads in its list. You can filter by status first.</li>
+  <li>Click <strong>Create campaign</strong>. You can also use the <strong>···</strong> menu and <strong>Create campaign from leads…</strong>.</li>
+  <li>The form opens with a "follow-up" name, the same settings and the chosen contacts as the audience. Change anything you need and click <strong>Create Campaign</strong>.</li>
+</ol>
+<p>Next: <a href="/help/articles/start-pause-resume-stop">Start, pause, resume or stop a campaign</a>.</p>

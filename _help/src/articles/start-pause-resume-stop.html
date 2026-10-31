@@ -1,0 +1,80 @@
+<!--
+collection: power-dialer
+title: Start, pause, resume or stop a campaign
+desc: Run a campaign: start dialing, pause and resume, stop it for good, and read what each lead's status means.
+order: 2
+-->
+<p class="lead">You run a campaign from its page in <strong>Campaigns</strong>. Start it to begin dialing, pause it for a break, resume where it stopped, or stop it for good when you are done.</p>
+<h2 id="before">Before you start</h2>
+<ul>
+  <li>Your role needs <strong>Run campaigns</strong>. Owners, admins and members have it by default. Without it, <strong>Start Campaign</strong> is greyed out.</li>
+  <li>The campaign needs a caller number and leads. If one is missing, <strong>Start Campaign</strong> is greyed out and tells you what to add. The caller number is in <strong>Settings</strong>, the leads in <strong>Edit</strong>. See <a href="/help/articles/create-a-campaign">Create a campaign</a>.</li>
+  <li>Allow your browser to use the microphone. If it is blocked, you see <strong>Microphone needed</strong>.</li>
+  <li>Keep the tab open while you dial. Closing or reloading the tab pauses a running campaign.</li>
+</ul>
+<h2 id="start">Start a campaign</h2>
+<ol>
+  <li>Open the campaign. A new campaign shows <strong>READY</strong>.</li>
+  <li>Click <strong>Start Campaign</strong>.</li>
+  <li>On a power campaign, CallForges calls the first lead at the top of the dial order. The strip shows <strong>Power Dialing…</strong>.</li>
+  <li>When the lead answers, the strip shows <strong>Connected</strong> and the lead's contact page opens. The call has the same controls as the dialer: see <a href="/help/articles/place-a-call">Place a call from the dialer</a>.</li>
+  <li>When the call ends, you go back to the campaign and the strip shows <strong>Wrapping up…</strong> with a countdown to the next call (<strong>Next call in … secs</strong>). Its length comes from the campaign's wrap-up and cooldown settings.</li>
+</ol>
+<p>During the countdown you can:</p>
+<ul>
+  <li>Click the countdown (<strong>Skip Cooldown</strong>) to dial the next lead now.</li>
+  <li>Click <strong>+10s</strong> to add 10 seconds.</li>
+  <li>Click <strong>Log outcome</strong> to open the post-call form. While the form is open the countdown waits, and the strip reads <strong>Next call after you log the outcome</strong>.</li>
+</ul>
+<p>If <strong>Auto-advance</strong> is off in the campaign's settings, click <strong>Dial next</strong> to place each call yourself.</p>
+<p>A parallel campaign calls several leads at once and connects you to the first one who answers. Its strip shows each line as it rings.</p>
+<p>When every lead has been called, the campaign becomes <strong>Completed</strong>. If the page says <strong>Nothing left to dial</strong>, click <strong>Close out</strong> to mark it completed.</p>
+<h2 id="pause">Pause a campaign</h2>
+<ol>
+  <li>Click <strong>Pause</strong> in the session strip.</li>
+  <li>On a power campaign, a call that is already ringing or connected finishes normally. No new call is placed.</li>
+  <li>On a parallel campaign with lines ringing, choose <strong>Pause now</strong> to hang up the ringing lines, or <strong>Pause after this round</strong> to let them finish (if someone answers, you are connected). Then click <strong>Pause</strong>.</li>
+</ol>
+<p>Clicking <strong>Edit</strong> or <strong>Settings</strong> on a running campaign also pauses it, after you confirm <strong>Pause and edit</strong>.</p>
+<p>CallForges pauses a campaign for you when:</p>
+<ul>
+  <li>you close or reload the tab, or the campaign is left running with nobody dialing;</li>
+  <li>the workspace runs out of credits. You see <strong>You're out of credits</strong>. Leads not called yet stay in the queue. See <a href="/pricing.html">Pricing</a>;</li>
+  <li>the campaign's phone number is deleted. Attach a new one in <strong>Settings</strong> before you resume.</li>
+</ul>
+<h2 id="resume">Resume a campaign</h2>
+<ol>
+  <li>Open the campaign. It shows <strong>PAUSED</strong>.</li>
+  <li>Click <strong>Resume</strong>. Dialing carries on from the next lead that has not been called.</li>
+</ol>
+<p>If the campaign shows <strong>NOT DIALING</strong>, it is still running but nobody is dialing it in this tab, for example after a reload. Click <strong>Resume dialing</strong> to pick up where it stopped.</p>
+<p>If you are on another call, <strong>Resume</strong> waits and says <strong>Finish your other call first</strong>.</p>
+<h2 id="stop">Stop a campaign</h2>
+<ol>
+  <li>While you are dialing, click <strong>End session</strong> in the strip and confirm with <strong>End Campaign</strong>. A call in progress is hung up.</li>
+  <li>When nobody is dialing, click <strong>Stop</strong> and confirm with <strong>Stop campaign</strong>.</li>
+</ol>
+<p>Either way the campaign becomes <strong>Ended</strong>. Leads not called yet are marked <strong>Skipped</strong>. An ended campaign can't be started again.</p>
+<p class="note">Only want a break? Use <strong>Pause</strong>, not Stop. To call the leads a stopped campaign never reached, create a follow-up campaign from them: see <a href="/help/articles/create-a-campaign#follow-up">Call the same leads again</a>.</p>
+<h2 id="statuses">What each lead's status means</h2>
+<p>Each lead in the campaign's list shows a status. Pausing never changes it.</p>
+<table>
+  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pending</strong></td><td>Waiting to be called.</td></tr>
+    <tr><td><strong>Ringing</strong></td><td>Being called now.</td></tr>
+    <tr><td><strong>In progress</strong></td><td>The lead answered and the call is live.</td></tr>
+    <tr><td><strong>Completed</strong></td><td>The lead answered and the call ended.</td></tr>
+    <tr><td><strong>Voicemail</strong></td><td>The call reached a voicemail box.</td></tr>
+    <tr><td><strong>Voicemail dropped</strong></td><td>A parallel campaign's voicemail drop played into the lead's voicemail box.</td></tr>
+    <tr><td><strong>No answer</strong></td><td>The phone rang and nobody picked up.</td></tr>
+    <tr><td><strong>Busy</strong></td><td>The line was busy.</td></tr>
+    <tr><td><strong>Failed</strong></td><td>The call could not be connected.</td></tr>
+    <tr><td><strong>Cancelled</strong></td><td>The call was cut off before the lead was reached, for example by Stop. On a parallel campaign, a lead waiting to be called again shows how many re-dials are left.</td></tr>
+    <tr><td><strong>Cancelled by user</strong></td><td>You hung up before the lead answered.</td></tr>
+    <tr><td><strong>Skipped</strong></td><td>Not called, for example because the campaign was stopped first or the lead had no number to call.</td></tr>
+    <tr><td><strong>Do not call</strong></td><td>The lead is on your Do Not Call list and the campaign respects it.</td></tr>
+    <tr><td><strong>Out of timezone</strong></td><td>The lead's turn came outside the campaign's calling hours in the lead's time zone. Not called in this campaign.</td></tr>
+    <tr><td><strong>Insufficient credits</strong></td><td>The call to this lead was not placed because of billing.</td></tr>
+  </tbody>
+</table>

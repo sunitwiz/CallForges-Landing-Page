@@ -1,0 +1,73 @@
+<!--
+collection: parallel-dialer
+title: How the parallel dialer works
+desc: Ring several leads at once, talk to the first person who answers, and choose what happens to the lines that were still ringing.
+order: 1
+-->
+<p class="lead">The parallel dialer rings several leads from a campaign at the same time and connects you to the first person who picks up. Use it on large lists where most calls go unanswered, so you spend your time talking instead of waiting.</p>
+
+<h2 id="before">Before you start</h2>
+<ul>
+  <li>Campaigns, including the parallel dialer, start with your paid plan. During the free trial the Campaigns page reads <strong>Campaigns start with your plan</strong>. See <a href="/pricing.html">pricing</a> for the plans that include it.</li>
+  <li>Users with the <strong>Owner</strong>, <strong>Admin</strong> or <strong>Member</strong> role can run a campaign. A custom role needs the permission to run campaigns.</li>
+  <li>The campaign needs a phone number to call from and a list of leads. See <a href="/help/articles/create-a-campaign">Create a campaign</a>.</li>
+  <li>Allow your browser to use your microphone, and keep the CallForges tab open while you dial.</li>
+  <li>One user runs a parallel campaign at a time.</li>
+</ul>
+
+<h2 id="set-up">Set up a parallel campaign</h2>
+<ol>
+  <li>Open <strong>Campaigns</strong> and click <strong>Create campaign</strong>.</li>
+  <li>Under <strong>Dialer Type</strong>, choose <strong>Parallel Dialer</strong>.</li>
+  <li>In <strong>Number of parallel calls</strong>, choose how many leads ring at once.</li>
+  <li>In <strong>Re-dial cancelled leads</strong>, choose how many times a lead the dialer cut is called again. <strong>Never</strong> is the default. See “Leads the dialer cuts” below.</li>
+  <li>Optionally, pick a <strong>Voicemail drop</strong>. It plays when an answering machine picks up, then the dialer moves on.</li>
+  <li>Under <strong>Call Via</strong>, pick the number to call from, and set the <strong>Cooldown duration between two calls</strong>.</li>
+  <li>Add your leads and click <strong>Create Campaign</strong>.</li>
+</ol>
+<p class="note">The voicemail drop plays only when <strong>Auto machine detection</strong> is on in <strong>Settings → Dialer settings</strong>. When it is off, an answering machine that picks up counts as an answer and is connected to you.</p>
+
+<h2 id="round">What happens in each round</h2>
+<ol>
+  <li>On the campaign page, click <strong>Start Campaign</strong>. Your own line connects first, so the dialer only rings leads while you are ready to talk.</li>
+  <li>The dialer rings the next leads on the list. The session bar shows how many lines are live, for example <strong>3/3 lines</strong>, and the <strong>Active batch</strong> table under it shows each line and its status.</li>
+  <li>When a line ends without an answer, the dialer rings the next lead in its place, so the batch stays full.</li>
+  <li>The first person who answers is connected to you. The other lines are hung up at once: <strong>First pickup wins — other lines release automatically.</strong></li>
+  <li>The session bar reads <strong>Connected</strong> with a timer, and CallForges opens the lead's contact page.</li>
+</ol>
+
+<h2 id="after-call">After each call</h2>
+<ul>
+  <li>When the call ends, the post-call form opens so you can log the outcome and notes. If it doesn't open, click <strong>Log outcome</strong>.</li>
+  <li>The countdown shows <strong>Next call in N secs</strong>. Click it to <strong>Skip Cooldown</strong>, or click <strong>Extend</strong> for more time.</li>
+  <li>The next round starts when the countdown ends and the post-call form is closed.</li>
+  <li>When no leads are left, the session ends and the campaign is completed.</li>
+</ul>
+<p>If your workspace runs out of credits, the campaign pauses after the current round. Lines already ringing finish, and you can still be connected to a lead who answers. Add credits, then click <strong>Resume</strong>. See <a href="/help/articles/add-credits">Add credits</a>.</p>
+
+<h2 id="cancelled">Leads the dialer cuts</h2>
+<p>The dialer hangs up a ringing lead, and marks it as cancelled, when:</p>
+<ul>
+  <li>another lead answered first,</li>
+  <li>the lead answered but nobody was free to take the call, or</li>
+  <li>you chose <strong>Pause now</strong> while the line was ringing.</li>
+</ul>
+<p>A cancelled lead goes back to the bottom of the list while it is within the <strong>Re-dial cancelled leads</strong> setting. With <strong>Never</strong>, it is not called again. Cancelled leads show as Cancelled on the campaign's leads table.</p>
+
+<h2 id="pause-end">Pause, resume and end</h2>
+<ul>
+  <li>Click <strong>Pause</strong> while lines are ringing and CallForges asks <strong>When to pause</strong>:
+    <ul>
+      <li><strong>Pause now</strong>: hang up the lines that are ringing.</li>
+      <li><strong>Pause after this round</strong>: let the ringing lines finish. If someone answers, you are connected. No new calls.</li>
+    </ul>
+  </li>
+  <li>Click <strong>Pause</strong> during a conversation and the campaign pauses without asking. Your call is never cut.</li>
+  <li>Click <strong>Resume</strong> to start a new round.</li>
+  <li>Click <strong>End session</strong>, then <strong>End Campaign</strong>, to stop. All ringing lines are hung up. You can restart the campaign later.</li>
+  <li>If you close or reload the tab, the campaign pauses and ringing lines are hung up. Open the campaign and click <strong>Resume</strong>.</li>
+</ul>
+<p>More detail is in <a href="/help/articles/start-pause-resume-stop">Start, pause, resume or stop a campaign</a>.</p>
+
+<h2 id="incoming">Incoming calls during a session</h2>
+<p>You are never rung for an incoming call while your line is connecting, while leads are ringing, or while you are on a call. When the session is paused, in wrap-up or counting down, incoming calls ring you only if <strong>Allow incoming calls while busy</strong> is on in <strong>Settings → User settings</strong>. Answering one pauses your session.</p>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#0b0d12">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Build a call workflow | CallForges Help Center</title>
+<meta name="description" content="Decide what callers get on your numbers: business hours, who rings, menus, forwarding, queues and voicemail, then publish it.">
+<link rel="canonical" href="https://callforges.com/help/articles/build-a-call-workflow">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CallForges">
+<meta property="og:title" content="Build a call workflow | CallForges Help Center">
+<meta property="og:description" content="Decide what callers get on your numbers: business hours, who rings, menus, forwarding, queues and voicemail, then publish it.">
+<meta property="og:url" content="https://callforges.com/help/articles/build-a-call-workflow">
+<meta property="og:image" content="https://callforges.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build a call workflow | CallForges Help Center">
+<meta name="twitter:description" content="Decide what callers get on your numbers: business hours, who rings, menus, forwarding, queues and voicemail, then publish it.">
+<meta name="twitter:image" content="https://callforges.com/og-image.png">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/help/help.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Build a call workflow","description":"Decide what callers get on your numbers: business hours, who rings, menus, forwarding, queues and voicemail, then publish it.","dateModified":"2026-10-31","author":{"@type":"Organization","name":"CallForges"},"publisher":{"@type":"Organization","name":"CallForges","logo":{"@type":"ImageObject","url":"https://callforges.com/logo.png"}},"mainEntityOfPage":"https://callforges.com/help/articles/build-a-call-workflow"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Help Center","item":"https://callforges.com/help"},{"@type":"ListItem","position":2,"name":"Incoming calls and workflows","item":"https://callforges.com/help/collections/incoming-calls"},{"@type":"ListItem","position":3,"name":"Build a call workflow","item":"https://callforges.com/help/articles/build-a-call-workflow"}]}]}</script>
+</head>
+<body>
+<script>
+/* Open every page at the top unless a #section was requested */
+(function(){try{history.scrollRestoration='manual'}catch(e){}
+ if(location.hash)return;var moved=false;
+ function top(){if(!moved)window.scrollTo({top:0,left:0,behavior:'instant'})}
+ ['wheel','touchstart','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){moved=true},{once:true,passive:true})});
+ top();addEventListener('DOMContentLoaded',top);addEventListener('load',function(){top();setTimeout(top,120);setTimeout(top,400)});addEventListener('pageshow',top);})();
+</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Callforges home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#0b0d12" stroke-width="2.4"/><path d="M5.5 21.5Q14 4 26.5 11.5" fill="none" stroke="#ff7a2e" stroke-width="2.6" stroke-linecap="round"/><circle cx="26.5" cy="11.5" r="3" fill="#ff7a2e"/></svg>Callforges</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#features">Product</a><a href="/auto-dialer.html">Auto Dialer</a><a href="/ai-agent.html">AI Agent</a><a href="/pricing.html">Pricing</a><a href="/help" aria-current="page">Help</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" href="https://callforges.com/login">Log In</a>
+      <a class="btn btn-primary btn-sm" href="https://callforges.com/signup"><span class="lg">Start Free Trial</span><span class="sm">Try Free</span></a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#0b0d12" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="help-main">
+<nav class="help-crumbs" aria-label="Breadcrumb"><ol><li><a href="/help">All collections</a></li><li><a href="/help/collections/incoming-calls">Incoming calls and workflows</a></li><li aria-current="page">Build a call workflow</li></ol></nav>
+<article class="article">
+<h1>Build a call workflow</h1>
+<p class="lead">A workflow decides what happens when someone calls one of your numbers: which hours count as open, who rings and in what order, and where the call goes when nobody answers. One workflow can serve many numbers, and each number runs exactly one workflow.</p>
+<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">Written by CallForges Support · Updated 31 October 2026</p>
+<nav class="toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#before">Before you start</a></li><li><a href="#create">Create a workflow</a></li><li><a href="#steps">Add and set up steps</a></li><li><a href="#ring">Choose who rings</a></li><li><a href="#publish">Save and publish</a></li><li><a href="#numbers">Put numbers on the workflow</a></li></ol></nav>
+<h2 id="before">Before you start</h2>
+<ul>
+  <li>Users with the <strong>Owner</strong> or <strong>Admin</strong> role can create, edit, publish and delete workflows. <strong>Members</strong> can view them.</li>
+  <li>Every new or ported number starts on <strong>Direct line</strong>, the <strong>System default</strong>: it rings the number's owner and teams, then goes to voicemail. You only need a workflow when you want something different.</li>
+  <li>To change the Direct line itself, open it from <strong>Workflows</strong> and click <strong>Duplicate it to make changes</strong>.</li>
+  <li>If <strong>Workflows</strong> reads <strong>Not available on your workspace</strong>, contact support to turn it on.</li>
+</ul>
+<h2 id="create">Create a workflow</h2>
+<ol>
+  <li>Open <strong>Workflows</strong> and click <strong>New workflow</strong>.</li>
+  <li>Pick a template, or <strong>Start from scratch</strong>, and click <strong>Use template</strong>:
+    <ul>
+      <li><strong>Direct line</strong>: ring the number's owner, then take a voicemail.</li>
+      <li><strong>Business hours + voicemail</strong>: ring the owner Monday to Friday, 9 to 5. At any other time, take a voicemail.</li>
+      <li><strong>Business hours + forward</strong>: the same hours, then forward to a number you pick.</li>
+      <li><strong>Single-level IVR menu</strong>: callers press 1 or 2, and each key rings the owner, then takes a voicemail.</li>
+    </ul>
+  </li>
+  <li>Click the pencil next to the name to rename the workflow.</li>
+</ol>
+<h2 id="steps">Add and set up steps</h2>
+<p>A workflow starts with the <strong>Incoming call</strong> trigger. Click <strong>+</strong> under a step to add the next one. The menu shows only the steps that fit there; click <strong>View more blocks</strong> for the rest. Click a step to open its settings on the right.</p>
+<table>
+  <thead><tr><th>Step</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Time rule</strong></td><td>Sends calls down different paths by day and time, in the time zone you pick. Calls outside every slot take <strong>At any other time</strong>.</td></tr>
+    <tr><td><strong>Date rule</strong></td><td>Handles a holiday or other special date differently from <strong>Business days</strong>.</td></tr>
+    <tr><td><strong>Ring users or teams</strong></td><td>Rings the number's owner, chosen users or teams. It has an <strong>Answered</strong> and an <strong>Unanswered</strong> path.</td></tr>
+    <tr><td><strong>Forward call</strong></td><td>Sends the call to another phone number, such as a mobile or another office line. Enter it with its country code.</td></tr>
+    <tr><td><strong>IVR menu</strong></td><td>Plays a menu and sends the caller down a path for each key they press, with a <strong>No valid key</strong> path.</td></tr>
+    <tr><td><strong>Extension message</strong></td><td>Lets callers type a user's or team's extension to reach them directly.</td></tr>
+    <tr><td><strong>Audio message</strong></td><td>Plays a message, typed, uploaded or recorded, then continues.</td></tr>
+    <tr><td><strong>Voicemail</strong></td><td>Takes a message with the greeting and mailbox you choose.</td></tr>
+    <tr><td><strong>Queue</strong></td><td>Holds callers with music or a message while your users are busy, and connects them in order. It goes on a ring step's Unanswered path.</td></tr>
+    <tr><td><strong>Post-call survey</strong></td><td>After the call, asks the caller to rate it from 1 to 5 on their keypad.</td></tr>
+  </tbody>
+</table>
+<p>A path with nothing after it ends the call. Click <strong>Add a note</strong> to leave a note for your team on the canvas. Use undo and redo if you change your mind.</p>
+<h2 id="ring">Choose who rings</h2>
+<ol>
+  <li>Click a <strong>Ring users or teams</strong> step.</li>
+  <li>Under <strong>Ring to</strong>, choose <strong>Number owner</strong>, <strong>Users</strong> or <strong>Teams</strong>, and add the users or teams.</li>
+  <li>Choose a <strong>Ringing order</strong>: <strong>Ring all</strong> (available users at once), <strong>Ring in order</strong> (top to bottom), <strong>Ring idle</strong> (whoever answered the fewest calls recently first) or <strong>Ring in round robin</strong> (starts after whoever answered last, so calls are shared evenly).</li>
+  <li>For teams, each team also has its own ring order: <strong>Ring all users</strong>, <strong>Ring idle first</strong> or <strong>Ring in round robin</strong>.</li>
+  <li>Set <strong>Ring for</strong>: how long each ring lasts before the next user or the Unanswered path.</li>
+</ol>
+<p class="note">CallForges skips users who aren't set to Available, are outside their working hours, are on a call or wrapping up, or don't have CallForges open. If nobody can take the call, it goes straight to the Unanswered path.</p>
+<h2 id="publish">Save and publish</h2>
+<ul>
+  <li><strong>Save draft</strong> keeps your changes. A draft never takes calls.</li>
+  <li>Click <strong>Publish</strong> to make it live. If something needs fixing, <strong>Can’t publish yet</strong> lists each problem with its step. The problems button in the top bar shows the same list.</li>
+  <li>The status reads <strong>Draft</strong>, <strong>Published</strong>, or <strong>Published · unpublished changes</strong> when you have saved edits that aren't live yet.</li>
+  <li>Calls already in progress keep the version they started on. New calls use what you just published.</li>
+</ul>
+<h2 id="numbers">Put numbers on the workflow</h2>
+<ol>
+  <li>In the workflow, click <strong>Numbers</strong>. It is available once the workflow is published.</li>
+  <li>Pick the numbers and click <strong>Save numbers</strong>. A number already on another workflow moves to this one when you click <strong>Take off and save</strong>.</li>
+</ol>
+<p>You can also start from the number: open <strong>Phone Numbers</strong>, click the number, open <strong>Call routing</strong> and click <strong>Change workflow</strong>, pick a published workflow and click <strong>Use workflow</strong>. Choose <strong>Direct line · System default</strong> to go back to the default. If you delete a workflow, its numbers move to the Direct line.</p>
+<p class="note">The <strong>Pause incoming calls</strong> switch under the workflow on <strong>Call routing</strong> stops the workflow from running: every incoming call on that number goes to voicemail until you turn it off.</p>
+</article>
+<div class="stillhelp"><p><strong>Still need help?</strong>Write to us and a person on our team will answer.</p><a class="btn btn-primary btn-sm" href="mailto:hello@callforges.com">Email support</a></div>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><a class="brand" href="/" aria-label="Callforges home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#0b0d12" stroke-width="2.4"/><path d="M5.5 21.5Q14 4 26.5 11.5" fill="none" stroke="#ff7a2e" stroke-width="2.6" stroke-linecap="round"/><circle cx="26.5" cy="11.5" r="3" fill="#ff7a2e"/></svg>Callforges</a><p style="color:var(--muted);margin-top:12px;max-width:34ch;font-size:.93rem">Dialer, auto dialer and AI voice agent for teams calling the US, UK and Australia.</p></div>
+      <div><h4>Product</h4><ul><li><a href="/#features">Numbers</a></li><li><a href="/auto-dialer.html">Auto Dialer</a></li><li><a href="/#features">AI Notes</a></li><li><a href="/ai-agent.html">AI Voice Agent</a></li><li><a href="/#features">Routing</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="/pricing.html">Pricing</a></li><li><a href="/compare.html">Compare</a></li><li><a href="/pricing.html#rates">Rates</a></li><li><a href="/fair-usage.html">Fair Usage</a></li><li><a href="/help">Help Center</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/contact.html">Contact</a></li><li><a href="https://callforges.com/login">Log In</a></li><li><a href="https://callforges.com/signup">Start Free Trial</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="/terms.html">Terms &amp; Conditions</a></li><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/fair-usage.html">Fair Usage Policy</a></li></ul></div>
+    </div>
+    <div class="foot-note"><span>© 2026 Callforges</span><span class="mono">+1 · +44 · +61</span></div>
+  </div>
+</footer>
+<script>
+(function(){var n=document.getElementById('nav'),b=document.getElementById('menuBtn');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus()}});b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})})();
+</script>
+</body>
+</html>
