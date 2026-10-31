@@ -62,7 +62,7 @@ p{margin:0}
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);background:rgba(246,247,249,.78);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;gap:28px;height:64px}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font:700 1.12rem/1 var(--display);letter-spacing:-.03em}
-.brand svg{width:26px;height:26px}
+.brand img{width:26px;height:26px;border-radius:6px}
 .nav-links{display:flex;gap:24px;margin-right:auto}
 .nav-links a{text-decoration:none;color:var(--muted);font-size:.93rem;padding:8px 0;white-space:nowrap}
 @media (max-width:1000px){.nav-links{gap:18px}}
@@ -150,7 +150,7 @@ thead th.us{color:var(--amber)}
 @media (max-width:360px){
   .nav-in{gap:10px}
   .brand{font-size:1rem;gap:7px}
-  .brand svg{width:22px;height:22px}
+  .brand img{width:22px;height:22px;border-radius:5px}
   .nav-cta{gap:6px}
   .nav-cta .btn{padding:0 12px}
 }
