@@ -16,7 +16,7 @@ SRC = os.path.join(REPO, '_help', 'src')
 SHOTS = os.path.join(REPO, 'help', 'img')
 UPDATED = '22 October 2026'
 SITE = 'https://callforges.com'
-ASSISTANT_LIVE = False
+ASSISTANT_LIVE = True
 
 shell = open(os.path.join(REPO, 'fair-usage.html')).read()
 body_top = shell[shell.index('<body>'):shell.index('<main id="main">')]
@@ -41,7 +41,7 @@ body_top = absolutize(body_top).replace('<a href="/help">Help</a>', '<a href="/h
 links_end = body_top.index('</nav>', body_top.index('class="nav-links"')) + len('</nav>\n')
 body_top = body_top[:links_end] + (NAV_ASK if ASSISTANT_LIVE else '') + body_top[links_end:]
 body_end = absolutize(body_end)
-home_end = body_end.replace('</body>', '<script src="/help/assistant.js" defer></script>\n</body>') if ASSISTANT_LIVE else body_end
+home_end = body_end.replace('</body>', '<script src="/help/assistant.js" defer></script>\n</body>' if ASSISTANT_LIVE else '<script src="/help/search.js" defer></script>\n</body>')
 
 ICON_CRM = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0b0d12" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H6a3 3 0 0 0-3 3v0a3 3 0 0 0 3 3h3M15 7h3a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3h-3M8 10h8"/></svg>'
 def ico(d):
@@ -257,9 +257,20 @@ ASK = f'''<section class="help-hero" id="ask" aria-labelledby="help-hero-h">
 </section>
 '''
 
-HERO = '''<section class="help-hero" aria-labelledby="help-hero-h">
+MAGNIFIER = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.5 12.5 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+INDEX = json.dumps([{'t': a['title'], 'd': a['desc'], 'c': COLL[a['collection']]['title'], 'u': f'/help/articles/{a["slug"]}'} for a in ARTICLES],
+                   ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+HERO = f'''<section class="help-hero" aria-labelledby="help-hero-h">
 <div class="wrap ask">
 <h1 id="help-hero-h">How can we help you?</h1>
+<form class="ask-box" id="searchForm" role="search">
+{MAGNIFIER}
+<input id="searchInput" name="q" type="search" placeholder="Search help articles…" aria-label="Search help articles" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-controls="searchResults">
+<button class="ask-send" type="submit" aria-label="Search">{SEND}</button>
+</form>
+<ul class="article-list search-results" id="searchResults" aria-label="Matching articles" hidden></ul>
+<p class="search-empty" id="searchEmpty" role="status" hidden>No article matches that yet. <a href="mailto:hello@callforges.com">Email support</a> and a person will answer.</p>
+<script type="application/json" id="helpIndex">{INDEX}</script>
 </div>
 </section>
 '''
