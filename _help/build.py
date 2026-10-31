@@ -1,7 +1,8 @@
 """Builds the help center (help.html, help/collections, help/articles) from _help/src/<provider>.html.
 
 Run from anywhere: python3 _help/build.py. Screenshots are read from help/img/<provider>-<view>.png;
-a section whose screenshot is missing is built without one. fair-usage.html gives the site nav and
+a section whose screenshot is missing is built without one. An article source places its own screenshot
+with <figure data-shot="<name>.png">Caption.</figure>; the build fails if help/img/<name>.png is missing. fair-usage.html gives the site nav and
 footer; the help pages add an "Ask AI" link to that nav, to /help#ask. The assistant lives in /help itself
 (help/assistant.js): the question box, the conversation and the "Talk to a person" form, all in the page."""
 import html
@@ -138,6 +139,21 @@ def png_size(path):
     with open(path, 'rb') as f:
         head = f.read(24)
     return struct.unpack('>II', head[16:24])
+
+
+def figure(name, text):
+    w, h = png_size(os.path.join(SHOTS, name))
+    return f'<figure><img src="/help/img/{name}" alt="{html.escape(text)}" width="{w}" height="{h}" loading="lazy" decoding="async"><figcaption>{html.escape(text)}</figcaption></figure>'
+
+
+def shot_figures(sec, slug):
+    def render(m):
+        name, text = m.group(1), ' '.join(html.unescape(m.group(2)).split())
+        if not os.path.exists(os.path.join(SHOTS, name)):
+            raise SystemExit(f'{slug}: missing screenshot help/img/{name}')
+        used_images.add(name)
+        return figure(name, text)
+    return re.sub(r'<figure data-shot="([^"]+)">(.*?)</figure>', render, sec, flags=re.S)
 
 
 def head(title, desc, path, ld):
@@ -300,10 +316,8 @@ for a in ARTICLES:
             shot = os.path.join(SHOTS, name)
             if os.path.exists(shot):
                 used_images.add(name)
-                w, h = png_size(shot)
-                text = cap.format(n=a['name'], m=MEMBER[a['p']], r=RECORDS[a['p']])
-                figs += f'<figure><img src="/help/img/{name}" alt="{html.escape(text)}" width="{w}" height="{h}" loading="lazy" decoding="async"><figcaption>{html.escape(text)}</figcaption></figure>\n'
-        out.append(sec.rstrip() + '\n' + figs)
+                figs += figure(name, cap.format(n=a['name'], m=MEMBER[a['p']], r=RECORDS[a['p']])) + '\n'
+        out.append(shot_figures(sec, a['slug']).rstrip() + '\n' + figs)
     c = COLL[a['collection']]
     others = [o for o in IN_COLL[a['collection']] if o is not a][:6]
     rel = ''.join(f'<li><a href="/help/articles/{o["slug"]}">{html.escape(o["title"])}{ARROW}</a></li>' for o in others)

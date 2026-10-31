@@ -81,6 +81,7 @@
   <li>Under <strong>Call Via</strong>, pick the number to call from, and set the <strong>Cooldown duration between two calls</strong>.</li>
   <li>Add your leads and click <strong>Create Campaign</strong>.</li>
 </ol>
+<figure><img src="/help/img/how-the-parallel-dialer-works-set-up.png" alt="Choose Parallel Dialer (step 2), then set Number of parallel calls (step 3), Re-dial cancelled leads (step 4) and, if you like, a Voicemail drop (step 5)." width="1600" height="965" loading="lazy" decoding="async"><figcaption>Choose Parallel Dialer (step 2), then set Number of parallel calls (step 3), Re-dial cancelled leads (step 4) and, if you like, a Voicemail drop (step 5).</figcaption></figure>
 <p class="note">The voicemail drop plays only when <strong>Auto machine detection</strong> is on in <strong>Settings → Dialer settings</strong>. When it is off, an answering machine that picks up counts as an answer and is connected to you.</p>
 <h2 id="round">What happens in each round</h2>
 <ol>
@@ -90,6 +91,7 @@
   <li>The first person who answers is connected to you. The other lines are hung up at once: <strong>First pickup wins — other lines release automatically.</strong></li>
   <li>The session bar reads <strong>Connected</strong> with a timer, and CallForges opens the lead's contact page.</li>
 </ol>
+<figure><img src="/help/img/how-the-parallel-dialer-works-round.png" alt="The session bar shows how many lines are live, and the Active batch table shows each line and its status (step 2). First pickup wins (step 4)." width="1600" height="796" loading="lazy" decoding="async"><figcaption>The session bar shows how many lines are live, and the Active batch table shows each line and its status (step 2). First pickup wins (step 4).</figcaption></figure>
 <h2 id="after-call">After each call</h2>
 <ul>
   <li>When the call ends, the post-call form opens so you can log the outcome and notes. If it doesn't open, click <strong>Log outcome</strong>.</li>
@@ -108,7 +110,7 @@
 <p>A cancelled lead goes back to the bottom of the list while it is within the <strong>Re-dial cancelled leads</strong> setting. With <strong>Never</strong>, it is not called again. Cancelled leads show as Cancelled on the campaign's leads table.</p>
 <h2 id="pause-end">Pause, resume and end</h2>
 <ul>
-  <li>Click <strong>Pause</strong> while lines are ringing and CallForges asks <strong>When to pause</strong>:
+  <li>Click <strong>Pause</strong> while lines are ringing, pick one of these, then click <strong>Pause</strong> again:
     <ul>
       <li><strong>Pause now</strong>: hang up the lines that are ringing.</li>
       <li><strong>Pause after this round</strong>: let the ringing lines finish. If someone answers, you are connected. No new calls.</li>
@@ -116,9 +118,10 @@
   </li>
   <li>Click <strong>Pause</strong> during a conversation and the campaign pauses without asking. Your call is never cut.</li>
   <li>Click <strong>Resume</strong> to start a new round.</li>
-  <li>Click <strong>End session</strong>, then <strong>End Campaign</strong>, to stop. All ringing lines are hung up. You can restart the campaign later.</li>
+  <li>Click <strong>End session</strong>, then <strong>End Campaign</strong>, to stop. All ringing lines are hung up. An ended campaign can't be started again.</li>
   <li>If you close or reload the tab, the campaign pauses and ringing lines are hung up. Open the campaign and click <strong>Resume</strong>.</li>
 </ul>
+<figure><img src="/help/img/how-the-parallel-dialer-works-pause-end.png" alt="Click Pause while lines are ringing, then choose Pause now (1) or Pause after this round (2)." width="1600" height="593" loading="lazy" decoding="async"><figcaption>Click Pause while lines are ringing, then choose Pause now (1) or Pause after this round (2).</figcaption></figure>
 <p>More detail is in <a href="/help/articles/start-pause-resume-stop">Start, pause, resume or stop a campaign</a>.</p>
 <h2 id="incoming">Incoming calls during a session</h2>
 <p>You are never rung for an incoming call while your line is connecting, while leads are ringing, or while you are on a call. When the session is paused, in wrap-up or counting down, incoming calls ring you only if <strong>Allow incoming calls while busy</strong> is on in <strong>Settings → User settings</strong>. Answering one pauses your session.</p>
