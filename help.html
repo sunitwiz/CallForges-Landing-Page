@@ -47,6 +47,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="/#features">Product</a><a href="/auto-dialer.html">Auto Dialer</a><a href="/ai-agent.html">AI Agent</a><a href="/pricing.html">Pricing</a><a href="/help" aria-current="page">Help</a>
     </nav>
+<a class="nav-ask" href="/help#ask" aria-label="Ask AI"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg><span>Ask AI</span></a>
     <div class="nav-cta">
       <a class="nav-login" href="https://callforges.com/login">Log In</a>
       <a class="btn btn-primary btn-sm" href="https://callforges.com/signup"><span class="lg">Start Free Trial</span><span class="sm">Try Free</span></a>
@@ -56,17 +57,29 @@
 </header>
 
 <main id="main">
-<section class="help-hero" aria-labelledby="help-hero-h">
+<section class="help-hero" id="ask" aria-labelledby="help-hero-h">
 <div class="wrap ask">
 <h1 id="help-hero-h">How can we help you?</h1>
-<form class="ask-box" id="searchForm" role="search">
-<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.5 12.5 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-<input id="searchInput" name="q" type="search" placeholder="Search help articles…" aria-label="Search help articles" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-controls="searchResults">
-<button class="ask-send" type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 14.5v-11M4.5 8L9 3.5 13.5 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<form class="ask-box" id="askForm">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+<input id="askInput" name="q" type="text" placeholder="Ask a question about CallForges…" aria-label="Ask a question about CallForges" autocomplete="off" maxlength="1000" enterkeyhint="send">
+<button class="ask-send" type="submit" aria-label="Send"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 14.5v-11M4.5 8L9 3.5 13.5 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </form>
-<ul class="article-list search-results" id="searchResults" aria-label="Matching articles" hidden></ul>
-<p class="search-empty" id="searchEmpty" role="status" hidden>No article matches that yet. <a href="mailto:hello@callforges.com">Email support</a> and a person will answer.</p>
-<script type="application/json" id="helpIndex">[{"t":"Start your free trial","d":"Create your account and workspace, see what the 14-day trial includes, and add a card or choose a plan before it ends.","c":"Getting started","u":"/help/articles/start-your-free-trial"},{"t":"Make your first call","d":"Get your number, open the dialer, allow your microphone and place your first call from the browser, with what the trial allows.","c":"Getting started","u":"/help/articles/make-your-first-call"},{"t":"Place a call from the dialer","d":"Open the dialer from any page, choose the number you call from, dial a number or a contact, use the in-call controls and log the outcome.","c":"Making and receiving calls","u":"/help/articles/place-a-call"},{"t":"Transfer a call","d":"Send a live call to a teammate, a team or another number, either at once or after you talk to them first.","c":"Making and receiving calls","u":"/help/articles/transfer-a-call"},{"t":"Create a campaign","d":"Set up a power or parallel dialer campaign: the dialer type, the number you call from, your leads and the hours leads may be called.","c":"Power dialer and campaigns","u":"/help/articles/create-a-campaign"},{"t":"Start, pause, resume or stop a campaign","d":"Run a campaign: start dialing, pause and resume, stop it for good, and read what each lead's status means.","c":"Power dialer and campaigns","u":"/help/articles/start-pause-resume-stop"},{"t":"How the parallel dialer works","d":"Ring several leads at once, talk to the first person who answers, and choose what happens to the lines that were still ringing.","c":"Parallel dialer","u":"/help/articles/how-the-parallel-dialer-works"},{"t":"Build a call workflow","d":"Decide what callers get on your numbers: business hours, who rings, menus, forwarding, queues and voicemail, then publish it.","c":"Incoming calls and workflows","u":"/help/articles/build-a-call-workflow"},{"t":"Buy a phone number","d":"Pick a local, mobile or toll-free number, choose its owner and who can use it, and buy it in two steps.","c":"Phone numbers","u":"/help/articles/buy-a-phone-number"},{"t":"Port your number to CallForges","d":"Move numbers you already have with another provider into your workspace: US local numbers through a wizard, everything else on request.","c":"Phone numbers","u":"/help/articles/port-your-number"},{"t":"Invite users","d":"Invite teammates by e-mail, choose their role, and resend or revoke an invite that hasn't been accepted yet.","c":"Team and permissions","u":"/help/articles/invite-users"},{"t":"Plans and seats","d":"Choose Starter, Business or Scale, pay monthly or annually, add seats, upgrade or downgrade, and what happens if a payment fails.","c":"Billing and plans","u":"/help/articles/plans-and-seats"},{"t":"Add credits","d":"Top up your workspace's prepaid credits by card, see what credits pay for, track every charge, and what happens when credits run out.","c":"Billing and plans","u":"/help/articles/add-credits"},{"t":"Attio integration","d":"Connect Attio, map users, log calls as notes or Calls records, create people for unknown numbers, import people, log past calls and disconnect.","c":"CRM integrations","u":"/help/articles/attio-integration"},{"t":"HubSpot integration","d":"Connect HubSpot, map users to owners, log calls as HubSpot calls or notes, create contacts for unknown numbers, import contacts, log past calls and disconnect.","c":"CRM integrations","u":"/help/articles/hubspot-integration"},{"t":"Pipedrive integration","d":"Connect Pipedrive, map users, log calls as Call activities or notes, create people for unknown numbers, import people, log past calls and disconnect.","c":"CRM integrations","u":"/help/articles/pipedrive-integration"}]</script>
+<div class="ask-start" id="askStart">
+<ul class="ask-chips" aria-label="Suggested questions" data-pool="[&quot;What does the free trial include?&quot;, &quot;How does the parallel dialer work?&quot;, &quot;How do I connect HubSpot?&quot;, &quot;How much does CallForges cost?&quot;, &quot;How do I connect Attio?&quot;, &quot;How do I connect Pipedrive?&quot;, &quot;Can I port my number to CallForges?&quot;, &quot;How do I buy a phone number?&quot;, &quot;How do I invite my team?&quot;, &quot;How does the power dialer work?&quot;, &quot;Can I record my calls?&quot;, &quot;How do I transfer a call?&quot;, &quot;How do I route incoming calls?&quot;, &quot;How are calls charged?&quot;]"><li><button class="ask-chip" type="button">What does the free trial include?</button></li><li><button class="ask-chip" type="button">How does the parallel dialer work?</button></li><li><button class="ask-chip" type="button">How do I connect HubSpot?</button></li><li><button class="ask-chip" type="button">How much does CallForges cost?</button></li></ul>
+</div>
+<div class="ask-thread" id="askThread" aria-live="polite" aria-label="Conversation" hidden></div>
+<form class="ask-person" id="askPerson" aria-labelledby="askPersonH" novalidate hidden>
+<h2 id="askPersonH">Talk to a person</h2>
+<p class="ask-person-lead">Leave your e-mail and a person from our team will write back.</p>
+<div class="ask-row">
+<div class="ask-field"><label for="askEmail">E-mail</label><input id="askEmail" name="email" type="email" autocomplete="email" placeholder="name@company.com" required><p class="ask-err" id="askEmailErr" hidden></p></div>
+<div class="ask-field"><label for="askPhone">Phone <span>(optional)</span></label><input id="askPhone" name="phone" type="tel" autocomplete="tel" placeholder="+1 415 555 0134"><p class="ask-err" id="askPhoneErr" hidden></p></div>
+</div>
+<div class="ask-field"><label for="askQuestion">What do you need help with?</label><textarea id="askQuestion" name="question" rows="4" maxlength="2000" required></textarea><p class="ask-err" id="askQuestionErr" hidden></p></div>
+<button class="btn btn-primary" type="submit">Send</button>
+<p class="ask-err" id="askSendErr" role="alert" hidden></p>
+</form>
 </div>
 </section>
 <div class="wrap help-home">
@@ -90,6 +103,6 @@
 <script>
 (function(){var n=document.getElementById('nav'),b=document.getElementById('menuBtn');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus()}});b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})})();
 </script>
-<script src="/help/search.js" defer></script>
+<script src="/help/assistant.js" defer></script>
 </body>
 </html>

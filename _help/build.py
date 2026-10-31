@@ -15,7 +15,7 @@ SRC = os.path.join(REPO, '_help', 'src')
 SHOTS = os.path.join(REPO, 'help', 'img')
 UPDATED = '22 October 2026'
 SITE = 'https://callforges.com'
-ASSISTANT_LIVE = False
+ASSISTANT_LIVE = True
 
 shell = open(os.path.join(REPO, 'fair-usage.html')).read()
 body_top = shell[shell.index('<body>'):shell.index('<main id="main">')]
