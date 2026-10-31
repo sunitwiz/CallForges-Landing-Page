@@ -1,4 +1,4 @@
-/* CallForges V2 globe: daylight dot-matrix Earth inside a sticky scroll chapter.
+/* Callforges V2 globe: daylight dot-matrix Earth inside a sticky scroll chapter.
    Native scroll through #tz (tall section) -> progress 0..2 -> focus New York, London, Sydney. */
 (function(){
   var host=document.getElementById('globe2'), sec=document.getElementById('tz');
