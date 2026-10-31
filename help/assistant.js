@@ -227,11 +227,23 @@
     });
   }
 
+  // **bold**, then *italic* or _italic_: a single mark only where it opens and closes a run of
+  // text, so "2 * 3", snake_case and a list's "* " stay as they are. Text nodes only, never HTML.
+  var EMPHASIS = /\*\*([^*]+)\*\*|(^|[^A-Za-z0-9*])\*([^*\s](?:[^*]*[^*\s])?)\*(?![A-Za-z0-9*])|(^|[^A-Za-z0-9_])_([^_\s](?:[^_]*[^_\s])?)_(?![A-Za-z0-9_])/g;
+
   function inline(text, into) {
-    text.split(/(\*\*[^*]+\*\*)/).forEach(function (part) {
-      if (/^\*\*[^*]+\*\*$/.test(part)) into.appendChild(el('strong', null, part.slice(2, -2)));
-      else if (part) into.appendChild(document.createTextNode(part));
-    });
+    var done = 0;
+    var m;
+    EMPHASIS.lastIndex = 0;
+    while ((m = EMPHASIS.exec(text))) {
+      var lead = m[2] != null ? m[2] : (m[4] != null ? m[4] : '');
+      var start = m.index + lead.length;
+      if (start > done) into.appendChild(document.createTextNode(text.slice(done, start)));
+      if (m[1] != null) into.appendChild(el('strong', null, m[1]));
+      else into.appendChild(el('em', null, m[3] != null ? m[3] : m[5]));
+      done = EMPHASIS.lastIndex;
+    }
+    if (done < text.length) into.appendChild(document.createTextNode(text.slice(done)));
   }
 
   function sourcesBlock(sources) {
