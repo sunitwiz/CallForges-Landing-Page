@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f7f9">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Voice Agent | Callforges</title>
+<meta name="description" content="The Callforges AI voice agent answers your line 24/7 in 30+ languages, from your own help docs, and books a callback for your team. 100 agent minutes per user on Business, $0.12 a minute after.">
+<link rel="canonical" href="https://callforges.com/ai-agent.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Callforges">
+<meta property="og:title" content="AI Voice Agent | Callforges">
+<meta property="og:description" content="Every call answered, even at 3am. An AI voice agent that answers from your docs and books the callback for morning.">
+<meta property="og:url" content="https://callforges.com/ai-agent.html">
+<meta property="og:image" content="https://callforges.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Callforges: Call like a local.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Voice Agent | Callforges">
+<meta name="twitter:description" content="Every call answered, even at 3am. An AI voice agent that answers from your docs and books the callback for morning.">
+<meta name="twitter:image" content="https://callforges.com/og-image.png">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+:root{--ok:#0a7d6b;--ok-fill:#16a589}
+/* Hero */
+.d-hero{padding-block:clamp(40px,6vw,80px) clamp(56px,8vw,104px)}
+.d-hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,64px);align-items:center}
+.d-hero h1{font-size:clamp(3rem,7.4vw,6rem)}
+.d-hero h1 .accent{color:var(--amber)}
+.d-copy{display:grid;gap:22px;justify-items:start}
+.d-copy .lede{max-width:44ch}
+.plan-note{font:500 .8rem/1.45 var(--mono);color:var(--dim)}
+.plan-note b{color:var(--fg);font-weight:600}
+@media (max-width:960px){.d-hero-in{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Generative voice panel */
+.d-hero h1{font-size:clamp(2.8rem,5.6vw,4.7rem)}
+.voice{position:relative;border-radius:var(--r-lg);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;width:100%;display:grid;grid-template-rows:auto auto}
+.voice .ring{position:relative;aspect-ratio:1/1;max-height:440px;width:100%}
+.voice canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.voice .clock{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;pointer-events:none}
+.voice .clock b{font:600 clamp(2rem,4.4vw,2.8rem)/1 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.voice .clock small{font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.voice .badge{position:absolute;left:16px;top:16px;font:500 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.9);padding:8px 12px;border-radius:999px;border:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.voice .badge i{width:8px;height:8px;border-radius:50%;background:var(--amber-fill)}
+.transcript{border-top:1px solid var(--line);padding:16px 18px 18px;display:grid;gap:10px;min-height:178px;align-content:start}
+.transcript .ln{display:grid;gap:3px;opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s ease}
+.transcript .ln.on{opacity:1;transform:none}
+.transcript .ln small{font:500 .66rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.transcript .ln.ag small{color:var(--amber)}
+.transcript .ln span{font-size:.95rem}
+.transcript .done{justify-self:start;display:inline-flex;gap:8px;align-items:center;font:500 .74rem/1 var(--mono);padding:8px 11px;border-radius:999px;background:rgba(22,165,137,.1);color:var(--ok);opacity:0;transition:opacity .6s ease}
+.transcript .done.on{opacity:1}
+.transcript .done i{width:8px;height:8px;border-radius:50%;background:var(--ok-fill)}
+@media (prefers-reduced-motion:reduce){.transcript .ln,.transcript .done{transition:none}}
+
+/* Proof strip */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:26px 22px;display:grid;gap:6px}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact b{font:600 clamp(1.9rem,3.6vw,2.8rem)/1 var(--display);letter-spacing:-.05em}
+.fact span{color:var(--muted);font-size:.95rem}
+@media (max-width:860px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.fact:nth-child(3){border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}}
+
+
+/* Setup + trust */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.feat{padding:32px 28px 34px;display:grid;gap:8px;align-content:start;border-bottom:1px solid var(--line)}
+.feat:not(:nth-child(3n+1)){border-left:1px solid var(--line)}
+.feat h3{font-size:1.15rem;letter-spacing:-.02em;margin-top:14px}
+.feat p{color:var(--muted);font-size:.95rem;max-width:30ch}
+.feat .plan{font:500 .7rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.ico{width:52px;height:52px;border-radius:50%;background:rgba(255,138,61,.10);color:var(--fg);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,138,61,.18)}
+.ico svg{width:28px;height:28px}
+.feat:nth-child(3n+1){padding-left:0}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feat:not(:nth-child(3n+1)){border-left:0}.feat:nth-child(2n){border-left:1px solid var(--line)}.feat:nth-child(3n+1){padding-left:28px}.feat:nth-child(2n+1){padding-left:0}}
+@media (max-width:560px){.grid{grid-template-columns:minmax(0,1fr)}.feat{padding:26px 0}.feat:nth-child(2n){border-left:0}}
+
+
+.trust{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding:clamp(28px,5vw,56px);border-radius:var(--r-lg);background:var(--panel-2)}
+.trust h2{font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.05em;line-height:1}
+.trust ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.trust li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;font-size:1.02rem}
+.trust li svg{width:22px;height:22px;margin-top:2px}
+@media (max-width:860px){.trust{grid-template-columns:minmax(0,1fr)}}
+
+/* Minutes */
+.mins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.min{padding:28px 24px;display:grid;gap:8px}
+.min+.min{border-left:1px solid var(--line)}
+.min small{font:500 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.min b{font:600 clamp(1.8rem,3.4vw,2.6rem)/1 var(--display);letter-spacing:-.05em}
+.min span{color:var(--muted);font-size:.95rem}
+.min.us{background:#fff}
+.min.us small{color:var(--amber)}
+@media (max-width:720px){.mins{grid-template-columns:minmax(0,1fr)}.min+.min{border-left:0;border-top:1px solid var(--line)}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://callforges.com/#org","name":"Callforges","url":"https://callforges.com/","logo":"https://callforges.com/logo.png","email":"support@callforges.com"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://callforges.com/"},{"@type":"ListItem","position":2,"name":"AI Voice Agent","item":"https://callforges.com/ai-agent.html"}]},{"@type":"FAQPage","mainEntity":[
+{"@type": "Question", "name": "What is an AI voice agent?", "acceptedAnswer": {"@type": "Answer", "text": "It's an assistant that answers your phone line in a natural voice. It talks with the caller, answers from the documents you give it, and books a callback or hands the call to your team when a person is needed."}},
+{"@type": "Question", "name": "When does it pick up?", "acceptedAnswer": {"@type": "Answer", "text": "You decide with call routing. Most teams send calls to the agent after hours, so nights and weekends are covered and your team keeps the day."}},
+{"@type": "Question", "name": "What can it answer?", "acceptedAnswer": {"@type": "Answer", "text": "Questions covered by the help docs, policies and FAQs you give it, in 30+ languages. You own those sources, so keep them current. If it doesn't know, it books a callback instead of guessing."}},
+{"@type": "Question", "name": "Will callers know it's AI?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The agent tells callers they're speaking with an automated assistant, and they can always ask for a person or leave a message."}},
+{"@type": "Question", "name": "How is it billed?", "acceptedAnswer": {"@type": "Answer", "text": "Per minute the agent spends on the call, at $0.12. Business includes 100 agent minutes per user each month and Scale includes 250, pooled across your account. Once a call is transferred to a person, the rest uses normal calling minutes."}}
+]}]}</script>
+</head>
+<body>
+<body>
+<script>
+/* Open every page at the top unless a #section was requested */
+(function(){try{history.scrollRestoration='manual'}catch(e){}
+ if(location.hash)return;var moved=false;
+ function top(){if(!moved)window.scrollTo({top:0,left:0,behavior:'instant'})}
+ ['wheel','touchstart','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){moved=true},{once:true,passive:true})});
+ top();addEventListener('DOMContentLoaded',top);addEventListener('load',function(){top();setTimeout(top,120);setTimeout(top,400)});addEventListener('pageshow',top);})();
+</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="./" aria-label="Callforges home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#0b0d12" stroke-width="2.4"/><path d="M5.5 21.5Q14 4 26.5 11.5" fill="none" stroke="#ff7a2e" stroke-width="2.6" stroke-linecap="round"/><circle cx="26.5" cy="11.5" r="3" fill="#ff7a2e"/></svg>Callforges</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="./#features">Product</a><a href="auto-dialer.html">Auto Dialer</a><a href="ai-agent.html" aria-current="page">AI Agent</a><a href="pricing.html">Pricing</a><a href="/help">Help</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" href="https://callforges.com/login">Log In</a>
+      <a class="btn btn-primary btn-sm" href="https://callforges.com/signup"><span class="lg">Start Free Trial</span><span class="sm">Try Free</span></a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#0b0d12" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap d-hero">
+  <div class="d-hero-in">
+    <div class="d-copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li aria-current="page">AI Voice Agent</li></ol></nav>
+      <span class="eyebrow">AI Voice Agent</span>
+      <h1>Every call answered.<br><span class="accent">Even at 3am.</span></h1>
+      <p class="lede">When your team logs off, the Callforges agent picks up. It answers from your own help docs, in the caller's language, and books the callback for the morning.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="https://callforges.com/signup">Try the AI Agent Free</a><a class="btn btn-ghost" href="pricing.html">See Pricing</a></div>
+      <p class="plan-note">14 days with Business features · No card to start<br><b>100 agent minutes per user</b> on Business, then $0.12 a minute</p>
+    </div>
+    <div class="voice" id="voice">
+      <div class="ring" role="img" aria-label="A live after-hours call: a ring of sound bars moves with each voice, grey for the caller and orange for the AI agent, while the clock in the middle reads 23:40.">
+        <canvas id="voiceCv" aria-hidden="true"></canvas>
+        <span class="badge" aria-hidden="true"><i></i>After hours · Agent on</span>
+        <div class="clock" aria-hidden="true"><small>Sydney</small><b id="vClock">23:40</b></div>
+      </div>
+      <div class="transcript" id="tx" aria-label="Example call transcript">
+        <div class="ln"><small>Caller</small><span>I'm locked out and we go live tomorrow.</span></div>
+        <div class="ln ag"><small>AI Agent</small><span>I can help. I've sent a reset link to your email.</span></div>
+        <div class="ln"><small>Caller</small><span>Got it. Can someone check our setup in the morning?</span></div>
+        <div class="ln ag"><small>AI Agent</small><span>Done. Support will call you at 9:00, your time.</span></div>
+        <span class="done"><i></i>Callback booked · 09:00 · AU support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-label="AI agent at a glance">
+  <div class="facts">
+    <div class="fact"><b>24/7</b><span>nights, weekends and holidays</span></div>
+    <div class="fact"><b>30+</b><span>languages, in the caller's own</span></div>
+    <div class="fact"><b>100 min</b><span>per user a month on Business</span></div>
+    <div class="fact"><b>$0.12</b><span>a minute after your pool</span></div>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="sec-head"><span class="eyebrow">Set up</span><h2>Live in three steps.</h2></div>
+  <div class="grid">
+    <article class="feat"><span class="ico" aria-hidden="true"><svg viewBox="2.5 2.5 19 19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="11" height="15" rx="2.5"/><path d="M8.5 9h4M8.5 12.5h4"/><path d="M14 15.5h5M16.5 13v5" stroke="var(--amber-fill)" stroke-width="2"/></svg></span><h3>Add your docs</h3><p>Help articles, policies, FAQs. The agent answers from these and nothing else.</p><span class="plan">Step 01</span></article>
+    <article class="feat"><span class="ico" aria-hidden="true"><svg viewBox="2.5 2.5 19 19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16" fill="var(--amber-fill)" stroke="none" opacity=".9"/><path d="M12 4a8 8 0 0 0 0 16"/></svg></span><h3>Choose when it answers</h3><p>Send calls to it after hours, on weekends, or whenever your routing says.</p><span class="plan">Step 02</span></article>
+    <article class="feat"><span class="ico" aria-hidden="true"><svg viewBox="2.5 2.5 19 19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.5h2.2l1.2 3.6-1.7 1.2a9 9 0 0 0 4.5 4.5l1.2-1.7 3.6 1.2v2.2a2 2 0 0 1-2.2 2A13 13 0 0 1 5.5 6.7a2 2 0 0 1 2-2.2z"/><circle cx="18" cy="6" r="2.2" fill="var(--amber-fill)" stroke="none"/></svg></span><h3>Turn it on</h3><p>Pick the number. Calls start getting answered tonight.</p><span class="plan">Step 03</span></article>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="trust">
+    <h2>It never pretends to be a person.</h2>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="rgba(255,138,61,.14)"/><path d="M7.5 12.3l3 3 6-6.3" stroke="#ad4708" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every call starts by saying it's an automated assistant.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="rgba(255,138,61,.14)"/><path d="M7.5 12.3l3 3 6-6.3" stroke="#ad4708" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Callers can reach a person or leave a message at any point.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="rgba(255,138,61,.14)"/><path d="M7.5 12.3l3 3 6-6.3" stroke="#ad4708" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>It only answers from the sources you give it.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="sec-head"><span class="eyebrow">Minutes</span><h2>Pay for the minutes it talks.</h2><p class="lede">Agent minutes are separate from calling minutes and pooled across your account.</p></div>
+  <div class="mins">
+    <div class="min"><small>Starter</small><b>$0.12</b><span>per agent minute</span></div>
+    <div class="min us"><small>Business</small><b>100 min</b><span>per user a month, included</span></div>
+    <div class="min"><small>Scale</small><b>250 min</b><span>per user a month, included</span></div>
+  </div>
+  <p class="micro" style="margin-top:14px">After a transfer to your team, the rest of the call uses normal calling minutes. Extra agent minutes are $0.12 each.</p>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="split" style="align-items:start">
+    <div class="sec-head"><h2>Agent questions.</h2></div>
+    <div class="faq">
+      <details><summary>What is an AI voice agent?</summary><p>It's an assistant that answers your phone line in a natural voice. It talks with the caller, answers from the documents you give it, and books a callback or hands the call to your team when a person is needed.</p></details>
+      <details><summary>When does it pick up?</summary><p>You decide with call routing. Most teams send calls to the agent after hours, so nights and weekends are covered and your team keeps the day.</p></details>
+      <details><summary>What can it answer?</summary><p>Questions covered by the help docs, policies and FAQs you give it, in 30+ languages. You own those sources, so keep them current. If it doesn't know, it books a callback instead of guessing.</p></details>
+      <details><summary>Will callers know it's AI?</summary><p>Yes. The agent tells callers they're speaking with an automated assistant, and they can always ask for a person or leave a message.</p></details>
+      <details><summary>How is it billed?</summary><p>Per minute the agent spends on the call, at $0.12. Business includes 100 agent minutes per user each month and Scale includes 250, pooled across your account. Once a call is transferred to a person, the rest uses normal calling minutes.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec final" style="padding-top:0">
+  <div class="wrap"><div class="panel">
+    <span class="eyebrow">Free for 14 days</span>
+    <h2>Tonight's calls, answered.</h2>
+    <p class="lede">Add your help docs, pick your number, and let the agent take the night shift. Business features for 14 days, no card to start.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="https://callforges.com/signup">Try the AI Agent Free</a><a class="btn btn-ghost" href="contact.html">Talk to Sales</a></div>
+  </div></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><a class="brand" href="./" aria-label="Callforges home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#0b0d12" stroke-width="2.4"/><path d="M5.5 21.5Q14 4 26.5 11.5" fill="none" stroke="#ff7a2e" stroke-width="2.6" stroke-linecap="round"/><circle cx="26.5" cy="11.5" r="3" fill="#ff7a2e"/></svg>Callforges</a><p style="color:var(--muted);margin-top:12px;max-width:34ch;font-size:.93rem">Dialer, auto dialer and AI voice agent for teams calling the US, UK and Australia.</p></div>
+      <div><h4>Product</h4><ul><li><a href="./#features">Numbers</a></li><li><a href="auto-dialer.html">Auto Dialer</a></li><li><a href="./#features">AI Notes</a></li><li><a href="ai-agent.html">AI Voice Agent</a></li><li><a href="./#features">Routing</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="pricing.html">Pricing</a></li><li><a href="compare.html">Compare</a></li><li><a href="pricing.html#rates">Rates</a></li><li><a href="fair-usage.html">Fair Usage</a></li><li><a href="/help">Help Center</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="https://callforges.com/login">Log In</a></li><li><a href="https://callforges.com/signup">Start Free Trial</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="fair-usage.html">Fair Usage Policy</a></li></ul></div>
+    </div>
+    <div class="foot-note"><span>© 2026 Callforges</span><span class="mono">+1 · +44 · +61</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){var n=document.getElementById('nav'),b=document.getElementById('menuBtn');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus()}});b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})})();
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ------------------------------------------------------------------
+   "Quiet Signal": the hero's generative piece.
+   A call is two voices taking turns. 120 bars on a ring carry the
+   current voice: grey for the caller, orange for the agent. Each
+   voice is a seeded sum of slow sines (its own timbre), gated by a
+   soft speaking envelope, so the ring swells and settles like
+   speech. There is no flashing: every change is eased.
+------------------------------------------------------------------- */
+(function(){
+  var box=document.getElementById('voice'),cv=document.getElementById('voiceCv'),ctx=cv.getContext('2d');
+  var lines=[].slice.call(document.querySelectorAll('#tx .ln')),done=document.querySelector('#tx .done'),clk=document.getElementById('vClock');
+  var N=120,W=0,H=0,dpr=1;
+  function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function voice(seed){var r=rng(seed),h=[];for(var i=0;i<5;i++)h.push({k:1+Math.floor(r()*7),w:.6+r()*2.2,p:r()*6.283,a:.35+r()*.65});return h}
+  var V=[voice(7),voice(1031)]; // 0 caller, 1 agent
+  // the call script: [speaker, seconds speaking]
+  var turns=[[0,2.6],[1,3.0],[0,2.8],[1,3.0]],GAP=.7,END=4.2,TOTAL=0;
+  turns.forEach(function(t){TOTAL+=t[1]+GAP});TOTAL+=END;
+  var level=[0,0],shown=-1,bookOn=false;
+  function size(){var r=cv.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function state(t){var acc=0;for(var i=0;i<turns.length;i++){var d=turns[i][1];if(t<acc+d)return{i:i,sp:turns[i][0],u:(t-acc)/d};acc+=d+GAP;if(t<acc)return{i:i,sp:-1,u:0}}return{i:turns.length,sp:-1,u:0}}
+  function amp(h,ang,t){var s=0,n=0;for(var j=0;j<h.length;j++){var q=h[j];s+=q.a*(.5+.5*Math.sin(ang*q.k+t*q.w+q.p));n+=q.a}return s/n}
+  function draw(t,dt){
+    ctx.clearRect(0,0,W,H);
+    var cx=W/2,cy=H/2,R=Math.min(W,H)*.25,L=Math.min(W,H)*.2,st=state(t);
+    // ease each voice's level toward whether it is speaking (soft attack/release)
+    for(var v=0;v<2;v++){var tg=st.sp===v?1:0;level[v]+=(tg-level[v])*(1-Math.exp(-(tg?5:3)*dt))}
+    // faint base ring
+    ctx.beginPath();ctx.arc(cx,cy,R,0,6.2832);ctx.strokeStyle='rgba(11,13,18,.08)';ctx.lineWidth=1;ctx.stroke();
+    ctx.lineCap='round';
+    for(var i=0;i<N;i++){
+      var a=i/N*6.2832-1.5708,ca=Math.cos(a),sa=Math.sin(a);
+      var e0=level[0]*amp(V[0],a,t*1.6),e1=level[1]*amp(V[1],a,t*1.4);
+      var base=2+1.5*(.5+.5*Math.sin(a*3+t*.4));
+      var len0=base+L*e0*e0,len1=base+L*e1*e1;
+      var len=Math.max(len0,len1),agent=len1>=len0;
+      ctx.beginPath();ctx.moveTo(cx+ca*R,cy+sa*R);ctx.lineTo(cx+ca*(R+len),cy+sa*(R+len));
+      ctx.lineWidth=Math.max(1.6,R*.022);
+      ctx.strokeStyle=agent&&level[1]>.05?'rgba(255,122,46,'+(.35+.6*Math.min(1,e1*1.4))+')':'rgba(110,117,130,'+(.25+.6*Math.min(1,e0*1.4))+')';
+      ctx.stroke();
+    }
+    // transcript and clock follow the script
+    var k=Math.min(lines.length-1,st.sp>=0?st.i:st.i-1);
+    if(k!==shown){shown=k;lines.forEach(function(l,j){l.classList.toggle('on',j<=k)})}
+    var b=st.i>=turns.length;if(b!==bookOn){bookOn=b;done.classList.toggle('on',b)}
+    var m=40+Math.floor(t/TOTAL*3);clk.textContent='23:'+(m<10?'0':'')+m;
+  }
+  function still(){size();level=[0,1];lines.forEach(function(l){l.classList.add('on')});done.classList.add('on');ctx.clearRect(0,0,W,H);
+    // a single composed frame: the agent mid-sentence
+    var keep=state;state=function(){return{i:3,sp:1,u:.5}};draw(1.2,10);state=keep;lines.forEach(function(l){l.classList.add('on')});done.classList.add('on')}
+  size();addEventListener('resize',function(){size();if(RM)still()});
+  if(RM){still();return}
+  var t=0,last=performance.now(),vis=true,raf=0,fadeOut=0;
+  function loop(now){raf=0;if(!vis||document.hidden)return;var dt=Math.min(.05,(now-last)/1000);last=now;t+=dt;
+    if(t>TOTAL){t=0;shown=-1;bookOn=false;lines.forEach(function(l){l.classList.remove('on')});done.classList.remove('on')}
+    draw(t,dt);raf=requestAnimationFrame(loop)}
+  function go(){if(!raf){last=performance.now();raf=requestAnimationFrame(loop)}}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis)go()}).observe(box);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)go()});
+  go();
+})();
+</script>
+</body>
+</html>

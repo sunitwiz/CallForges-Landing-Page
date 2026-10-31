@@ -101,7 +101,7 @@ def head(title, desc, path, ld):
 <meta name="twitter:description" content="{d}">
 <meta name="twitter:image" content="{SITE}/og-image.png">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
