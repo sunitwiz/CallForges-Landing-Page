@@ -82,7 +82,7 @@ select{width:100%;font-family:var(--body)}
 .rates td.mono{white-space:nowrap}
 .note{font:.78rem/1.5 var(--mono);color:var(--dim);margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://callforges.com/#org","name":"Callforges","url":"https://callforges.com/","logo":"https://callforges.com/logo.png","email":"support@callforges.com"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://callforges.com/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://callforges.com/pricing.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there a seat minimum?","acceptedAnswer":{"@type":"Answer","text":"No. Start with one seat and add people when you need them."}},{"@type":"Question","name":"Can I mix plans across my team?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your SDRs can be on Business while your support team stays on Starter."}},{"@type":"Question","name":"What do I get in the free trial?","acceptedAnswer":{"@type":"Answer","text":"14 days with Business features, and no card needed to start. You get a free local US, UK, Canada or Australia number, 50 inbound and 50 outbound minutes, and calls of up to 5 minutes each. Add a card to remove the 5-minute limit, take up to 5 numbers per user and top up credits. You can port your numbers during the trial. If you don't choose a plan, the trial number is removed when the trial ends."}},{"@type":"Question","name":"How are minutes counted?","acceptedAnswer":{"@type":"Answer","text":"Per minute, rounded up to the next full minute. Calls to and from the US, UK, Australia and Canada use your plan's free minutes first. See the fair usage policy for details."}},{"@type":"Question","name":"Do unused free minutes roll over?","acceptedAnswer":{"@type":"Answer","text":"No. Your free minutes reset at the start of each billing month."}},{"@type":"Question","name":"How is the AI voice agent billed?","acceptedAnswer":{"@type":"Answer","text":"Per minute the agent spends talking, at $0.12. Business and Scale include a pool of minutes each month. Time after a transfer to a person counts as a normal call."}},{"@type":"Question","name":"How do credits work?","acceptedAnswer":{"@type":"Answer","text":"Credits pay for extra numbers, minutes after your free pool and AI voice agent minutes. You can top up once you subscribe, or during the free trial once you add a card."}},{"@type":"Question","name":"How is transcription billed?","acceptedAnswer":{"@type":"Answer","text":"Call transcription is billed per transcribed minute, at the published rate."}},{"@type":"Question","name":"Can I port my numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes, including during your free trial. Porting a US number costs $10. Fees for other countries vary by carrier."}},{"@type":"Question","name":"Are plan changes prorated?","acceptedAnswer":{"@type":"Answer","text":"No. Upgrades and added seats are not prorated."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Monthly plans cancel anytime. Annual plans can change or downgrade at renewal."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://callforges.com/#org","name":"Callforges","url":"https://callforges.com/","logo":"https://callforges.com/logo.png","email":"support@callforges.com"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://callforges.com/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://callforges.com/pricing.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there a seat minimum?","acceptedAnswer":{"@type":"Answer","text":"No. Start with one seat and add people when you need them."}},{"@type":"Question","name":"Can I mix plans across my team?","acceptedAnswer":{"@type":"Answer","text":"No. Your workspace has one plan and every user is on it, so a plan change applies to everyone."}},{"@type":"Question","name":"What do I get in the free trial?","acceptedAnswer":{"@type":"Answer","text":"14 days, and no card needed to start. You get a free local US, UK, Canada or Australia number, 50 inbound and 50 outbound minutes, and calls of up to 5 minutes each. Add a card to remove the 5-minute limit, take up to 5 numbers per workspace and top up credits. Campaigns (the power and parallel dialers) start with your plan. You can port your numbers during the trial. If you don't choose a plan, the trial number is released on a later date, shown on the Phone Numbers page."}},{"@type":"Question","name":"How are minutes counted?","acceptedAnswer":{"@type":"Answer","text":"Per minute, rounded up to the next full minute. Calls to and from the US, UK, Australia and Canada use your plan's free minutes first. See the fair usage policy for details."}},{"@type":"Question","name":"Do unused free minutes roll over?","acceptedAnswer":{"@type":"Answer","text":"No. Your free minutes reset at the start of each billing month."}},{"@type":"Question","name":"How is the AI voice agent billed?","acceptedAnswer":{"@type":"Answer","text":"Per minute the agent spends talking, at $0.12. Business and Scale include a pool of minutes each month. Time after a transfer to a person counts as a normal call."}},{"@type":"Question","name":"How do credits work?","acceptedAnswer":{"@type":"Answer","text":"Credits pay for minutes after your free pool, calls to and from other countries, call transcripts, AI call summaries and the porting fee. Number rent goes on your card with each renewal. You can top up once you subscribe, or during the free trial once you add a card."}},{"@type":"Question","name":"How is transcription billed?","acceptedAnswer":{"@type":"Answer","text":"Call transcription is billed per transcribed minute, at the published rate."}},{"@type":"Question","name":"Can I port my numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes, including during your free trial. Porting a US number costs $10. Fees for other countries vary by carrier."}},{"@type":"Question","name":"Are plan changes prorated?","acceptedAnswer":{"@type":"Answer","text":"Yes. An upgrade or an added seat is charged only for the rest of the current billing period, up to your renewal date. A downgrade starts at your renewal."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Monthly plans cancel anytime. Annual plans can change or downgrade at renewal."}}]}]}</script>
 </head>
 <body>
 <script>
@@ -130,6 +130,7 @@ select{width:100%;font-family:var(--body)}
       <ul class="ticks">
         <li>1 free local US, UK, Canada or AU number per user</li>
         <li>Other countries billed per minute</li>
+        <li>Power and parallel dialer, voicemail drop</li>
         <li>Call recording</li>
         <li>AI transcripts, billed per minute</li>
         <li>Voicemail to text</li>
@@ -147,8 +148,7 @@ select{width:100%;font-family:var(--body)}
       <p class="pool"><b>500 free minutes</b> / user / month<br>In &amp; out calls · US, UK, CA, AU</p>
       <span class="inc">Everything in Starter, plus</span>
       <ul class="ticks">
-        <li>Power and parallel dialer</li>
-        <li>Voicemail drop and local caller ID</li>
+        <li>Local caller ID</li>
         <li>AI summaries and action items</li>
         <li>Live transcription, billed per minute</li>
         <li>IVR and routing by country or language</li>
@@ -215,10 +215,10 @@ select{width:100%;font-family:var(--body)}
         <tr><th scope="row">Other countries</th><td>Per minute</td><td class="us">Per minute</td><td>Per minute</td></tr>
         <tr><th scope="row">Call recording</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
         <tr class="group"><th colspan="4">Auto Dialer</th></tr>
-        <tr><th scope="row">Parallel dialer</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
-        <tr><th scope="row">Power dialer + voicemail drop</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
-        <tr><th scope="row">Dialer campaigns and retry rules</th><td class="no">–</td><td class="us">Standard</td><td>Custom</td></tr>
-        <tr><th scope="row">Time-zone aware calling windows</th><td class="no">–</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Parallel dialer</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Power dialer + voicemail drop</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
+        <tr><th scope="row">Dialer campaigns and retry rules</th><td>Standard</td><td class="us">Standard</td><td>Custom</td></tr>
+        <tr><th scope="row">Time-zone aware calling windows</th><td class="yes">Included</td><td class="us yes">Included</td><td class="yes">Included</td></tr>
         <tr class="group"><th colspan="4">AI</th></tr>
         <tr><th scope="row">Transcripts, 30+ languages</th><td>After the call</td><td class="us">Live</td><td>Live</td></tr>
         <tr><th scope="row">Transcription billing</th><td>Per minute</td><td class="us">Per minute</td><td>Per minute</td></tr>
@@ -247,7 +247,7 @@ select{width:100%;font-family:var(--body)}
     <div class="sec-head" style="margin:0">
       <span class="eyebrow">International calling</span>
       <h2>Free minutes every month. Then per minute.</h2>
-      <p class="lede">Every user gets free minutes each month for calls to and from the US, UK, Australia and Canada: 100 on Starter, 500 on Business and 1,000 on Scale. After that, and for every other country, you pay per minute at the rate shown before you dial. <a href="fair-usage.html">Fair usage policy</a></p>
+      <p class="lede">Every user gets free minutes each month for calls to and from the US, UK, Australia and Canada: 100 on Starter, 500 on Business and 1,000 on Scale. After that, and for every other country, you pay per minute, and each call's cost shows in Billing after the call. <a href="fair-usage.html">Fair usage policy</a></p>
     </div>
     <div>
       <div class="table-wrap rates" tabindex="0" role="region" aria-label="Scrollable table">
@@ -277,7 +277,7 @@ select{width:100%;font-family:var(--body)}
     <div class="addon panel"><span class="amt mono">$0.12<small style="font-size:.9rem;color:var(--muted)"> / min</small></span><h3>AI voice agent minutes</h3><p>Minutes the AI agent spends on calls beyond your plan's pool. Transfers to your team aren't counted.</p></div>
     <div class="addon panel"><span class="amt mono">Per minute</span><h3>Minutes beyond your pool</h3><p>Billed at the published rate for each destination and paid from your credits. No bundles to buy.</p></div>
     <div class="addon panel"><span class="amt mono">Per minute</span><h3>Call transcription</h3><p>AI transcripts of your calls, billed per transcribed minute at the published rate.</p></div>
-    <div class="addon panel"><span class="amt mono">Credits</span><h3>Top up as you go</h3><p>Credits pay for extra numbers, minutes beyond your pool and AI agent minutes. Available once you subscribe, or in the trial once you add a card.</p></div>
+    <div class="addon panel"><span class="amt mono">Credits</span><h3>Top up as you go</h3><p>Credits pay for minutes beyond your pool, calls to and from other countries, call transcripts, AI call summaries and the porting fee. Available once you subscribe, or in the trial once you add a card.</p></div>
   </div>
 </section>
 
@@ -309,15 +309,15 @@ select{width:100%;font-family:var(--body)}
     <div class="sec-head"><h2>Pricing questions.</h2></div>
     <div class="faq">
       <details><summary>Is there a seat minimum?</summary><p>No. Start with one seat and add people when you need them.</p></details>
-      <details><summary>Can I mix plans across my team?</summary><p>Yes. Your SDRs can be on Business while your support team stays on Starter.</p></details>
-      <details><summary>What do I get in the free trial?</summary><p>14 days with Business features, and no card needed to start. You get a free local US, UK, Canada or Australia number, 50 inbound and 50 outbound minutes, and calls of up to 5 minutes each. Add a card to remove the 5-minute limit, take up to 5 numbers per user and top up credits. You can port your numbers during the trial. If you don't choose a plan, the trial number is removed when the trial ends.</p></details>
+      <details><summary>Can I mix plans across my team?</summary><p>No. Your workspace has one plan and every user is on it, so a plan change applies to everyone.</p></details>
+      <details><summary>What do I get in the free trial?</summary><p>14 days, and no card needed to start. You get a free local US, UK, Canada or Australia number, 50 inbound and 50 outbound minutes, and calls of up to 5 minutes each. Add a card to remove the 5-minute limit, take up to 5 numbers per workspace and top up credits. Campaigns (the power and parallel dialers) start with your plan. You can port your numbers during the trial. If you don't choose a plan, the trial number is released on a later date, shown on the Phone Numbers page.</p></details>
       <details><summary>How are minutes counted?</summary><p>Per minute, rounded up to the next full minute. Calls to and from the US, UK, Australia and Canada use your plan's free minutes first. See the <a href="fair-usage.html">fair usage policy</a> for details.</p></details>
       <details><summary>Do unused free minutes roll over?</summary><p>No. Your free minutes reset at the start of each billing month.</p></details>
       <details><summary>How is the AI voice agent billed?</summary><p>Per minute the agent spends talking, at $0.12. Business and Scale include a pool of minutes each month. Time after a transfer to a person counts as a normal call.</p></details>
-      <details><summary>How do credits work?</summary><p>Credits pay for extra numbers, minutes after your free pool and AI voice agent minutes. You can top up once you subscribe, or during the free trial once you add a card.</p></details>
+      <details><summary>How do credits work?</summary><p>Credits pay for minutes after your free pool, calls to and from other countries, call transcripts, AI call summaries and the porting fee. Number rent goes on your card with each renewal. You can top up once you subscribe, or during the free trial once you add a card.</p></details>
       <details><summary>How is transcription billed?</summary><p>Call transcription is billed per transcribed minute, at the published rate.</p></details>
       <details><summary>Can I port my numbers?</summary><p>Yes, including during your free trial. Porting a US number costs $10. Fees for other countries vary by carrier.</p></details>
-      <details><summary>Are plan changes prorated?</summary><p>No. Upgrades and added seats are not prorated.</p></details>
+      <details><summary>Are plan changes prorated?</summary><p>Yes. An upgrade or an added seat is charged only for the rest of the current billing period, up to your renewal date. A downgrade starts at your renewal.</p></details>
       <details><summary>Can I cancel?</summary><p>Monthly plans cancel anytime. Annual plans can change or downgrade at renewal.</p></details>
     </div>
   </div>
