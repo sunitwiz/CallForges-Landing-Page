@@ -75,7 +75,7 @@ COLLECTIONS = [
     {'slug': 'compliance', 'title': 'Compliance center', 'icon': ico('M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'),
      'desc': 'Verify numbers where the regulator asks, and register your business with US carriers.'},
     {'slug': 'crm-integrations', 'title': 'CRM integrations', 'icon': ICON_CRM,
-     'desc': 'Connect Attio, HubSpot or Pipedrive to log every call on the right record and import contacts to call.'},
+     'desc': 'Connect Attio, HubSpot, Pipedrive, HighLevel or Clio to log every call on the right record.'},
     {'slug': 'ai-tools', 'title': 'AI tools (MCP)', 'icon': ico('M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9zM19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z'),
      'desc': 'Let Claude, ChatGPT or Cursor read and work with your CallForges data, as you.'},
     {'slug': 'account-settings', 'title': 'Account and settings', 'icon': ico('M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM4.6 9a8 8 0 0 1 1.8-3.1M9 4.4a8 8 0 0 1 6 0M17.6 5.9A8 8 0 0 1 19.4 9M20 12v0M19.4 15a8 8 0 0 1-1.8 3.1M15 19.6a8 8 0 0 1-6 0M6.4 18.1A8 8 0 0 1 4.6 15M4 12v0'),
@@ -88,9 +88,17 @@ ARTICLES = [
      'desc': 'Connect HubSpot, map users to owners, log calls as HubSpot calls or notes, create contacts for unknown numbers, import contacts, log past calls and disconnect.'},
     {'p': 'pipedrive', 'name': 'Pipedrive', 'slug': 'pipedrive-integration', 'collection': 'crm-integrations',
      'desc': 'Connect Pipedrive, map users, log calls as Call activities or notes, create people for unknown numbers, import people, log past calls and disconnect.'},
+    {'p': 'highlevel', 'name': 'HighLevel', 'slug': 'highlevel-integration', 'collection': 'crm-integrations',
+     'updated': '7 November 2026', 'iso': '2026-11-07',
+     'desc': 'Connect a HighLevel sub-account, map users, log calls in conversations or as notes, tag dispositions, import contacts, log past calls and disconnect.'},
+    {'p': 'clio', 'name': 'Clio', 'slug': 'clio-integration', 'collection': 'crm-integrations',
+     'updated': '7 November 2026', 'iso': '2026-11-07',
+     'desc': 'Connect Clio Manage, map users, log calls as phone calls on contacts and matters, add non-billable time entries, log past calls and disconnect.'},
 ]
 for i, a in enumerate(ARTICLES):
-    a.update(kind='crm', title=f'{a["name"]} integration', order=i + 1, updated=UPDATED, iso='2026-10-22')
+    a.update(kind='crm', title=f'{a["name"]} integration', order=i + 1)
+    a.setdefault('updated', UPDATED)
+    a.setdefault('iso', '2026-10-22')
 
 
 def load_articles():
@@ -131,8 +139,8 @@ SHOT_FOR_SECTION = {
     'activity': [('activity', 'Activity: what happened to each call in {n}.')],
     'disconnect': [('disconnect', 'The Disconnect confirmation.')],
 }
-MEMBER = {'attio': 'member', 'hubspot': 'owner', 'pipedrive': 'user'}
-RECORDS = {'attio': 'people', 'hubspot': 'contacts', 'pipedrive': 'people'}
+MEMBER = {'attio': 'member', 'hubspot': 'owner', 'pipedrive': 'user', 'highlevel': 'user', 'clio': 'user'}
+RECORDS = {'attio': 'people', 'hubspot': 'contacts', 'pipedrive': 'people', 'highlevel': 'contacts', 'clio': 'contacts'}
 
 
 def png_size(path):
