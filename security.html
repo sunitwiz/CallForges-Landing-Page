@@ -79,7 +79,7 @@
 <p>This page explains how CallForges protects your account, your calls and the data we exchange with the tools you connect, such as Clio. For what we collect and why, see our <a href="privacy.html">Privacy Policy</a>.</p>
 
 <nav class="toc" aria-label="On this page">
-  <a href="#where">1. Where your data is</a><a href="#encryption">2. Encryption</a><a href="#access">3. Access control</a><a href="#crm">4. Connected CRMs</a><a href="#recordings">5. Recordings and AI</a><a href="#backups">6. Backups</a><a href="#incidents">7. If something goes wrong</a><a href="#report">8. Report a problem</a>
+  <a href="#where">1. Where your data is</a><a href="#encryption">2. Encryption</a><a href="#signin">3. Sign-in and passwords</a><a href="#access">4. Access control</a><a href="#crm">5. Connected CRMs</a><a href="#recordings">6. Recordings and AI</a><a href="#building">7. How we build</a><a href="#backups">8. Backups</a><a href="#incidents">9. If something goes wrong</a><a href="#report">10. Report a problem</a>
 </nav>
 
 <h2 id="where">1. Where your data is</h2>
@@ -92,33 +92,47 @@
   <li>Access to the CRMs you connect is stored encrypted with AES-256-GCM.</li>
 </ul>
 
-<h2 id="access">3. Access control</h2>
+<h2 id="signin">3. Sign-in and passwords</h2>
+<ul>
+  <li>You can sign in with Google instead of a password.</li>
+  <li>Passwords are stored only as Argon2 hashes, never in plain text.</li>
+  <li>A new password is checked against known breached passwords. Only the first five characters of its hash leave our servers.</li>
+  <li>Repeated failed sign-ins are rate limited and lock the account for a while.</li>
+</ul>
+
+<h2 id="access">4. Access control</h2>
 <ul>
   <li>You decide who can do what in your workspace with roles and permissions. Only owners and admins can connect, change or disconnect an integration.</li>
   <li>Our internal admin console requires a password and an authenticator code.</li>
 </ul>
 
-<h2 id="crm">4. Connected CRMs</h2>
+<h2 id="crm">5. Connected CRMs</h2>
 <ul>
   <li>You connect a CRM through its own sign-in page. We never see or store your CRM password.</li>
   <li>We ask only for the permissions our features use, and use them only for those features, such as logging your calls.</li>
   <li>When you disconnect Clio, we revoke our access at Clio, delete our access tokens and remove the Clio names we held for that connection. Nothing in your Clio account is deleted.</li>
 </ul>
 
-<h2 id="recordings">5. Recordings and AI</h2>
+<h2 id="recordings">6. Recordings and AI</h2>
 <ul>
   <li>You choose, for each phone number, whether calls are recorded and transcribed.</li>
   <li>Recordings are kept in private storage. By default, a recording can't be shared outside CallForges, and inside it only members allowed to listen to calls can play it.</li>
   <li>Our AI subprocessors may use the data only to provide the feature to us and may not use it to train their own models.</li>
 </ul>
 
-<h2 id="backups">6. Backups</h2>
+<h2 id="building">7. How we build</h2>
+<ul>
+  <li>Every change is reviewed and must pass automated code analysis and tests before it is released.</li>
+  <li>Database queries are parameterized, and every request is checked against your workspace and your permissions on the server.</li>
+</ul>
+
+<h2 id="backups">8. Backups</h2>
 <p>We take a snapshot of our servers every day and keep each one for 7 days.</p>
 
-<h2 id="incidents">7. If something goes wrong</h2>
+<h2 id="incidents">9. If something goes wrong</h2>
 <p>If a data breach is likely to affect you, we will notify you and the relevant regulators as the law requires.</p>
 
-<h2 id="report">8. Report a problem</h2>
+<h2 id="report">10. Report a problem</h2>
 <p>If you find a security issue, write to <span class="mono">support@callforges.com</span>. Please give us a chance to fix it before telling anyone else.</p>
 </article>
 </main>
