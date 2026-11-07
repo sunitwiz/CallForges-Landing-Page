@@ -63,7 +63,7 @@
 <h1>HighLevel integration</h1>
 <p class="lead">The HighLevel integration logs every call you make or take in CallForges on the matching contact in a HighLevel sub-account. The call goes into the contact's conversation with a note holding its details, or is written as a note alone. It also lets you browse your HighLevel contacts inside CallForges and import them as contacts to call.</p>
 <p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">Written by CallForges Support · Updated 7 November 2026</p>
-<nav class="toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#before">Before you start</a></li><li><a href="#connect">Connect HighLevel</a></li><li><a href="#other-ways">Agency logins and installs from HighLevel</a></li><li><a href="#map-users">Map users</a></li><li><a href="#logging">Call logging settings</a></li><li><a href="#unknown">Unknown numbers</a></li><li><a href="#contacts">Import contacts</a></li><li><a href="#past-calls">Log past calls</a></li><li><a href="#activity">Activity</a></li><li><a href="#disconnect">Disconnect</a></li><li><a href="#access">What CallForges can access</a></li></ol></nav>
+<nav class="toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#before">Before you start</a></li><li><a href="#connect">Connect HighLevel</a></li><li><a href="#other-ways">Agency logins and installs from HighLevel</a></li><li><a href="#map-users">Map users</a></li><li><a href="#logging">Call logging settings</a></li><li><a href="#outcome-tags">Outcome tags</a></li><li><a href="#follow-ups">Follow-up tasks and the last outcome</a></li><li><a href="#caller-name">The caller's name when a call rings</a></li><li><a href="#unknown">Unknown numbers</a></li><li><a href="#contacts">Import contacts</a></li><li><a href="#past-calls">Log past calls</a></li><li><a href="#activity">Activity</a></li><li><a href="#disconnect">Disconnect</a></li><li><a href="#access">What CallForges can access</a></li></ol></nav>
 <h2 id="before">Before you start</h2>
 <ul>
   <li>You need a CallForges <strong>owner</strong> or <strong>admin</strong> role to connect, configure or disconnect HighLevel. Other users don't see the integration settings, but their calls are logged once they are mapped.</li>
@@ -86,7 +86,14 @@
 <p>CallForges asks which sub-account to connect. Pick one under <strong>Sub-account</strong>, searching by name if the list is long, and click <strong>Connect</strong>. Only that sub-account is connected, never the rest of the agency.</p>
 <figure><img src="/help/img/highlevel-pick.png" alt="Choosing the sub-account after an agency login." width="1184" height="590" loading="lazy" decoding="async"><figcaption>Choosing the sub-account after an agency login.</figcaption></figure>
 <h3>If you start the install from HighLevel</h3>
-<p>HighLevel sends you to CallForges. Sign in if asked. CallForges then shows what is about to be connected: the HighLevel sub-account and the CallForges workspace you have open.</p>
+<p>With an agency login, install from <strong>Agency View</strong>:</p>
+<ol>
+  <li>Click <strong>Install</strong>, then <strong>Proceed to Install</strong>.</li>
+  <li>At <strong>Select Sub-Account</strong>, choose the sub-account and click <strong>Continue</strong>.</li>
+  <li>Click <strong>Allow &amp; install</strong>.</li>
+</ol>
+<p>The <strong>Install</strong> button in <strong>Sub-Account View</strong> does nothing. The agency also needs at least one sub-account first: without one, <strong>Proceed to Install</strong> does nothing.</p>
+<p>HighLevel then sends you to CallForges. Sign in if asked. CallForges shows what is about to be connected: the HighLevel sub-account and the CallForges workspace you have open.</p>
 <ul>
   <li>Nothing is connected until you click <strong>Connect</strong>.</li>
   <li>If you belong to several workspaces, click <strong>Switch</strong> to connect a different one.</li>
@@ -109,12 +116,12 @@
 <div class="tbl"><table>
   <thead><tr><th>Option</th><th>What is written in HighLevel</th></tr></thead>
   <tbody>
-    <tr><td><strong>Call activity</strong></td><td>The call is added to the contact's conversation, with a note holding its time, duration, outcome, disposition and call notes. The contact is tagged with the disposition.</td></tr>
+    <tr><td><strong>Call activity</strong></td><td>The call is added to the contact's conversation, with a note holding its time, duration, outcome, disposition and call notes. The contact is tagged with the disposition and the call's outcome. If HighLevel refuses the conversation entry, the call is still saved as a note on the contact.</td></tr>
     <tr><td><strong>Note</strong></td><td>A note on the contact with the same details written as text. Nothing is added to the conversation, and no tag is added.</td></tr>
     <tr><td><strong>Don't log</strong></td><td>Nothing. The call is not written to HighLevel.</td></tr>
   </tbody>
 </table></div>
-<p>The call itself happens in CallForges, so no audio is stored in HighLevel, and these calls may not appear in HighLevel's own call reports.</p>
+<p>The call itself happens in CallForges, so these calls may not appear in HighLevel's own call reports.</p>
 <h3>Disposition tags</h3>
 <p>With <strong>Call activity</strong>, a call that has a disposition tags the contact with it. If the disposition changes later, CallForges replaces the tag it added with the new one. If the disposition is cleared, CallForges removes the tag it added.</p>
 <p>CallForges only ever removes a tag it added itself. A tag the contact already had, and every other tag on the contact, is never touched.</p>
@@ -122,13 +129,28 @@
 <ul>
   <li><strong>Link to the recording</strong> adds a link to the call's page in CallForges, where the recording plays.</li>
   <li><strong>Link to the transcript</strong> adds a link to the call's page in CallForges, where the transcript is read.</li>
+  <li><strong>AI summary</strong> adds the call's AI summary, when it has one. Summaries are made for English calls long enough to summarise, on plans that include them.</li>
+  <li><strong>Save the recording in HighLevel</strong> attaches the recording to the call's entry in the conversation. It's off by default and works only while <strong>Secured recording links</strong> is off in <strong>Settings → Call settings</strong>. The attachment uses a share link that stops working after a time; the link to the call's page keeps working.</li>
 </ul>
-<p>Recordings and transcripts stay in CallForges. They are not copied into HighLevel, and only signed-in users of your CallForges workspace can open the links.</p>
+<p>Transcripts stay in CallForges, and so do recordings unless you turn on <strong>Save the recording in HighLevel</strong>. Only signed-in users of your CallForges workspace can open the links.</p>
 <h3>Connected numbers</h3>
 <p>Leave <strong>Log calls on all numbers</strong> on to log calls on every number your workspace owns, including numbers bought later. Turn it off to pick the numbers to log. Calls on numbers that aren't picked are skipped.</p>
 <h3>When calls are logged</h3>
 <p>A call is written to HighLevel within a few minutes of ending, so the disposition and notes the user adds after the call are included. If the call is changed later, for example a new disposition, the same note is updated. The entry in the conversation stays as it was.</p>
 <figure><img src="/help/img/highlevel-settings-workflow.png" alt="Settings → Workflow: choose what each kind of call becomes in HighLevel." width="1600" height="728" loading="lazy" decoding="async"><figcaption>Settings → Workflow: choose what each kind of call becomes in HighLevel.</figcaption></figure>
+<h2 id="outcome-tags">Outcome tags</h2>
+<p>With <strong>Call activity</strong>, every logged call tags the contact with its outcome: <code>callforges-answered</code>, <code>callforges-no-answer</code>, <code>callforges-missed</code>, <code>callforges-busy</code>, <code>callforges-failed</code>, <code>callforges-cancelled</code> or <code>callforges-voicemail</code>. Use these tags to start a HighLevel workflow, for example a text after a missed call.</p>
+<p>CallForges never takes an outcome tag away for good, so a contact can hold several. If the contact already holds the tag from an earlier call, CallForges removes it and adds it again for the new call.</p>
+<h2 id="follow-ups">Follow-up tasks and the last outcome</h2>
+<p>Turn these on in <strong>Settings</strong>. Both are off by default.</p>
+<ul>
+  <li><strong>Add a follow-up task on a missed call</strong>: each missed call or voicemail logged as Call activity gets one task to call back, due a day later and assigned to the mapped HighLevel user.</li>
+  <li><strong>Save the last outcome on the contact</strong>: each call logged as Call activity fills a <strong>Last call outcome</strong> field on the contact with its outcome. CallForges creates the field the first time it needs it.</li>
+</ul>
+<p>Connections made before this feature need to reconnect to fill the field. The call is logged either way.</p>
+<h2 id="caller-name">The caller's name when a call rings</h2>
+<p>When someone who isn't in your CallForges Contacts calls one of your numbers, CallForges looks the number up in HighLevel while the call rings, and the name appears on the ring card a moment later.</p>
+<p>The ring never waits for the answer. If HighLevel is slow or busy, or several contacts share the number, the card shows the number alone. A contact saved in CallForges always comes first. CallForges keeps the answer in memory for a few minutes and doesn't save it.</p>
 <h2 id="unknown">Unknown numbers</h2>
 <p>CallForges finds the HighLevel contact by phone number, including a contact's additional phone numbers. In <strong>Settings → General</strong>:</p>
 <ul>
@@ -181,6 +203,7 @@
     <tr><td><code>users.readonly</code></td><td>List HighLevel users for Map users and Auto-map by e-mail.</td></tr>
     <tr><td><code>locations.readonly</code></td><td>Identify the sub-account you connected.</td></tr>
     <tr><td><code>locations/tags.readonly</code></td><td>Show your tags in the Contacts tab's filter.</td></tr>
+    <tr><td><code>locations/customFields.readonly</code>, <code>locations/customFields.write</code></td><td>Create and fill the Last call outcome field.</td></tr>
     <tr><td><code>oauth.write</code></td><td>Remove CallForges from the sub-account when you disconnect, and connect the sub-account you pick after an agency login.</td></tr>
     <tr><td><code>oauth.readonly</code></td><td>List an agency's sub-accounts so you can pick one.</td></tr>
   </tbody>

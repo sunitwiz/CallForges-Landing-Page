@@ -7,7 +7,7 @@
 <p>The Pipedrive integration logs every call you make or take in CallForges as a completed Call activity on the matching Pipedrive person, or as a note. It also lets you browse your Pipedrive people inside CallForges and import them as contacts to call.</p>
 
 <nav class="toc" aria-label="On this page">
-  <a href="#before">1. Before you start</a><a href="#connect">2. Connect Pipedrive</a><a href="#map-users">3. Map users</a><a href="#logging">4. Call logging settings</a><a href="#unknown">5. Unknown numbers</a><a href="#contacts">6. Import contacts</a><a href="#past-calls">7. Log past calls</a><a href="#activity">8. Activity</a><a href="#disconnect">9. Disconnect</a><a href="#access">10. What CallForges can access</a><a href="#help">11. Help</a>
+  <a href="#before">1. Before you start</a><a href="#connect">2. Connect Pipedrive</a><a href="#map-users">3. Map users</a><a href="#logging">4. Call logging settings</a><a href="#caller-name">5. The caller's name when a call rings</a><a href="#unknown">6. Unknown numbers</a><a href="#contacts">7. Import contacts</a><a href="#past-calls">8. Log past calls</a><a href="#activity">9. Activity</a><a href="#disconnect">10. Disconnect</a><a href="#access">11. What CallForges can access</a><a href="#help">12. Help</a>
 </nav>
 
 <h2 id="before">1. Before you start</h2>
@@ -52,6 +52,7 @@
 <ul>
   <li><strong>Link to the recording</strong> adds a link to the call's page in CallForges, where the recording plays.</li>
   <li><strong>Link to the transcript</strong> adds a link to the call's page in CallForges, where the transcript is read.</li>
+  <li><strong>AI summary</strong> adds the call's AI summary, when it has one. Summaries are made for English calls long enough to summarise, on plans that include them.</li>
 </ul>
 <p>Recordings and transcripts stay in CallForges. They are not copied into Pipedrive, and only signed-in users of your CallForges workspace can open the links.</p>
 <h3>Connected numbers</h3>
@@ -59,7 +60,11 @@
 <h3>When calls are logged</h3>
 <p>A call is written to Pipedrive within a few minutes of ending, so the disposition and notes the user adds after the call are included. If the call is changed later, for example a new disposition, the same Call activity is updated.</p>
 
-<h2 id="unknown">5. Unknown numbers</h2>
+<h2 id="caller-name">5. The caller's name when a call rings</h2>
+<p>When someone who isn't in your CallForges Contacts calls one of your numbers, CallForges looks the number up in Pipedrive while the call rings, and the name appears on the ring card a moment later.</p>
+<p>The ring never waits for the answer. If Pipedrive is slow or busy, or several people share the number, the card shows the number alone. A contact saved in CallForges always comes first. CallForges keeps the answer in memory for a few minutes and doesn't save it.</p>
+
+<h2 id="unknown">6. Unknown numbers</h2>
 <p>CallForges finds the Pipedrive person by phone number, with or without the country code. In <strong>Settings → General</strong>:</p>
 <ul>
   <li><strong>Create a Pipedrive person if the number isn't found</strong>: when no person in Pipedrive has the number, CallForges creates one so the call is still logged. When this is off, the call isn't logged and Activity shows that the person wasn't found.</li>
@@ -67,7 +72,7 @@
   <li><strong>Add Pipedrive people to CallForges Contacts</strong>: when a call reaches someone who is in Pipedrive but not in your CallForges Contacts, CallForges adds them to Contacts and links the two. Off by default.</li>
 </ul>
 
-<h2 id="contacts">6. Import contacts</h2>
+<h2 id="contacts">7. Import contacts</h2>
 <p>The <strong>Contacts</strong> tab lists the people in your Pipedrive company who have a phone number, read live from Pipedrive. Each row shows the person's organization and whether they are already in CallForges, with a link to open them in Pipedrive.</p>
 <ol>
   <li>Search, or filter by one of your saved Pipedrive people filters with <strong>All lists</strong>.</li>
@@ -76,7 +81,7 @@
 </ol>
 <p>Imported people become CallForges contacts linked to their Pipedrive records, ready to call from a campaign or the dialer. Click <strong>Sync now</strong> to bring in later changes. CallForges doesn't copy your Pipedrive data on a schedule; it reads Pipedrive only when you open the tab, import or sync.</p>
 
-<h2 id="past-calls">7. Log past calls</h2>
+<h2 id="past-calls">8. Log past calls</h2>
 <p>Connecting logs the calls that happen from then on. To send calls your workspace made before you connected, use <strong>Settings → Log past calls</strong>:</p>
 <ol>
   <li>Under <strong>How far back</strong>, pick a date range. It reaches back up to 1 year.</li>
@@ -85,18 +90,18 @@
 </ol>
 <p>Past calls are sent in the background and never delay the logging of new calls. To stop a run, open Activity, go to the <strong>Queued</strong> tab and click <strong>Stop queued</strong>.</p>
 
-<h2 id="activity">8. Activity</h2>
+<h2 id="activity">9. Activity</h2>
 <p>The <strong>Activity</strong> tab lists every call and what happened to it in Pipedrive: logged (and whether as a Call activity or a note), queued, failed or skipped, with the reason. You can retry one call, or use <strong>Retry all</strong> for every failed or skipped call that matches your filters. <strong>Never logged</strong> lists calls that were never sent to Pipedrive.</p>
 <p>If Pipedrive can't be reached or its API limit is used up, CallForges pauses and shows how many calls are waiting. They are sent automatically once Pipedrive accepts requests again. Nothing is lost.</p>
 
-<h2 id="disconnect">9. Disconnect</h2>
+<h2 id="disconnect">10. Disconnect</h2>
 <ol>
   <li>Open <strong>Integrations → Pipedrive</strong>.</li>
   <li>Click <strong>Disconnect</strong> and confirm.</li>
 </ol>
 <p>Calls stop being logged to Pipedrive and the user mapping is cleared. CallForges gives up its access to your Pipedrive company. Call activities and notes already written stay in Pipedrive, and your logging settings are kept in case you reconnect. You can also uninstall the app from Pipedrive (<strong>Tools and apps → Marketplace apps</strong>) at any time; CallForges then shows Reconnect.</p>
 
-<h2 id="access">10. What CallForges can access</h2>
+<h2 id="access">11. What CallForges can access</h2>
 <p>When you connect, CallForges asks Pipedrive for these permissions on your company:</p>
 <div class="tbl"><table>
   <thead><tr><th>Permission</th><th>Why</th></tr></thead>
@@ -110,7 +115,7 @@
 </table></div>
 <p>Your Pipedrive access is stored encrypted and used only for the features above. See our <a href="privacy.html">Privacy Policy</a>.</p>
 
-<h2 id="help">11. Help</h2>
+<h2 id="help">12. Help</h2>
 <p>Questions or problems with the Pipedrive integration: <a href="mailto:hello@callforges.com">hello@callforges.com</a></p>
 <p>Other integrations: <a href="attio.html">Attio</a> · <a href="hubspot.html">HubSpot</a></p>
 </article>

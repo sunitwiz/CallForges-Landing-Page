@@ -63,7 +63,7 @@
 <h1>HubSpot integration</h1>
 <p class="lead">The HubSpot integration logs every call you make or take in CallForges on the timeline of the matching HubSpot contact, as a HubSpot call or as a note. It also lets you browse your HubSpot contacts inside CallForges and import them as contacts to call.</p>
 <p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">Written by CallForges Support · Updated 22 October 2026</p>
-<nav class="toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#before">Before you start</a></li><li><a href="#connect">Connect HubSpot</a></li><li><a href="#map-users">Map users</a></li><li><a href="#logging">Call logging settings</a></li><li><a href="#unknown">Unknown numbers</a></li><li><a href="#contacts">Import contacts</a></li><li><a href="#past-calls">Log past calls</a></li><li><a href="#activity">Activity</a></li><li><a href="#disconnect">Disconnect</a></li><li><a href="#access">What CallForges can access</a></li></ol></nav>
+<nav class="toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#before">Before you start</a></li><li><a href="#connect">Connect HubSpot</a></li><li><a href="#map-users">Map users</a></li><li><a href="#logging">Call logging settings</a></li><li><a href="#caller-name">The caller's name when a call rings</a></li><li><a href="#unknown">Unknown numbers</a></li><li><a href="#contacts">Import contacts</a></li><li><a href="#past-calls">Log past calls</a></li><li><a href="#activity">Activity</a></li><li><a href="#disconnect">Disconnect</a></li><li><a href="#access">What CallForges can access</a></li></ol></nav>
 <h2 id="before">Before you start</h2>
 <ul>
   <li>You need a CallForges <strong>owner</strong> or <strong>admin</strong> role to connect, configure or disconnect HubSpot. Other users don't see the integration settings, but their calls are logged once they are mapped.</li>
@@ -106,6 +106,7 @@
 <ul>
   <li><strong>Link to the recording</strong> adds a link to the call's page in CallForges, where the recording plays.</li>
   <li><strong>Link to the transcript</strong> adds a link to the call's page in CallForges, where the transcript is read.</li>
+  <li><strong>AI summary</strong> adds the call's AI summary, when it has one. Summaries are made for English calls long enough to summarise, on plans that include them.</li>
 </ul>
 <p>Recordings and transcripts stay in CallForges. They are not copied into HubSpot, and only signed-in users of your CallForges workspace can open the links.</p>
 <h3>Connected numbers</h3>
@@ -113,6 +114,9 @@
 <h3>When calls are logged</h3>
 <p>A call is written to HubSpot within a few minutes of ending, so the disposition and notes the user adds after the call are included. If the call is changed later, for example a new disposition, the same HubSpot call or note is updated.</p>
 <figure><img src="/help/img/hubspot-settings-workflow.png" alt="Settings → Workflow: choose what each kind of call becomes in HubSpot." width="1600" height="732" loading="lazy" decoding="async"><figcaption>Settings → Workflow: choose what each kind of call becomes in HubSpot.</figcaption></figure>
+<h2 id="caller-name">The caller's name when a call rings</h2>
+<p>When someone who isn't in your CallForges Contacts calls one of your numbers, CallForges looks the number up in HubSpot while the call rings, and the name appears on the ring card a moment later.</p>
+<p>The ring never waits for the answer. If HubSpot is slow or busy, or several contacts share the number, the card shows the number alone. A contact saved in CallForges always comes first. CallForges keeps the answer in memory for a few minutes and doesn't save it.</p>
 <h2 id="unknown">Unknown numbers</h2>
 <p>CallForges finds the HubSpot contact by its phone or mobile number. In <strong>Settings → General</strong>:</p>
 <ul>

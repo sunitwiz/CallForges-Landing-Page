@@ -93,7 +93,7 @@ ARTICLES = [
      'desc': 'Connect a HighLevel sub-account, map users, log calls in conversations or as notes, tag dispositions, import contacts, log past calls and disconnect.'},
     {'p': 'clio', 'name': 'Clio', 'slug': 'clio-integration', 'collection': 'crm-integrations',
      'updated': '7 November 2026', 'iso': '2026-11-07',
-     'desc': 'Connect Clio Manage, map users, log calls as phone calls on contacts and matters, add non-billable time entries, log past calls and disconnect.'},
+     'desc': 'Connect Clio Manage, map users, log calls as phone calls on contacts and matters, add time entries, log past calls and disconnect.'},
 ]
 for i, a in enumerate(ARTICLES):
     a.update(kind='crm', title=f'{a["name"]} integration', order=i + 1)
