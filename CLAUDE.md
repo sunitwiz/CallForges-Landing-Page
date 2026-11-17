@@ -1,3 +1,7 @@
-# Instructions
+@README.md
 
-Read README.md first. It holds how this site goes live, the help center generator, the rules and what needs the app side.
+## Working here with Claude
+
+- Run `git pull` before starting: more than one person edits `main`.
+- A push to `main` publishes the site. Show the change in the local preview and ask before every push.
+- Commit only the files the task changed (`git add <files>`), never `git add -A`.
