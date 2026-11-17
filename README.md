@@ -1,7 +1,7 @@
 # CallForges website
 
-The source of callforges.com: the marketing pages, the legal pages and the help center (`/help`). Plain HTML and CSS
-with one generator for the help center. The app (app.callforges.com) is a separate, private repo.
+The source of callforges.com: the marketing pages, the legal pages, the help center (`/help`) and the blog (`/blog`). Plain HTML
+and CSS with one generator for the help center and the blog. The app (app.callforges.com) is a separate, private repo.
 
 ## How a change goes live
 
@@ -21,9 +21,12 @@ with one generator for the help center. The app (app.callforges.com) is a separa
 | `/help/collections/<slug>` | `help/collections/<slug>.html`, written by `_help/build.py` |
 | `/help/articles/<slug>` | `help/articles/<slug>.html`, written by `_help/build.py` |
 | help files | `help/help.css`, `help/search.js`, `help/assistant.js`, `help/img/*.png` |
+| `/blog` | `blog.html`, written by `_help/build.py` |
+| `/blog/<slug>` | `blog/<slug>.html`, written by `_help/build.py` from `_blog/src/<slug>.html` |
 
-Only top-level files and `/help/…` are served. A file in any other folder (`/docs/x.html`) is not: that URL goes to the
-app and shows its 404. Inside help pages every link and file is root-absolute (`/site.css`, not `site.css`).
+Only top-level files, `/help/…` and `/blog/…` are served. A file in any other folder (`/docs/x.html`) is not: that URL
+goes to the app and shows its 404. Inside help and blog pages every link and file is root-absolute (`/site.css`, not
+`site.css`).
 
 ## Help center articles
 
@@ -43,6 +46,20 @@ app and shows its 404. Inside help pages every link and file is root-absolute (`
   control each step names. The capture tool is `_help/tools/shots`; `_help/tools/README.md` explains it. It needs the
   app's frontend running in sample-data mode.
 
+## Blog posts
+
+- A post's source is `_blog/src/<slug>.html`; the file name is the URL (`/blog/<slug>`). Never edit `blog.html`,
+  `blog/` or the `/blog` lines of `sitemap.xml` by hand: `python3 _help/build.py` writes them, newest post first.
+- A post starts with a comment holding `title:` (the words people search for), `desc:` (160 characters at most) and
+  `date:` (`YYYY-MM-DD`), then a `<p class="lead">` that answers the title in one or two sentences, then 4 to 7
+  `<h2 id="…">` sections. Allowed inside: the same tags as a help article. The build adds the title, the byline, the
+  contents box, a table's sideways scroll on phones, "More from the blog" and the "Start Free Trial" box.
+- Links inside a post are root-absolute (`/pricing.html`, `/help/articles/<slug>`, `/blog/<slug>`); the build stops on
+  a link to a post or help article that does not exist. Outside links take `target="_blank" rel="noopener"`.
+- The rules below hold for posts too: no vendor names, no competitor names (they stay on `compare.html`), prices only as
+  `pricing.html` states them, and only what is live in the app. A number about the industry links its public source.
+- After pushing a post, share it on LinkedIn from a founder's profile with the link.
+
 ## Rules
 
 1. **Logo.** The menu and footer show the flame mark with the word "CallForges". The icon files never change with a
@@ -59,7 +76,7 @@ app and shows its 404. Inside help pages every link and file is root-absolute (`
    in the menu and "Help Center" in the footer, the integration articles (the CRM marketplace listings link to them),
    the logo files, and the filled legal text in `privacy.html` and `terms.html`.
 6. **Never publish a template blank** such as `[Registered address]`. This prints nothing before a push:
-   `python3 -c "import re,glob;[print(f,m) for f in glob.glob('*.html')+glob.glob('help/**/*.html',recursive=True) for m in set(re.findall(r'\[[A-Za-z][A-Za-z /,.\'-]{2,60}\]',re.sub(r'<[^>]+>',' ',re.sub(r'(?s)<script.*?</script>|<style.*?</style>','',open(f).read()))))]"`
+   `python3 -c "import re,glob;[print(f,m) for f in glob.glob('*.html')+glob.glob('help/**/*.html',recursive=True)+glob.glob('blog/*.html') for m in set(re.findall(r'\[[A-Za-z][A-Za-z /,.\'-]{2,60}\]',re.sub(r'<[^>]+>',' ',re.sub(r'(?s)<script.*?</script>|<style.*?</style>','',open(f).read()))))]"`
 7. **The AI chat lives inside the `/help` page**, under the question box. Never a pop-up on the website.
 8. **No `CNAME` file.** callforges.com reaches this repo through our own server, not through a Pages custom domain. A
    `CNAME` file breaks the site.
@@ -69,8 +86,8 @@ app and shows its 404. Inside help pages every link and file is root-absolute (`
 - `python3 _help/build.py` passes.
 - The blank check in rule 6 prints nothing.
 - Every local link and image opens.
-- At 1280 px and 390 px wide, `/`, `/help`, a collection, an article and the 404 have no sideways scroll, and the flame
-  logo shows.
+- At 1280 px and 390 px wide, `/`, `/help`, a collection, an article, `/blog`, a post and the 404 have no sideways
+  scroll, and the flame logo shows.
 - After the push, the changed pages open on callforges.com.
 
 ## What the website's security settings allow
@@ -90,7 +107,7 @@ callforges.com sends a security policy that the browser enforces:
 Ask the repo owner for these. They change the server or the app repo:
 
 - an inline script added or changed (its allowlist entry), or a new outside domain;
-- a page under a new folder, outside `/help/` and the top level;
+- a page under a new folder, outside `/help/`, `/blog/` and the top level;
 - the AI help chat learning a new or changed article: `python3 _help/tools/articles_to_knowledge.py _help/src/articles
   <out-dir>` writes its knowledge files, which go into the app repo.
 

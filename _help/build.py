@@ -4,7 +4,8 @@ Run from anywhere: python3 _help/build.py. Screenshots are read from help/img/<p
 a section whose screenshot is missing is built without one. An article source places its own screenshot
 with <figure data-shot="<name>.png">Caption.</figure>; the build fails if help/img/<name>.png is missing. fair-usage.html gives the site nav and
 footer; the help pages add an "Ask AI" link to that nav, to /help#ask. The assistant lives in /help itself
-(help/assistant.js): the question box, the conversation and the "Talk to a person" form, all in the page."""
+(help/assistant.js): the question box, the conversation and the "Talk to a person" form, all in the page.
+It also builds the blog (blog.html, blog/<slug>.html) from _blog/src/<slug>.html, with the plain site nav."""
 import html
 import json
 import os
@@ -37,6 +38,7 @@ def absolutize(fragment):
 SPARKLE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>'
 NAV_ASK = f'''<a class="nav-ask" href="/help#ask" aria-label="Ask AI">{SPARKLE}<span>Ask AI</span></a>
 '''
+site_top = absolutize(body_top)
 body_top = absolutize(body_top).replace('<a href="/help">Help</a>', '<a href="/help" aria-current="page">Help</a>')
 links_end = body_top.index('</nav>', body_top.index('class="nav-links"')) + len('</nav>\n')
 body_top = body_top[:links_end] + (NAV_ASK if ASSISTANT_LIVE else '') + body_top[links_end:]
@@ -364,11 +366,82 @@ for a in ARTICLES:
             + STILL + '</div>\n</main>' + body_end)
     write(f'help/articles/{a["slug"]}.html', page)
 
+# blog: /blog and /blog/<slug>
+BLOG_SRC = os.path.join(REPO, '_blog', 'src')
+MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
+POSTS = []
+for name in sorted(os.listdir(BLOG_SRC)) if os.path.isdir(BLOG_SRC) else []:
+    if not name.endswith('.html'):
+        continue
+    src = open(os.path.join(BLOG_SRC, name)).read()
+    m = re.match(r'\s*<!--(.*?)-->', src, re.S)
+    meta = dict((k.strip(), v.strip()) for k, v in (ln.split(':', 1) for ln in m.group(1).strip().splitlines() if ':' in ln)) if m else {}
+    for k in ('title', 'desc', 'date'):
+        if not meta.get(k):
+            raise SystemExit(f'_blog/src/{name}: missing {k}')
+    if len(meta['desc']) > 160:
+        raise SystemExit(f'_blog/src/{name}: desc is longer than 160 characters')
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', meta['date']):
+        raise SystemExit(f'_blog/src/{name}: date must be YYYY-MM-DD')
+    lead = re.search(r'<p class="lead">(.*?)</p>', src, re.S)
+    if not lead:
+        raise SystemExit(f'_blog/src/{name}: no <p class="lead">')
+    y, mo, d = meta['date'].split('-')
+    POSTS.append({'slug': name[:-5], 'title': meta['title'], 'desc': meta['desc'], 'iso': meta['date'],
+                  'shown': f'{int(d)} {MONTHS[int(mo) - 1]} {y}', 'lead': lead.group(1).strip(), 'body': src[lead.end():]})
+POSTS.sort(key=lambda p: p['title'])
+POSTS.sort(key=lambda p: p['iso'], reverse=True)
+POST_SLUGS = {p['slug'] for p in POSTS}
+TRY = '''<div class="stillhelp"><p><strong>Try CallForges free for 14 days</strong>A free local number, 50 inbound and 50 outbound minutes. No card required to start.</p><a class="btn btn-primary btn-sm" href="https://app.callforges.com/signup">Start Free Trial</a></div>
+'''
+BLOG_DESC = 'Practical guides for sales teams that call: power and parallel dialers, caller ID, calling rules and more conversations per hour.'
+PUBLISHER = {'@type': 'Organization', 'name': 'CallForges', 'logo': {'@type': 'ImageObject', 'url': SITE + '/logo.png'}}
+
+lis = ''.join(f'<li><a href="/blog/{p["slug"]}"><div><strong>{html.escape(p["title"])}</strong><span>{html.escape(p["desc"])}</span><span>{p["shown"]}</span></div>{ARROW}</a></li>' for p in POSTS)
+write('blog.html', head('CallForges Blog', BLOG_DESC, '/blog',
+                        {'@context': 'https://schema.org', '@graph': [
+                            {'@type': 'Blog', 'name': 'CallForges Blog', 'url': SITE + '/blog', 'publisher': PUBLISHER,
+                             'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': f'{SITE}/blog/{p["slug"]}', 'datePublished': p['iso']} for p in POSTS]},
+                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]})
+      + site_top + '<main id="main">\n' + '<div class="help-main">\n'
+      + f'<div class="collection-head"><h1>CallForges Blog</h1><p>{BLOG_DESC}</p></div>\n'
+      + f'<ul class="article-list">{lis}</ul>\n' + TRY + '</div>\n</main>' + body_end)
+
+for p in POSTS:
+    for ref in re.findall(r'href="/blog/([^"#]+)', p['body']):
+        if ref not in POST_SLUGS:
+            raise SystemExit(f'_blog/src/{p["slug"]}.html: links to missing post {ref}')
+    for ref in re.findall(r'href="/help/articles/([^"#]+)', p['body']):
+        if ref not in SLUGS:
+            raise SystemExit(f'_blog/src/{p["slug"]}.html: links to missing help article {ref}')
+    body = re.sub(r'(<table\b.*?</table>)', r'<div class="tbl">\1</div>', p['body'], flags=re.S)
+    toc = ''.join(f'<li><a href="#{sid}">{t}</a></li>' for sid, t in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body))
+    others = [o for o in POSTS if o is not p][:3]
+    rel = ''.join(f'<li><a href="/blog/{o["slug"]}">{html.escape(o["title"])}{ARROW}</a></li>' for o in others)
+    related = f'<section class="related" aria-labelledby="related-h"><h2 id="related-h">More from the blog</h2><ul>{rel}</ul></section>\n' if rel else ''
+    path = f'/blog/{p["slug"]}'
+    ld = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'BlogPosting', 'headline': p['title'], 'description': p['desc'], 'datePublished': p['iso'], 'dateModified': p['iso'],
+         'image': SITE + '/og-image.png', 'author': {'@type': 'Organization', 'name': 'CallForges'}, 'publisher': PUBLISHER, 'mainEntityOfPage': SITE + path},
+        breadcrumb_ld([('Blog', '/blog'), (p['title'], path)])]}
+    write(f'blog/{p["slug"]}.html',
+          head(f'{p["title"]} | CallForges', p['desc'], path, ld)
+          + site_top + '<main id="main">\n' + '<div class="help-main">\n' + crumbs([('Blog', '/blog'), (p['title'], None)])
+          + '<article class="article">\n'
+          + f'<h1>{html.escape(p["title"])}</h1>\n<p class="lead">{p["lead"]}</p>\n'
+          + f'<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">CallForges team · {p["shown"]}</p>\n'
+          + (f'<nav class="toc" aria-label="In this post"><strong>In this post</strong><ol>{toc}</ol></nav>\n' if toc else '')
+          + absolutize(body).strip() + '\n'
+          + '</article>\n' + related
+          + TRY + '</div>\n</main>' + body_end)
+
 sm_path = os.path.join(REPO, 'sitemap.xml')
-sm = [ln for ln in open(sm_path).read().splitlines() if 'callforges.com/help' not in ln]
+sm = [ln for ln in open(sm_path).read().splitlines() if 'callforges.com/help' not in ln and 'callforges.com/blog' not in ln]
 urls = [f'  <url><loc>{SITE}/help</loc><lastmod>2026-10-31</lastmod><priority>0.6</priority></url>']
 urls += [f'  <url><loc>{SITE}/help/collections/{c["slug"]}</loc><lastmod>2026-10-31</lastmod><priority>0.5</priority></url>' for c in LISTED]
 urls += [f'  <url><loc>{SITE}/help/articles/{a["slug"]}</loc><lastmod>{a["iso"]}</lastmod><priority>0.5</priority></url>' for a in ARTICLES]
+urls += [f'  <url><loc>{SITE}/blog</loc><lastmod>{POSTS[0]["iso"]}</lastmod><priority>0.6</priority></url>'] if POSTS else []
+urls += [f'  <url><loc>{SITE}/blog/{p["slug"]}</loc><lastmod>{p["iso"]}</lastmod><priority>0.6</priority></url>' for p in POSTS]
 end = sm.index('</urlset>')
 open(sm_path, 'w').write('\n'.join(sm[:end] + urls + sm[end:]) + '\n')
 
