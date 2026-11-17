@@ -1,0 +1,71 @@
+<!--
+collection: messaging
+title: Register for SMS in the US (A2P 10DLC)
+desc: Register your US numbers with the carriers: the campaign's steps, its statuses, business vetting, what happens when your plan ends, and the fees.
+order: 2
+updated: 14 November 2026
+iso: 2026-11-14
+-->
+<p class="lead">US carriers block business SMS from a local number that isn't registered. Registering, called A2P 10DLC, means the carriers review your business and a campaign: what you will send, to whom, and how people agreed to get it. Once a campaign is approved, its numbers can send and receive SMS. Your calls work the same whether a number is registered or not.</p>
+
+<h2 id="business-profile">Before you start</h2>
+<ul>
+  <li>You need an approved <strong>Business profile</strong> in the <strong>Compliance center</strong>, and a role that can <strong>Buy and release numbers</strong>.</li>
+  <li>Registering starts with your plan. In the free trial the card reads <strong>Not included in the trial. Upgrade to use it.</strong></li>
+  <li>Only US local numbers are registered. Toll-free numbers can't be, and numbers outside the US don't need it where their country allows SMS.</li>
+  <li>A workspace can have up to 5 campaigns, and each number belongs to one campaign.</li>
+</ul>
+<ol>
+  <li>Open the <strong>Compliance center</strong> and find <strong>Text messaging (A2P 10DLC)</strong>, below the Business profile.</li>
+  <li>Click <strong>Add campaign</strong>.</li>
+</ol>
+<figure data-shot="register-for-sms-in-the-us-card.png">Compliance center: the Text messaging (A2P 10DLC) card (1) and Add campaign (2).</figure>
+<h2 id="campaign-steps">Fill in the campaign</h2>
+<p>The campaign's steps are on the left. Click <strong>Continue</strong> to check a step and go on.</p>
+<ol>
+  <li><strong>Campaign details</strong>: a campaign name, the use case (such as Customer care, Marketing or Account notifications), two to five sub use cases for a Mixed or Low volume mixed campaign, and the numbers. Only your US numbers that are in no other campaign are listed. Your first campaign also asks <strong>How many texts will you send a day?</strong> (see <a href="#vetting-and-the-daily-limit">business vetting</a>). Before you go on, you accept the content carriers don't allow, such as cannabis, high-risk loans or gambling.</li>
+  <li><strong>Sample messages</strong>: two to five SMS exactly as your contacts will get them, 20 to 1,024 characters each. Name your business in each one and add "Reply STOP to opt out". Say whether your SMS are about lending money, or contain links or phone numbers.</li>
+  <li><strong>User consent</strong>: how contacts agree to get your SMS, 40 to 2,048 characters, such as a web form and its address. Opt-in keywords such as START, with the reply contacts get, are optional.</li>
+  <li><strong>Description</strong>: what you send, to whom and why, 40 to 4,096 characters.</li>
+  <li><strong>Review and submit</strong>: every step read back with <strong>Edit</strong> beside it, and the carrier fees. Click <strong>Submit for review</strong>.</li>
+</ol>
+<figure data-shot="register-for-sms-in-the-us-details.png">Campaign details: the steps on the left (1), the use case (2), the numbers (3) and Continue (4).</figure>
+<p class="note">The form saves itself as a draft while you type and when you leave, so you can stop half-way and come back. <strong>Submit for review</strong> checks every field and needs at least one number.</p>
+<h2 id="statuses">Campaign statuses</h2>
+<ul>
+  <li><strong>Draft</strong>: saved, not sent. Continue it from its row. A draft the carriers sent back shows their reason under its name.</li>
+  <li><strong>In review</strong>: the carriers are reviewing it, usually for 1 to 3 weeks, and it can't be changed until they answer. Statuses update by themselves. <strong>Refresh status</strong> checks now, at most once every 10 minutes.</li>
+  <li><strong>Approved</strong>: its numbers can send SMS. Add more numbers from <strong>View unregistered numbers</strong>, or from a number's chip on Phone Numbers.</li>
+  <li><strong>Rejected</strong>: the carriers' reason shows in red under its name. Click <strong>Fix and resubmit</strong>, correct it and submit again. Each resubmission is charged the review fee again.</li>
+</ul>
+<h3>A number the carriers refused</h3>
+<p>The carriers sometimes refuse one number of an approved campaign and add the others. The campaign shows it as refused, with their reason, and so does its chip on Phone Numbers. Add it again, to the same campaign or another, from a campaign's numbers or with <strong>Add to campaign</strong> on its chip. Or click <strong>Remove</strong> beside it to take it off the campaign.</p>
+<h3>Delete a campaign</h3>
+<p><strong>Delete</strong> is in each campaign's menu, whatever its status. It withdraws the campaign from the carriers and stops its monthly fee, and its numbers stop sending SMS.</p>
+<h2 id="vetting-and-the-daily-limit">Business vetting and the daily limit</h2>
+<p>Your first campaign asks <strong>How many texts will you send a day?</strong></p>
+<ul>
+  <li><strong>Under 2,000 a day</strong> (the default) registers your business without vetting. Most businesses choose this.</li>
+  <li><strong>More than 2,000 a day</strong> adds business vetting: an independent firm checks your business for the carriers and gives it a trust score, which sets how many SMS you can send a day.</li>
+</ul>
+<p>Without vetting, the carriers let a business send up to about 2,000 SMS a day. The question is asked once, before your business is registered; later campaigns don't ask it.</p>
+<h2 id="when-your-plan-ends">When your plan ends</h2>
+<p>When a plan ends (the free trial expired, you cancelled, or the workspace was suspended for an unpaid invoice), Phone Numbers and Billing show a date in red. On that date your numbers are released and every SMS campaign is deleted, which stops its monthly fee.</p>
+<p>To keep both, choose a plan before that date, or pay the open invoice of a suspended workspace. Registering again later means a new campaign review, with its fee, and 1 to 3 weeks of waiting.</p>
+<h2 id="fees">Registration fees</h2>
+<p>Registering carries the carriers' own fees, charged to your credits ($1 buys 1 credit):</p>
+<table>
+  <thead><tr><th>Fee</th><th>When</th><th>Credits</th></tr></thead>
+  <tbody>
+    <tr><td>Business registration</td><td>Once per workspace, with your first campaign</td><td>4.5</td></tr>
+    <tr><td>Business vetting</td><td>Once, only if you chose More than 2,000 a day</td><td>41.5</td></tr>
+    <tr><td>Campaign review</td><td>Each new campaign, and each resubmission of a rejected one. Non-refundable.</td><td>15</td></tr>
+    <tr><td>Monthly campaign fee</td><td>Every month for each approved campaign, until you delete it</td><td>10 a month (2.4 for Low volume mixed)</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li>So your first campaign costs 19.5 credits to submit, or 61 with business vetting. Each later campaign or resubmission costs 15.</li>
+  <li>The review fee is charged when the campaign goes to the carriers' review. If the carriers reject your business registration, the campaigns waiting for it are never charged the review.</li>
+  <li><strong>Review and submit</strong> shows each fee and the total due now. <strong>Submit for review</strong> needs enough credits to cover it; if you don't have them, Review says so, with <strong>Add credits</strong>.</li>
+</ul>
+<figure data-shot="register-for-sms-in-the-us-review.png">Review and submit: the carrier fees and the total due now (1), then Submit for review (2).</figure>

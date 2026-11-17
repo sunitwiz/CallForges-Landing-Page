@@ -62,6 +62,8 @@ COLLECTIONS = [
      'desc': 'Build a workflow that decides who rings when a call comes in.'},
     {'slug': 'phone-numbers', 'title': 'Phone numbers', 'icon': ico('M5 9h14M5 15h14M10 3L8 21M16 3l-2 18'),
      'desc': 'Buy a number, or port your own number to CallForges.'},
+    {'slug': 'messaging', 'title': 'Messaging', 'icon': ico('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zM8 9h8M8 13h5'),
+     'desc': 'Register for SMS in the US, send and receive SMS, and work your conversations in the Inbox.'},
     {'slug': 'recordings-transcripts', 'title': 'Recordings and transcripts', 'icon': ico('M3 12h2M7 8v8M11 5v14M15 9v6M19 11v2'),
      'desc': 'Call recording and consent, transcripts, AI summaries and sharing a recording.'},
     {'slug': 'contacts-lists', 'title': 'Contacts and lists', 'icon': ico('M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M20 8v6M23 11h-6'),
@@ -122,7 +124,8 @@ def load_articles():
         if not lead:
             raise SystemExit(f'{name}: no <p class="lead">')
         ARTICLES.append({'kind': 'page', 'slug': name[:-5], 'collection': meta['collection'], 'title': meta['title'],
-                         'desc': meta['desc'], 'order': int(meta['order']), 'updated': '31 October 2026', 'iso': '2026-10-31',
+                         'desc': meta['desc'], 'order': int(meta['order']),
+                         'updated': meta.get('updated', '31 October 2026'), 'iso': meta.get('iso', '2026-10-31'),
                          'lead': lead.group(1).strip(), 'body': src[lead.end():]})
 
 
@@ -219,7 +222,9 @@ def write(rel, text):
     open(path, 'w').write(text)
 
 
-STILL = '''<div class="stillhelp"><p><strong>Still need help?</strong>Write to us and a person on our team will answer.</p><a class="btn btn-primary btn-sm" href="mailto:hello@callforges.com">Email support</a></div>
+STILL_HOME = '''<div class="stillhelp"><p><strong>Still need help?</strong>Write to us at hello@callforges.com and a person on our team will answer.</p><a class="btn btn-primary btn-sm" href="https://cal.com/callforges-team-0qqrr3/30min" target="_blank" rel="noopener">Book a call</a></div>
+'''
+STILL = '''<div class="stillhelp"><p><strong>Still need help?</strong>Ask our AI assistant. If it can't help, a person on our team will answer.</p><a class="btn btn-primary btn-sm" href="/help#ask">Ask AI</a></div>
 '''
 COLL = {c['slug']: c for c in COLLECTIONS}
 IN_COLL = {c['slug']: [a for a in ARTICLES if a['collection'] == c['slug']] for c in COLLECTIONS}
@@ -289,7 +294,7 @@ write('help.html', head('CallForges Help Center', 'Guides for CallForges: calls,
                         {'@context': 'https://schema.org', '@graph': [breadcrumb_ld([('Home', '/'), ('Help Center', '/help')])]})
       + body_top + '<main id="main">\n' + (ASK if ASSISTANT_LIVE else HERO) + '<div class="wrap help-home">\n'
       + f'<div class="collections">{cards}</div>\n'
-      + STILL + '</div>\n</main>' + home_end)
+      + STILL_HOME + '</div>\n</main>' + home_end)
 
 # /help/collections/<slug>
 for c in LISTED:

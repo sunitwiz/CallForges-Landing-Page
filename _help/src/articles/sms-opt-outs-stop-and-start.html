@@ -1,0 +1,33 @@
+<!--
+collection: messaging
+title: SMS opt-outs: STOP and START
+desc: What happens when a contact replies STOP, START or HELP, unassigning or archiving on opt-out, and the list of opted-out contacts.
+order: 6
+updated: 14 November 2026
+iso: 2026-11-14
+-->
+<p class="lead">A contact who replies STOP stops getting your SMS, from every number in your workspace, until they reply START.</p>
+
+<h2 id="stop">When a contact replies STOP</h2>
+<ul>
+  <li>A reply of STOP, UNSUBSCRIBE, CANCEL, END, QUIT or a similar word opts the contact out.</li>
+  <li>From then on, an SMS to them is refused before it goes, from any of your numbers, and no automatic reply is sent to them. Their conversation shows <strong>Opted out</strong>.</li>
+  <li>On a number outside the US and Canada, a reply counts only when the whole SMS is one such word: "Stop." counts, "please stop texting me" doesn't. No confirmation SMS goes back to the contact.</li>
+</ul>
+<h2 id="start">Opt back in: when a contact replies START</h2>
+<p>A reply of START, YES or UNSTOP lifts the opt-out, and you can send them SMS again.</p>
+<h2 id="help">When a contact replies HELP</h2>
+<p>A contact who replies HELP isn't opted out. Their SMS lands in the Inbox like any other, so answer it there.</p>
+<h2 id="archive-on-opt-out">Unassign or archive on opt-out</h2>
+<p>Both are in <strong>Settings → Messaging settings → Messaging</strong>:</p>
+<ul>
+  <li><strong>Unassign when the contact opts out</strong>, under Conversations (on by default): the contact's conversations are unassigned on every number.</li>
+  <li><strong>Archive the conversation when the contact opts out</strong>, set for each number under Out-of-hours reply: the contact's conversation on that number moves to Archived.</li>
+</ul>
+<h2 id="opted-out-list">The list of opted-out contacts</h2>
+<ol>
+  <li>Open <strong>Settings → Messaging settings → Messaging</strong>.</li>
+  <li>Under <strong>Opt-outs</strong>, the count of opted-out contacts shows. Click <strong>View list</strong>.</li>
+</ol>
+<p><strong>Opted-out contacts</strong> lists each contact's number and when they opted out. A contact the carriers blocked shows <strong>Blocked by the carrier</strong>.</p>
+<figure data-shot="sms-opt-outs-stop-and-start-list.png">Opted-out contacts: each contact&#x27;s number and when they opted out (1).</figure>

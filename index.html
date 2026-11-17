@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#f6f7f9">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://callforges.com/#org","name":"Callforges","url":"https://callforges.com/","logo":"https://callforges.com/logo.png","email":"support@callforges.com"},{"@type":"WebSite","@id":"https://callforges.com/#site","url":"https://callforges.com/","name":"Callforges","publisher":{"@id":"https://callforges.com/#org"}},{"@type":"SoftwareApplication","name":"Callforges","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows, macOS, iOS, Android","description":"Callforges is a cloud phone with local US, UK and Australian numbers, a power auto dialer, AI call notes and an AI voice agent that picks up 24/7.","url":"https://callforges.com/","offers":[{"@type":"Offer","name":"Starter","price":"15","priceCurrency":"USD"},{"@type":"Offer","name":"Business","price":"29","priceCurrency":"USD"},{"@type":"Offer","name":"Scale","price":"45","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need new hardware?","acceptedAnswer":{"@type":"Answer","text":"No. Callforges runs on desktop, web, iOS and Android."}},{"@type":"Question","name":"Can I keep my numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle the port for you, hassle-free, and your old system keeps working until the move completes. Porting a US number costs $10, and you can start during your free trial."}},{"@type":"Question","name":"Will callers know it's AI?","acceptedAnswer":{"@type":"Answer","text":"Yes. The agent introduces itself as a virtual assistant and hands off to a person on request."}},{"@type":"Question","name":"What does international cost?","acceptedAnswer":{"@type":"Answer","text":"100 to 1,000 free minutes per user each month for calls to and from the US, UK, Australia and Canada (inbound and outbound), depending on your plan. After that, per minute, and each call's cost shows in Billing after the call. Fair usage policy"}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://callforges.com/#org","name":"Callforges","url":"https://callforges.com/","logo":"https://callforges.com/logo.png","email":"support@callforges.com"},{"@type":"WebSite","@id":"https://callforges.com/#site","url":"https://callforges.com/","name":"Callforges","publisher":{"@id":"https://callforges.com/#org"}},{"@type":"SoftwareApplication","name":"Callforges","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows, macOS, iOS, Android","description":"Callforges is a cloud phone with local US, UK and Australian numbers, a power auto dialer, AI call notes and an AI voice agent that picks up 24/7.","url":"https://callforges.com/","offers":[{"@type":"Offer","name":"Starter","price":"15","priceCurrency":"USD"},{"@type":"Offer","name":"Business","price":"29","priceCurrency":"USD"},{"@type":"Offer","name":"Scale","price":"45","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need new hardware?","acceptedAnswer":{"@type":"Answer","text":"No. Callforges runs on desktop, web, iOS and Android."}},{"@type":"Question","name":"Can I keep my numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle the port for you, hassle-free, and your old system keeps working until the move completes. Porting a US number costs $10, and you can start during your free trial."}},{"@type":"Question","name":"Will callers know it's AI?","acceptedAnswer":{"@type":"Answer","text":"Yes. The agent introduces itself as a virtual assistant and hands off to a person on request."}},{"@type":"Question","name":"Can I send SMS?","acceptedAnswer":{"@type":"Answer","text":"Yes. Send and receive SMS from your numbers in a shared Inbox, billed per message from your credits. US numbers register with the carriers first (A2P 10DLC)."}},{"@type":"Question","name":"What does international cost?","acceptedAnswer":{"@type":"Answer","text":"100 to 1,000 free minutes per user each month for calls to and from the US, UK, Australia and Canada (inbound and outbound), depending on your plan. After that, per minute, and each call's cost shows in Billing after the call. Fair usage policy"}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
@@ -199,6 +199,7 @@ html[data-motion="off"] *{animation-play-state:paused!important}
     <nav class="nav-links" aria-label="Primary">
       <a href="#features">Product</a>
       <a href="auto-dialer.html">Auto Dialer</a>
+      <a href="/help/collections/messaging">SMS</a>
       <a href="ai-agent.html">AI Agent</a>
       <a href="pricing.html">Pricing</a>
       <a href="/help">Help</a>
@@ -262,6 +263,7 @@ html[data-motion="off"] *{animation-play-state:paused!important}
       <button class="tab" role="tab" id="t-notes" aria-controls="p-notes" aria-selected="false" tabindex="-1">AI Notes</button>
       <button class="tab" role="tab" id="t-agent" aria-controls="p-agent" aria-selected="false" tabindex="-1">AI Agent</button>
       <button class="tab" role="tab" id="t-routing" aria-controls="p-routing" aria-selected="false" tabindex="-1">Routing</button>
+      <button class="tab" role="tab" id="t-sms" aria-controls="p-sms" aria-selected="false" tabindex="-1">SMS</button>
     </div>
     <div class="tabpanel" role="tabpanel" id="p-numbers" aria-labelledby="t-numbers">
       <div><h3>Local wherever you sell.</h3><p>US, UK, Canada and AU numbers in a minute, plus 50+ more countries. Port yours, hassle-free, even during your trial.</p></div>
@@ -307,6 +309,14 @@ html[data-motion="off"] *{animation-play-state:paused!important}
         <div class="fl"><span class="ar">↳</span><span class="nd">Sales</span><span class="ar">→</span><span class="nd">UK sales team</span></div>
         <div class="fl"><span class="ar">↳</span><span class="nd">Support</span><span class="ar">→</span><span class="nd">UK &amp; EU queue</span></div>
         <div class="fl"><span class="ar">↳</span><span class="nd">After hours</span><span class="ar">→</span><span class="nd k">AI agent</span></div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-sms" aria-labelledby="t-sms" hidden>
+      <div><h3>Text from the same number.</h3><p>Two-way SMS from your numbers, in one shared Inbox. Assign, schedule and follow up.</p></div>
+      <div class="tv">
+        <div class="line"><small>Dana · Austin 16:05</small>Can we move the demo to Thursday?</div>
+        <div class="line"><small>You · Austin number</small>Sure, Thursday 10 AM works. See you then.</div>
+        <div class="nrow"><span class="cc">SMS</span><div><b>Delivered</b><span class="m">Assigned to you</span></div><span class="chip live">Open</span></div>
       </div>
     </div>
   </div>
@@ -369,6 +379,7 @@ html[data-motion="off"] *{animation-play-state:paused!important}
       <details><summary>Do I need new hardware?</summary><p>No. Callforges runs on desktop, web, iOS and Android.</p></details>
       <details><summary>Can I keep my numbers?</summary><p>Yes. We handle the port for you, hassle-free, and your old system keeps working until the move completes. Porting a US number costs $10, and you can start during your free trial.</p></details>
       <details><summary>Will callers know it's AI?</summary><p>Yes. The agent introduces itself as a virtual assistant and hands off to a person on request.</p></details>
+      <details><summary>Can I send SMS?</summary><p>Yes. Send and receive SMS from your numbers in a shared Inbox, billed per message from your credits. US numbers register with the carriers first (<a href="/help/articles/register-for-sms-in-the-us">A2P 10DLC</a>).</p></details>
       <details><summary>What does international cost?</summary><p>100 to 1,000 free minutes per user each month for calls to and from the US, UK, Australia and Canada (inbound and outbound), depending on your plan. After that, per minute, and each call's cost shows in Billing after the call. <a href="fair-usage.html">Fair usage policy</a></p></details>
     </div>
   </div>

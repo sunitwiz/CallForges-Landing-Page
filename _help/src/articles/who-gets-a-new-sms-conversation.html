@@ -1,0 +1,28 @@
+<!--
+collection: messaging
+title: Who gets a new SMS conversation
+desc: Remain assigned, first response or round robin, who owns a conversation you start, and the assignee when it closes or the contact opts out.
+order: 5
+updated: 14 November 2026
+iso: 2026-11-14
+-->
+<p class="lead">Who an SMS conversation is assigned to is set in <strong>Settings → Messaging settings → Messaging</strong>, under <strong>Conversations</strong>. The setting is the same for every number in the workspace.</p>
+
+<h2 id="new-conversations">New conversations</h2>
+<p>When a contact sends you the first SMS, the conversation is assigned by the rule under <strong>New conversations</strong>. Pick one:</p>
+<ul>
+  <li><strong>Remain assigned</strong> (the default): the conversation waits unassigned until a user replies, then stays with whoever replied last. When another user replies, it moves to them.</li>
+  <li><strong>First response</strong>: the conversation waits unassigned until a user replies, and the first user who replies keeps it.</li>
+  <li><strong>Round robin</strong>: the conversation goes at once to the number's users, in turn. Replies don't move it.</li>
+</ul>
+<p>Click <strong>Save changes</strong>.</p>
+<figure data-shot="who-gets-a-new-sms-conversation-settings.png">Settings → Messaging: New conversations (1) and the three switches below it (2).</figure>
+<h2 id="when-you-start-it">When you start a conversation</h2>
+<p>With <strong>Assign a conversation to whoever starts it</strong> on (the default), a conversation you start from <strong>New message</strong> is yours. Turn it off to leave such conversations unassigned.</p>
+<h2 id="when-it-closes">When a conversation closes or the contact opts out</h2>
+<ul>
+  <li><strong>Unassign when a conversation is closed or archived</strong> (on by default): closing or archiving a conversation clears its assignee. When the contact sends an SMS again, it reopens unassigned.</li>
+  <li><strong>Unassign when the contact opts out</strong> (on by default): when a contact replies STOP, their conversations on every number are unassigned.</li>
+</ul>
+<h2 id="who-can-change-it">Who can change these settings</h2>
+<p>Anyone who can read SMS sees these settings. Changing them needs <strong>Manage texting settings and saved replies</strong> in the user's role. To assign one conversation by hand, see <a href="/help/articles/the-messaging-inbox#assign">Assign a conversation</a>.</p>
