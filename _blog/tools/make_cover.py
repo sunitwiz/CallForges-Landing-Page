@@ -8,6 +8,7 @@ when it exists.
 """
 import html
 import os
+import pathlib
 import re
 import sys
 
@@ -24,7 +25,7 @@ def main(slug):
     title = meta['title']
     size = 76 if len(title) <= 40 else 66 if len(title) <= 62 else 56
     page = open(os.path.join(HERE, 'cover.html')).read()
-    for k, v in {'logo': 'file://' + os.path.join(REPO, 'callforge-mark.png'), 'kicker': html.escape(meta.get('kicker') or 'Blog'),
+    for k, v in {'logo': pathlib.Path(REPO, 'callforge-mark.png').as_uri(), 'kicker': html.escape(meta.get('kicker') or 'Blog'),
                  'title': html.escape(title), 'size': str(size)}.items():
         page = page.replace('{{' + k + '}}', v)
     tmp = os.path.join(HERE, f'.cover-{slug}.html')
