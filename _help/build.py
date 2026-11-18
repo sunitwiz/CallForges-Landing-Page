@@ -432,15 +432,75 @@ def blog_figures(body, slug):
     return re.sub(r'<figure data-img="([^"]+)">(.*?)</figure>', render, body, flags=re.S)
 
 
-lis = ''.join(f'<li><a href="/blog/{p["slug"]}"><div><strong>{html.escape(p["title"])}</strong><span>{html.escape(p["desc"])}</span><span>{p["shown"]}</span></div>{ARROW}</a></li>' for p in POSTS)
+# The /blog topic of a post: its `category:` line, else its topic's Area in _blog/plan.md, else its `kicker:`.
+BLOG_TOPICS = {'calling': 'Dialers and calling', 'voice agents': 'AI voice agents', 'sms': 'Texting', 'messaging': 'Texting',
+               'workflows': 'Call routing', 'numbers': 'Numbers and caller ID', 'reliability': 'Numbers and caller ID'}
+
+
+def plan_areas():
+    path = os.path.join(REPO, '_blog', 'plan.md')
+    text = open(path).read() if os.path.exists(path) else ''
+    table = text.split('## Topics')[-1].split('## Queue')[0] if '## Topics' in text else ''
+    areas = {}
+    for line in table.splitlines():
+        cols = line.split('|')
+        if len(cols) > 4:
+            areas.update((slug, cols[3].strip()) for slug in re.findall(r'`([a-z0-9-]+)`', line))
+    return areas
+
+
+AREAS = plan_areas()
+for p in POSTS:
+    src = open(os.path.join(BLOG_SRC, p['slug'] + '.html')).read()
+    meta = dict((k.strip(), v.strip()) for k, v in (ln.split(':', 1) for ln in src[:src.index('-->')].splitlines() if ':' in ln))
+    key = meta.get('category') or AREAS.get(p['slug']) or meta.get('kicker') or ''
+    p['topic'] = BLOG_TOPICS.get(key.lower(), key or 'Guides')
+    p['topic_id'] = re.sub(r'[^a-z0-9]+', '-', p['topic'].lower()).strip('-')
+    p['minutes'] = max(1, round(len(re.sub(r'<[^>]+>', ' ', p['body']).split()) / 220))
+    p['cover'] = p['image'].replace(SITE, '')
+
+
+def blog_meta(p):
+    return f'<time datetime="{p["iso"]}">{p["shown"]}</time><span aria-hidden="true">·</span><span>{p["minutes"]} min read</span>'
+
+
+def blog_card(p, featured):
+    return (f'<li class="bc" data-topic="{p["topic_id"]}"{" data-featured hidden" if featured else ""}><a href="/blog/{p["slug"]}">'
+            f'<img src="{p["cover"]}" alt="" width="1200" height="630" loading="lazy" decoding="async">'
+            f'<div class="bc-body"><p class="b-topic">{html.escape(p["topic"])}</p><h3>{html.escape(p["title"])}</h3>'
+            f'<p class="bc-desc">{html.escape(p["desc"])}</p><p class="b-meta">{blog_meta(p)}</p></div></a></li>')
+
+
+BLOG_HERO = f'''<section class="bh" aria-labelledby="blog-h"><div class="wrap">
+<p class="bh-kick">Guides for teams that call</p>
+<h1 id="blog-h">The CallForges Blog</h1>
+<p class="bh-lede">{BLOG_DESC}</p>
+<div class="bh-cta"><a class="btn btn-primary" href="https://app.callforges.com/signup">Start Free Trial</a><span>14-day free trial · No card required</span></div>
+</div></section>
+'''
+blog_list = ''
+if POSTS:
+    top = POSTS[0]
+    topics = sorted({(p['topic'], p['topic_id']) for p in POSTS})
+    chips = ''.join(f'<button type="button" data-topic="{i}" aria-pressed="false">{html.escape(t)}</button>' for t, i in topics)
+    blog_list = (f'<section class="wrap bf-wrap" id="blogFeatured" aria-label="Latest post"><a class="bf" href="/blog/{top["slug"]}">'
+                 f'<img src="{top["cover"]}" alt="" width="1200" height="630" decoding="async" fetchpriority="high">'
+                 f'<div class="bf-body"><p class="b-topic">Latest · {html.escape(top["topic"])}</p><h2>{html.escape(top["title"])}</h2>'
+                 f'<p class="bf-desc">{html.escape(top["desc"])}</p><p class="b-meta">{blog_meta(top)}</p></div></a></section>\n'
+                 '<section class="wrap bl" aria-labelledby="blog-all-h"><h2 id="blog-all-h">Browse all posts</h2>\n'
+                 f'<div class="bt" id="blogTopics" role="group" aria-label="Filter posts by topic" hidden><button type="button" data-topic="all" aria-pressed="true">All posts</button>{chips}</div>\n'
+                 f'<ul class="bg" id="blogGrid">{"".join(blog_card(p, p is top) for p in POSTS)}</ul>\n'
+                 '<p class="bl-status" id="blogStatus" role="status"></p>\n'
+                 '<div class="bl-more"><button class="btn btn-ghost" type="button" id="blogMore" hidden>Show more posts</button></div>\n</section>\n')
+BLOG_CTA = '''<section class="wrap bcta-wrap"><div class="bcta"><div><h2>Try CallForges free for 14 days</h2><p>A free local number, 50 inbound and 50 outbound minutes. No card required to start.</p></div><a class="btn btn-primary" href="https://app.callforges.com/signup">Start Free Trial</a></div></section>
+'''
 write('blog.html', head('CallForges Blog', BLOG_DESC, '/blog',
                         {'@context': 'https://schema.org', '@graph': [
                             {'@type': 'Blog', 'name': 'CallForges Blog', 'url': SITE + '/blog', 'publisher': PUBLISHER,
                              'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': f'{SITE}/blog/{p["slug"]}', 'datePublished': p['iso']} for p in POSTS]},
-                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]})
-      + site_top + '<main id="main">\n' + '<div class="help-main">\n'
-      + f'<div class="collection-head"><h1>CallForges Blog</h1><p>{BLOG_DESC}</p></div>\n'
-      + f'<ul class="article-list">{lis}</ul>\n' + TRY + '</div>\n</main>' + body_end)
+                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]}).replace('</head>', '<link rel="stylesheet" href="/blog.css?v=1">\n</head>')
+      + site_top + '<main id="main" class="blog-home">\n' + BLOG_HERO + blog_list + BLOG_CTA + '</main>'
+      + body_end.replace('</body>', '<script src="/blog.js?v=1" defer></script>\n</body>'))
 
 for p in POSTS:
     for ref in re.findall(r'href="/blog/([^"#]+)', p['body']):
