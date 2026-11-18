@@ -51,6 +51,8 @@ goes to the app and shows its 404. Inside help and blog pages every link and fil
 - A post's source is `_blog/src/<slug>.html`; the file name is the URL (`/blog/<slug>`). Never edit `blog.html`,
   `blog/` or the `/blog` lines of `sitemap.xml` by hand: `python3 _help/build.py` writes them, newest post first.
 - How to write one, step by step: the `callforges-blog` skill (`.claude/skills/callforges-blog/SKILL.md`).
+- What to write each weekday: the `blogskill` skill (`.claude/skills/blogskill/SKILL.md`). It takes the next 3 or 4
+  posts from the queue in `_blog/plan.md`, which was built from the research in `_blog/research/`.
 - A post starts with a comment holding `title:` (the words people search for), `desc:` (160 characters at most),
   and `date:` (`YYYY-MM-DD`), then a `<p class="lead">` that answers the title in one or two sentences, a `<div class="takeaways">` box, then 4 to 7 `<h2 id="…">` sections.
 - Each post has a cover, `blog/img/<slug>.png` (`python3 _blog/tools/make_cover.py <slug>`): the picture LinkedIn shows.

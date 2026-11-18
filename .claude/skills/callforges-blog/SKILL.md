@@ -18,12 +18,15 @@ serves that. The site rules in `README.md` (no vendor names, no competitor names
 
 ## 1. Topic and facts
 
+- The daily posts come from the **blogskill** skill and its plan, `_blog/plan.md`: five a day, kinds A to E. Use
+  `_blog/topics.md` only when you are asked for a post outside the plan.
 - One post answers one topic. Asked for several (say STIR/SHAKEN, CNAM and number reputation), write one post for
-  each, plus one "why CallForges" post on the theme (here: reliability) that links to all of them. Never one post
-  that covers everything.
-- Posts on one theme link each other: end each with a "Read next:" line naming the others.
-- Take the top `todo` row in `_blog/topics.md` unless you were given a topic. Its **Facts from** column says where
-  the product facts come from; read those files first. A row marked **ask** needs the exact app labels from Sunit or Sonali
+  each, never one post that covers everything. Given a theme (say reliability), also write one "why CallForges" post
+  on it that links to all of them.
+- Posts on one topic or theme link each other: end each with a "Read next:" line naming the others.
+- The post's row (in `_blog/plan.md` or `_blog/topics.md`) says what to write. Its **Facts from** column says where
+  the product facts come from; read those files first. `kb:<file>` is `_blog/facts/<file>`, the app's own
+  help-assistant entries (Sunit refreshes them with `sh _blog/tools/sync_facts.sh` when the app changes). A row marked **ask** needs the exact app labels from Sunit or Sonali
   before writing.
 - Find what readers really ask around the question: Google's "People also ask" and autocomplete, Reddit threads in
   r/sales, r/salesdevelopment and r/realtors, LinkedIn posts. Pick the 4–7 questions that matter; they become the H2s.
