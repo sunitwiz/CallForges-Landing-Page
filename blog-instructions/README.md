@@ -97,10 +97,9 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
    - the site's pages (`pricing.html`, `ai-agent.html`, `auto-dialer.html`, `index.html`, `fair-usage.html`,
      `terms.html`)
    - the help articles in `_help/src/articles/` (`help:<slug>` in the plan)
-   - the app's own help-assistant answers in `_blog/facts/` (`kb:<file>` in the plan), for exact screen and button
-     names
 
-   If a fact or a button name isn't there, ask (Sonali asks Sunit). Never guess.
+   A plan row marked `kb:<file>` or `ask` needs a screen or button name that isn't written down here yet: ask
+   (Sonali asks Sunit) before writing that part. Never guess.
 
 ## 5. What to write each day
 
@@ -156,6 +155,5 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
 
 ## 8. Who keeps this current
 
-Sunit keeps section 3 and `_blog/facts/` in step with the app. He refreshes `_blog/facts/` with
-`sh _blog/tools/sync_facts.sh` after a release. If you find this file disagreeing with the site or the help center,
-say so instead of picking one.
+Sunit keeps section 3 in step with the app: when a feature ships or changes, it is updated here. If you find this
+file disagreeing with the site or the help center, say so instead of picking one.

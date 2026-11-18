@@ -53,9 +53,9 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
    - Commit only `_blog/plan.md`, then push. Ask first; this push changes no page on the site.
    - If the pull shows rows already claimed, take the next `todo` rows.
 4. **Read before writing.** For each post, read its evidence links and its Facts from files. Every fact source is
-   in this repo: `help:<slug>` is `_help/src/articles/<slug>.html`, `kb:<file>` is `_blog/facts/<file>` (the app's
-   own help-assistant entries), page names are the site's pages. Never look for the app's code. If a fact isn't in
-   these files, ask Sunit or Sonali. A post marked `ask` waits
+   in this repo: `blog-instructions/README.md` section 3, `help:<slug>` is `_help/src/articles/<slug>.html`, page
+   names are the site's pages. A row marked `kb:<file>` or `ask` needs app labels that aren't written down here:
+   ask Sunit or Sonali for them. Never guess. A post marked `ask` waits
    for the labels; write the others meanwhile.
 5. **Write the posts.**
    - If you can start subagents, give each one its own post: the row, its kind's rule above, the callforges-blog

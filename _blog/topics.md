@@ -8,7 +8,7 @@ the questions sales teams ask (Reddit blocked direct access, so it was skipped),
 company's blog (ideas only, never copied, linked or named).
 
 **Facts from** is where a post's product facts must come from. `help:<slug>` = `_help/src/articles/<slug>.html`.
-`crm:<name>` = `_help/src/<name>.html`. `kb:<file>` = `_blog/facts/<file>` (the app's help-assistant entries). `pricing`, `auto-dialer`, `ai-agent`, `index`, `fair-usage`, `terms` = those pages.
+`crm:<name>` = `_help/src/<name>.html`. `kb:<file>` = the labels are in the app only: ask for them. `pricing`, `auto-dialer`, `ai-agent`, `index`, `fair-usage`, `terms` = those pages.
 **ask** = no help article has the app's labels for it yet: ask for the exact button and screen names (or a
 screenshot) before writing, then put them under "App labels from the user" at the bottom.
 **legal** = follow the legal rules: official sources linked, who the rule applies to, the "not legal advice" note,

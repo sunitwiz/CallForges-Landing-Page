@@ -6,7 +6,7 @@
 - When a post is live, its Status becomes `live: <date>`.
 - Kinds: A what it is and how it works; B how to set it up in CallForges; C a problem and its fix; D one market; E rules, costs and buying.
 - Order rules: (1) any 4 rows in a row have 4 different kinds and 4 different topics; (2) a topic's A comes before its B, C, D and E (a live A counts as done); (3) no two D posts on the same market within 12 rows; (4) strongest first.
-- Facts from: `hold: ...` means wait for that answer before writing; `ask: outbound voice agent` means get the outbound agent's facts from the user first. `kb:<file>` is `_blog/facts/<file>`; other keys are explained at the top of `topics.md`. Everything a writer needs is in this repo.
+- Facts from: `hold: ...` means wait for that answer before writing; `ask: outbound voice agent` means get the outbound agent's facts from the user first. `kb:<file>` means the app labels aren't in this repo yet: ask for them. Other keys are explained at the top of `topics.md`.
 - Built 2026-11-18 from `_blog/research/`.
 
 ## Topics
