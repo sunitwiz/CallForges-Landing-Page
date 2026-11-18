@@ -126,7 +126,6 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
   - `/blog/parallel-dialer-setup` (B)
   - `/blog/insurance-agent-number-flagged-spam` (D)
   - `/blog/auto-dialer-cost` (E)
-  - `/blog/what-is-stir-shaken` (A)
 
 ## 6. Rules that never bend
 
@@ -139,6 +138,9 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
 - **Legal sections:** link the official source, say who the rule applies to, and end with "This is general information,
   not legal advice."
 - **No certifications** (HIPAA, SOC 2, PCI) unless the site states them.
+- **Sound like a person, not a manual or an AI:** write as a sales leader explaining to a peer, with a scene, an
+  opinion and its trade-off (callforges-blog skill, section 3a), and finish every post with the humanizer
+  pass, then the stop-slop pass (`.claude/skills/humanizer/`, `.claude/skills/stop-slop/`). 1,000 to 1,500 words.
 - **Style:** no em dashes. None of these words: seamless, unlock, leverage, game-changer, revolutionize, robust,
   cutting-edge.
 - **Ask before every push.** A push to `main` publishes the site. Commit only the post's files

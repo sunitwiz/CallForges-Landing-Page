@@ -67,29 +67,70 @@ desc: One or two sentences, 160 characters at most, that answer the title.
 date: 2026-11-18
 kicker: Caller ID
 -->
-<p class="lead">The answer in one or two sentences (about 40–60 words). Someone who reads only this has their answer.</p>
+<p class="lead">A real scene in a sentence or two, then the answer to the title (about 50–80 words in all). Someone
+who reads only this has their answer.</p>
 
 <div class="takeaways"><strong>Key takeaways</strong><ul>
-  <li>3 to 5 points, each true on its own.</li>
+  <li>3 short points in plain words, each true on its own. No app labels.</li>
 </ul></div>
 
 <h2 id="why">Why do business calls get labeled "Spam Likely"?</h2>
-<p>First one or two sentences answer the heading directly, so they still make sense if Google or ChatGPT quotes
-only them. Then the detail, steps, table or example.</p>
+<p>The section gets to its point in the first two sentences, without repeating the heading. Then the detail,
+steps, table or example.</p>
 ```
 
 - `title` is the phrase people search, at most about 60 characters. The file name is the URL: lowercase, hyphens.
 - `kicker` is optional: two or three words shown above the title on the cover (default "Blog").
 - The takeaways box must come straight after the lead; the build moves it above "In this post".
-- 4–7 `<h2 id="…">` sections, each a question or a plain statement of what the reader gets. `<h3>` only inside one.
-- Answer first, everywhere: the lead answers the title, the first sentences of each section answer its heading.
+- 4–6 `<h2 id="…">` sections. Mix plain statements and questions; use a question only where it is the phrase people
+  search. `<h3>` only inside one.
+- Get to the point fast: the lead answers the title, and each section makes its point in its first two sentences.
+  Never open a section by repeating its heading.
 - One section shows how to do it in CallForges, with the exact labels in **bold** and a link to the help article.
 - Use a table when you compare things, a numbered list for steps. An optional FAQ goes last as `<h2>` + `<h3>` questions.
 - Link to 2–4 related pages: other posts (`/blog/<slug>`), help articles (`/help/articles/<slug>`), `/pricing.html`.
   The build stops on a link to a post or article that does not exist.
-- Length: as long as the answer needs, usually 1,000–1,800 words. No filler sections.
-- Voice: plain words, short sentences, "you". No em dashes. None of: seamless, unlock, leverage, game-changer,
-  revolutionize, robust, cutting-edge, "in today's fast-paced world", "let's dive in".
+- Length: 1,000–1,500 words. Cut anything the reader would skim.
+- Voice: section 3a below. No em dashes. None of: seamless, unlock, leverage, game-changer, revolutionize, robust,
+  cutting-edge, "in today's fast-paced world", "let's dive in".
+
+## 3a. Sound like a person who has run a calling team, not like a manual
+
+Write as a sales or support leader explaining to a peer. The reader should feel they talked to someone who has done
+the job.
+
+- **Open with a scene, not a definition.** A rep working 300 old leads; an agency owner whose phone rings at 7pm; an
+  insurance agent whose number turned "Scam Likely" in enrollment season. Answer the title in the next sentences.
+- **Say "we", never "I".** The byline is the CallForges team, so opinions read "we'd start at two lines".
+- **Have an opinion.** Say what you would pick and for whom ("under 50 dials a day, a power dialer is enough"), and
+  what is annoying about it. An opinion is fine; a made-up number is not.
+- **Use the words of the floor:** call block, dials, talk time, connect rate, pipeline, no-shows, callbacks.
+- **Show the maths** with numbers clearly marked as an example ("say 300 leads and one in ten picks up"), never
+  presented as research.
+- **App labels in bold belong in the one "how to do it in CallForges" section.** Everywhere else, say what happens in
+  plain words.
+- **Sentences:** use contractions (you're, it's, don't) and vary the length. Never list more than three things in a
+  sentence; use a table or bullets instead. Two examples beat three. No "not X, but Y". No closing line that sounds
+  like a slogan.
+
+Before and after, same facts:
+
+> **Before (a manual):** To set up a parallel dialer in CallForges, create a campaign, choose Parallel Dialer, set the
+> Number of parallel calls, pick the number you call from and add your leads.
+>
+> **After (a person):** Picture a rep working 300 old leads. On a normal dialer they dial, wait through six rings,
+> hit voicemail, and dial again, all afternoon. A parallel dialer rings several leads at once and puts you through
+> to whoever picks up first. In CallForges it's one campaign form, and the setting that matters is how many lines
+> ring together.
+
+**Last two passes, every post, in this order:**
+1. **humanizer** (`.claude/skills/humanizer/SKILL.md`): mark its 26 AI patterns in the post, strongest first, and
+   rewrite each sentence that has one. Keep every fact and link.
+2. **stop-slop** (`.claude/skills/stop-slop/SKILL.md` and its `references/`): check every paragraph again, then score
+   the post on its five dimensions. Under 40 of 50, rewrite and score again.
+
+Our rules win where the two skills differ: no em dashes at all; a heading may be a question; app labels stay **bold**
+in the CallForges section; a product fact may say "always" or "never" when it is true.
 
 ## 4. Images
 
@@ -111,7 +152,8 @@ only them. Then the detail, steps, table or example.</p>
 2. Check every line below. Fix anything that fails and check again. If you can start a subagent, also give it the
    built post and this list and ask it to find failures; a fresh reader finds what the writer misses.
    - [ ] The lead answers the title on its own.
-   - [ ] Every H2 opens with a direct answer to itself.
+   - [ ] No section opens by repeating its heading; each makes its point in its first two sentences.
+   - [ ] It opens with a scene, gives an opinion with its trade-off, and keeps app labels to the CallForges section.
    - [ ] The takeaways are true and add up to the post.
    - [ ] Every number has its source, year and a working link; nothing is invented.
    - [ ] Every product fact matches the **Facts from** files, with the app's exact labels; nothing that isn't live.
@@ -119,7 +161,8 @@ only them. Then the detail, steps, table or example.</p>
    - [ ] Prices only as `pricing.html` states them.
    - [ ] Title is the search phrase; `desc` answers it in 160 characters or fewer.
    - [ ] Cover made and looked at; every figure has a caption and is easy to read on a phone.
-   - [ ] Read aloud, it sounds like a person explaining, not a brochure.
+   - [ ] Read aloud, it sounds like a person explaining, not a brochure or a manual.
+   - [ ] humanizer pass done, then stop-slop; score 40 of 50 or more.
 3. Preview: `node _help/tools/preview.js . 8000`, open `http://127.0.0.1:8000/blog/<slug>`, check it at phone width too.
 
 ## 6. Publish and share
