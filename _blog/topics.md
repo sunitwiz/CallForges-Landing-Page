@@ -51,12 +51,12 @@ no verdict on CallForges' own calls.
 
 | # | Title | Slug | Facts from | Status |
 |---|---|---|---|---|
-| 29 | How to stop your calls showing as "Spam Likely" | stop-calls-showing-spam-likely | help:buy-a-phone-number, ask (registration labels), auto-dialer | todo |
+| 29 | How to stop your calls showing as "Spam Likely" | stop-calls-showing-spam-likely | help:buy-a-phone-number, ask (registration labels), auto-dialer | 2026-11-18 (as phone-number-reputation) |
 | 30 | How to remove "Spam Likely" from your business number | remove-spam-likely-from-your-number | ask | todo |
 | 31 | Branded caller ID: what it is and how to get it | branded-caller-id | ask | todo |
 | 32 | How to write a branded caller ID name that gets approved | branded-caller-id-name | ask | todo |
-| 33 | SHAKEN/STIR and caller name (CNAM) registration explained | shaken-stir-cnam-explained | ask, legal (fcc.gov sources) | todo |
-| 34 | What is CNAM and how do you register it? | what-is-cnam | ask | todo |
+| 33 | SHAKEN/STIR and caller name (CNAM) registration explained | shaken-stir-cnam-explained | ask, legal (fcc.gov sources) | 2026-11-18 (as what-is-stir-shaken + what-is-cnam) |
+| 34 | What is CNAM and how do you register it? | what-is-cnam | ask | 2026-11-18 |
 | 35 | Why local numbers get more answers | why-local-numbers-get-more-answers | help:buy-a-phone-number, index | todo |
 | 36 | What is local presence dialing? | what-is-local-presence-dialing | auto-dialer (local caller ID by country), pricing | todo |
 | 37 | How to get a US phone number for your business from abroad | get-a-us-business-number-from-abroad | help:buy-a-phone-number | todo |
