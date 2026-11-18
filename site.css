@@ -1,4 +1,4 @@
-@font-face{font-family:"Geist Fallback";src:local("Arial");size-adjust:104%;ascent-override:93%;descent-override:22%;line-gap-override:0%}
+@font-face{font-family:"Instrument Sans Fallback";src:local("Arial");size-adjust:97%;ascent-override:100%;descent-override:26%;line-gap-override:0%}
 /* Callforges V2 — daylight: cool paper white, ink-black pills, one signal-orange accent.
    Layout: short headlines, big numerals, large soft panels holding product UI; lots of air. */
 :root{
@@ -17,9 +17,9 @@
   --amber-ink:#ffffff;
   --teal:#066b5b;
   --rose:#c23a52;
-  --display:"Geist", "Geist Fallback", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --body:"Geist", "Geist Fallback", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --display:"Instrument Sans", "Instrument Sans Fallback", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --body:"Instrument Sans", "Instrument Sans Fallback", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --r-sm:10px; --r-md:16px; --r-lg:28px;
   --wrap:1200px;
   --shadow:0 1px 2px rgba(11,13,18,.04), 0 24px 60px -28px rgba(11,13,18,.22);
@@ -33,10 +33,10 @@ body{margin:0;background:var(--ink);color:var(--fg);font:16px/1.55 var(--body);-
 a{color:inherit}
 img{max-width:100%}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
-h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.045em;line-height:1;text-wrap:balance;margin:0}
-h1{font-size:clamp(3rem,8vw,6.6rem);letter-spacing:-.055em}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1;text-wrap:balance;margin:0}
+h1{font-size:clamp(3rem,8vw,6.6rem);letter-spacing:-.02em}
 h2{font-size:clamp(2.2rem,5vw,4rem)}
-h3{font-size:1.3rem;letter-spacing:-.02em;line-height:1.15}
+h3{font-size:1.3rem;letter-spacing:-.01em;line-height:1.15}
 [id]{scroll-margin-top:84px}
 p{margin:0}
 .lede{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--muted);max-width:52ch}
@@ -61,7 +61,7 @@ p{margin:0}
 /* Nav */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);background:rgba(246,247,249,.78);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;gap:28px;height:64px}
-.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font:700 1.12rem/1 var(--display);letter-spacing:-.03em}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font:700 1.12rem/1 var(--display);letter-spacing:-.015em}
 .brand img{width:26px;height:26px;border-radius:6px}
 .nav-links{display:flex;gap:24px;margin-right:auto}
 .nav-links a{text-decoration:none;color:var(--muted);font-size:.93rem;padding:8px 0;white-space:nowrap}
@@ -99,7 +99,7 @@ section{position:relative}
 /* FAQ */
 .faq{display:grid;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:24px 44px 24px 0;font:600 1.1rem/1.35 var(--display);letter-spacing:-.02em;position:relative}
+.faq summary{list-style:none;cursor:pointer;padding:24px 44px 24px 0;font:600 1.1rem/1.35 var(--display);letter-spacing:-.01em;position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:6px;top:20px;font:400 1.6rem/1 var(--mono);color:var(--fg);transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(45deg)}

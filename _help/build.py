@@ -202,7 +202,7 @@ def head(title, desc, path, ld, image=None):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/site.css">
 <link rel="stylesheet" href="/help/help.css">
 <script type="application/ld+json">{json.dumps(ld, separators=(",", ":"))}</script>
@@ -498,7 +498,7 @@ write('blog.html', head('CallForges Blog', BLOG_DESC, '/blog',
                         {'@context': 'https://schema.org', '@graph': [
                             {'@type': 'Blog', 'name': 'CallForges Blog', 'url': SITE + '/blog', 'publisher': PUBLISHER,
                              'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': f'{SITE}/blog/{p["slug"]}', 'datePublished': p['iso']} for p in POSTS]},
-                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]}).replace('</head>', '<link rel="stylesheet" href="/blog.css?v=2">\n</head>')
+                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]}).replace('</head>', '<link rel="stylesheet" href="/blog.css?v=3">\n</head>')
       + site_top + '<main id="main" class="blog-home">\n' + BLOG_HERO + blog_list + BLOG_CTA + '</main>'
       + body_end.replace('</body>', '<script src="/blog.js?v=1" defer></script>\n</body>'))
 
