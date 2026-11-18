@@ -43,7 +43,8 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
 
 ## Each day
 
-1. **Pull and load.** Run `git pull`, then load the callforges-blog skill.
+1. **Pull and load.** Run `git pull`, read `blog-instructions/README.md` (the context and rules), then load the
+   callforges-blog skill.
 2. **Find today's posts.** No posts on Saturday or Sunday. In `_blog/plan.md` → "Queue", take the first 4 rows whose
    Status is `todo` (3 if Sunit or Sonali says so). Each row has the kind, the topic, the title, the slug, Facts from
    and evidence links.
@@ -76,7 +77,7 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
 - **Byline:** every post is by "CallForges team". No person's name, no bio.
 - **Only what is live.** Voice agents (inbound and outbound), SMS, the team inbox, call workflows, the power and
   parallel dialers, recording, AI notes, CRM logging, numbers and porting are live. Branded calling is "coming soon"
-  only. The full live and not-live lists are in `CLAUDE.md` → "Blog". Anything else: check the site and help
+  only. The full live and not-live lists are in `blog-instructions/README.md`. Anything else: check the site and help
   center first.
 - **No names:** no competitor or vendor name, ever. Not even the products the research looked at; say "the carrier".
   A CRM we connect to may be named, as the help center does.

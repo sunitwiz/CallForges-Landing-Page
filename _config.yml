@@ -1,3 +1,5 @@
 exclude:
   - README.md
   - CLAUDE.md
+  - AGENTS.md
+  - blog-instructions

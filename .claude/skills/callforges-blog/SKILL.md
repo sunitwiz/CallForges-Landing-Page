@@ -13,7 +13,8 @@ serves that. The site rules in `README.md` (no vendor names, no competitor names
 ## 0. Before anything
 
 1. `git pull`. Two people (Sunit and Sonali) and their agents publish here.
-2. Read `README.md` → "Blog posts" and "Rules", and `_blog/topics.md`.
+2. Read `blog-instructions/README.md` (what CallForges sells, what is live, how to research, the rules) and
+   `README.md` → "Blog posts" and "Rules".
 3. Every post is by "CallForges team": no person's name, no author line in the post. The build writes the byline.
 
 ## 1. Topic and facts

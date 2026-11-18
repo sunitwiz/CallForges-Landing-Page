@@ -50,6 +50,7 @@ goes to the app and shows its 404. Inside help and blog pages every link and fil
 
 - A post's source is `_blog/src/<slug>.html`; the file name is the URL (`/blog/<slug>`). Never edit `blog.html`,
   `blog/` or the `/blog` lines of `sitemap.xml` by hand: `python3 _help/build.py` writes them, newest post first.
+- Blog agents start at `blog-instructions/README.md`: the context, the rules and the daily routine.
 - How to write one, step by step: the `callforges-blog` skill (`.claude/skills/callforges-blog/SKILL.md`).
 - What to write each weekday: the `blogskill` skill (`.claude/skills/blogskill/SKILL.md`). It takes the next 3 or 4
   posts from the queue in `_blog/plan.md`, which was built from the research in `_blog/research/`.
