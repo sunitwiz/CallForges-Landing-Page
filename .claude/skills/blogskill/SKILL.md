@@ -76,7 +76,8 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
 - **Byline:** every post is by "CallForges team". No person's name, no bio.
 - **Only what is live.** Voice agents (inbound and outbound), SMS, the team inbox, call workflows, the power and
   parallel dialers, recording, AI notes, CRM logging, numbers and porting are live. Branded calling is "coming soon"
-  only. Anything else: check the site and help center first.
+  only. The full live and not-live lists are in `CLAUDE.md` → "Blog". Anything else: check the site and help
+  center first.
 - **No names:** no competitor or vendor name, ever. Not even the products the research looked at; say "the carrier".
   A CRM we connect to may be named, as the help center does.
 - **Prices** only as `pricing.html` states them.
