@@ -498,7 +498,7 @@ write('blog.html', head('CallForges Blog', BLOG_DESC, '/blog',
                         {'@context': 'https://schema.org', '@graph': [
                             {'@type': 'Blog', 'name': 'CallForges Blog', 'url': SITE + '/blog', 'publisher': PUBLISHER,
                              'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': f'{SITE}/blog/{p["slug"]}', 'datePublished': p['iso']} for p in POSTS]},
-                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]}).replace('</head>', '<link rel="stylesheet" href="/blog.css?v=1">\n</head>')
+                            breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]}).replace('</head>', '<link rel="stylesheet" href="/blog.css?v=2">\n</head>')
       + site_top + '<main id="main" class="blog-home">\n' + BLOG_HERO + blog_list + BLOG_CTA + '</main>'
       + body_end.replace('</body>', '<script src="/blog.js?v=1" defer></script>\n</body>'))
 
