@@ -4,81 +4,70 @@ desc: STIR/SHAKEN is how US phone companies sign calls so the receiving network 
 date: 2026-11-18
 kicker: Reliability
 -->
-<p class="lead">STIR/SHAKEN is the system US phone companies use to sign calls, so the network receiving a call can check that the caller ID is real. Each call is signed at level A, B or C. Level A, the highest, means your phone company knows your business and has verified your link to the number.</p>
+<p class="lead">Someone on your sales floor says calls from the new number go unanswered "because of STIR/SHAKEN", and nobody's sure what that means. It's how US phone companies sign each call, so the network at the other end can check that the caller ID is real. Calls are signed at level A, B or C. Level A, the highest, means your phone company knows your business and has verified your link to the number.</p>
 
 <div class="takeaways"><strong>Key takeaways</strong><ul>
-  <li>Your phone company signs the call as it leaves, and the called person's network checks the signature when it arrives.</li>
-  <li>Level A means the phone company started the call, knows you and verified your link to the number. Level B skips the number check, and level C only says where the call entered the network.</li>
-  <li>The rules apply to phone companies, not to you as a caller. The FCC required them to sign calls on their IP networks by June 30, 2021.</li>
-  <li>A signature is one input. Networks still weigh how your number calls, so a level A call can still be labeled spam.</li>
-  <li>In CallForges, calls from your US numbers to US phones are signed at level B from day one, and at level A once your Business profile is approved. It is free, also during the trial.</li>
+  <li>Your phone company signs each call as it leaves, and the called person's network checks the signature when the call arrives.</li>
+  <li>Level A means the phone company knows you and has verified your link to the number. Level B skips the number check, and level C only says where the call came in.</li>
+  <li>The FCC's rules bind phone companies, not callers, and a signed call can still be labeled spam because networks also weigh how your number calls.</li>
 </ul></div>
 
-<h2 id="what-is-it">What is STIR/SHAKEN?</h2>
-<p>STIR/SHAKEN is a set of industry standards that lets a phone company sign the caller ID on each call, so the network at the other end can check it. The FCC describes it as "allowing authenticated caller ID information to securely travel with the call itself throughout the entire call path" (<a href="https://docs.fcc.gov/public/attachments/FCC-24-120A1.pdf" target="_blank" rel="noopener">FCC Eighth Report and Order, 2024</a>).</p>
-<p>The name joins two standards: STIR, the protocols written by the Internet Engineering Task Force, and SHAKEN, the specification the US phone industry wrote for using them across networks (same source). In practice it works in three steps:</p>
+<h2 id="what-is-it">How a call gets signed</h2>
+<p>Your phone company puts its digital signature on the caller ID, and the receiving network decrypts it to see who signed and what they vouched for. The FCC describes the framework as industry standards "allowing authenticated caller ID information to securely travel with the call itself throughout the entire call path" (<a href="https://docs.fcc.gov/public/attachments/FCC-24-120A1.pdf" target="_blank" rel="noopener">FCC Eighth Report and Order, 2024</a>).</p>
+<p>The name joins two standards. STIR is the set of protocols written by the Internet Engineering Task Force, and SHAKEN is the specification the US phone industry wrote for using them across networks (same source). On a call it runs in three steps:</p>
 <ol>
   <li>Your phone company gets a certificate through a neutral governance system. The certificate says the company is who it claims to be and may sign caller ID.</li>
-  <li>When you call, your phone company adds a signed header to the call with its certificate and an attestation level: how well it knows you and your number.</li>
+  <li>When you call, your phone company adds a signed header with its certificate and an attestation level: how well it knows you and your number.</li>
   <li>The called person's network checks the signature and uses it, "along with other information", to protect its customers from unwanted and illegal calls (same source).</li>
 </ol>
 <figure data-img="what-is-stir-shaken-signing-path.png">How a call is signed: your phone company signs it as it leaves, networks in between pass the signature on, and the called person's network checks it and weighs it with its spam analytics before the phone rings.</figure>
 
 <h2 id="levels">What do attestation levels A, B and C mean?</h2>
-<p>The attestation level says how much the signing phone company vouches for the caller. A is "full", B is "partial" and C is "gateway", and a sales team wants level A on every number it calls from (<a href="https://docs.fcc.gov/public/attachments/FCC-24-120A1.pdf" target="_blank" rel="noopener">FCC Eighth Report and Order, 2024</a>).</p>
+<p>The level says how much the signing phone company vouches for you. A is "full", B is "partial" and C is "gateway" (<a href="https://docs.fcc.gov/public/attachments/FCC-24-120A1.pdf" target="_blank" rel="noopener">FCC Eighth Report and Order, 2024</a>).</p>
 <table>
   <thead>
     <tr><th>Level</th><th>The signing phone company</th><th>What the receiving network learns about you</th></tr>
   </thead>
   <tbody>
-    <tr><td>A, "full"</td><td>Started the call, knows the customer, and has "established a verified association with the telephone number used for the call"</td><td>Who sent the call, and that the number really belongs with that caller</td></tr>
+    <tr><td>A, "full"</td><td>Started the call, knows the customer, and has "established a verified association with the telephone number used for the call"</td><td>Who sent the call, and that the number belongs with that caller</td></tr>
     <tr><td>B, "partial"</td><td>Started the call and knows the customer, but has not verified the number</td><td>Who sent the call, but not that the number is theirs</td></tr>
     <tr><td>C, "gateway"</td><td>Is only "the entry point of the call into its VoIP network" with "no relationship with the initiator of the call", as is typical for calls from abroad</td><td>Where the call came in, and nothing about the caller</td></tr>
   </tbody>
 </table>
-<p>Each network decides how much weight to give a level. Level A is the most a phone company can vouch for, which is why it is the level to aim for.</p>
+<p>We'd want level A on every number a sales team calls from, because it's the most a phone company can vouch for. Each receiving network decides how much weight a level gets, so the effect varies by carrier.</p>
 
 <h2 id="who-must-use-it">Who has to use STIR/SHAKEN?</h2>
-<p>Phone companies do, not callers. You never sign calls yourself: your phone company signs them for you, and the level it can give depends on what it knows about you and your numbers. These are the FCC's rules (<a href="https://docs.fcc.gov/public/attachments/FCC-24-120A1.pdf" target="_blank" rel="noopener">FCC Eighth Report and Order, 2024</a>):</p>
-<ul>
-  <li><strong>Phone companies that start calls.</strong> Following the TRACED Act of 2019, the FCC required them to use STIR/SHAKEN in the IP parts of their networks by June 30, 2021.</li>
-  <li><strong>Gateway providers,</strong> which bring calls from abroad into the US. Since June 30, 2023 they must sign unsigned calls that show a US number.</li>
-  <li><strong>Networks in the middle.</strong> One that receives an unsigned call straight from the phone company that started it must sign it, since December 31, 2023. All of them must pass on a signature they receive unaltered.</li>
-  <li><strong>Every provider,</strong> whether it signs calls or not, must file in the FCC's Robocall Mitigation Database. The FCC's rules bar networks from accepting calls directly from a provider that is not listed there.</li>
-</ul>
-<p>There are limits. STIR/SHAKEN only works on IP-based voice networks, so networks that still rely on older equipment have an ongoing extension. The FCC also polices level A: in 2024 it proposed a $2,000,000 penalty against a phone company over calls it had signed at level A, and it set rules that keep a phone company responsible for its signatures even when another company does the technical signing (same source).</p>
+<p>Phone companies do. These are FCC rules made under the TRACED Act of 2019, and they bind the companies that carry your calls, so you never sign a call yourself. The level your phone company can give depends on what it knows about you and your numbers (<a href="https://docs.fcc.gov/public/attachments/FCC-24-120A1.pdf" target="_blank" rel="noopener">FCC Eighth Report and Order, 2024</a>):</p>
+<table>
+  <thead>
+    <tr><th>Who</th><th>What the FCC requires</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Phone companies that start calls</td><td>Sign calls in the IP parts of their networks, since June 30, 2021</td></tr>
+    <tr><td>Gateway providers, which bring calls from abroad into the US</td><td>Sign unsigned calls that show a US number, since June 30, 2023</td></tr>
+    <tr><td>Networks in the middle</td><td>Pass on any signature they receive unaltered, and since December 31, 2023, sign an unsigned call that comes straight from the phone company that started it</td></tr>
+    <tr><td>Every provider, signing or not</td><td>File in the FCC's Robocall Mitigation Database. Networks may not accept calls directly from a provider that isn't listed there.</td></tr>
+  </tbody>
+</table>
+<p>STIR/SHAKEN only works on IP-based voice networks, so providers that still rely on older equipment have an ongoing extension. The FCC also polices level A. In 2024 it proposed a $2,000,000 penalty against a phone company over calls it had signed at level A, and it set rules that keep a phone company responsible for its signatures when another company does the technical signing (same source).</p>
 <p class="note">This is general information, not legal advice.</p>
 
-<h2 id="what-it-does-not-do">What does STIR/SHAKEN not do?</h2>
-<p>It does not decide by itself whether your call is answered, labeled or blocked. It tells the receiving network who signed the call and how well they know you, and the network weighs that with everything else it knows about your number.</p>
-<ul>
-  <li><strong>It does not remove a spam label.</strong> Verizon told the FCC its call filter uses "a call's STIR/SHAKEN verification results as one component of the more holistic real-time analysis to determine whether to block or label a call" (<a href="https://docs.fcc.gov/public/attachments/DA-21-772A1.pdf" target="_blank" rel="noopener">FCC Second Report on Call Blocking, 2021</a>). Its spam feedback form says it does not label a call "based solely on caller ID authentication information" (<a href="https://spamalerts.verizon.com/vsf/" target="_blank" rel="noopener">Verizon spam feedback form, checked 2026</a>). A level A call can still be labeled when the number calls like a robocaller.</li>
-  <li><strong>It does not prove the caller is honest.</strong> AT&amp;T puts it plainly: "even if AT&amp;T validates the number, people can still use valid numbers for bad purposes" (<a href="https://www.att.com/support/smallbusiness/article/smb-digital-phone/KM1238090/" target="_blank" rel="noopener">AT&amp;T, 2025</a>).</li>
-  <li><strong>It does not show your name.</strong> Level A is about your number, not your business name. In CallForges your name shows only with an approved caller ID name, a separate registration.</li>
-  <li><strong>It is not always visible.</strong> Whether the person sees anything depends on their network and phone. AT&amp;T's business phone service, for example, puts a [V] in front of a call it has verified (same source).</li>
-</ul>
+<h2 id="what-it-does-not-do">What a signature can't do for you</h2>
+<p>A signature doesn't decide whether your call is answered, labeled or blocked. The receiving network weighs it with everything else it knows about your number, and that part is each carrier's own policy.</p>
+<p>Verizon told the FCC its call filter uses "a call's STIR/SHAKEN verification results as one component of the more holistic real-time analysis to determine whether to block or label a call" (<a href="https://docs.fcc.gov/public/attachments/DA-21-772A1.pdf" target="_blank" rel="noopener">FCC Second Report on Call Blocking, 2021</a>). Its spam feedback form says it does not label a call "based solely on caller ID authentication information" (<a href="https://spamalerts.verizon.com/vsf/" target="_blank" rel="noopener">Verizon spam feedback form, checked 2026</a>). Say a rep makes 250 dials a day from one number and most ring out unanswered. Level A tells the network who's calling, and the analytics still see a number that calls like a robocaller. That's <a href="/blog/phone-number-reputation">phone number reputation</a>, and it's a separate fix.</p>
+<p>A signature doesn't vouch for the caller's intentions either. AT&amp;T's own page says that "even if AT&amp;T validates the number, people can still use valid numbers for bad purposes" (<a href="https://www.att.com/support/smallbusiness/article/smb-digital-phone/KM1238090/" target="_blank" rel="noopener">AT&amp;T, 2025</a>).</p>
+<p>It doesn't put your business name on the screen. Level A is about your number, and the name comes from a separate system, caller ID name (CNAM). Any visible sign of the signature depends on the person's network and phone. AT&amp;T's business phone service, for example, puts a [V] in front of a call it has verified (same source).</p>
 
-<h2 id="in-callforges">How does CallForges get your US calls signed at level A?</h2>
-<p>You register your business once, and the rest happens by itself. Calls from your US numbers to US phones are signed at level B from day one, because CallForges' own business is verified with the carrier. Once your Business profile is approved, your US local and mobile numbers move to level A.</p>
+<h2 id="in-callforges">How to get level A in CallForges</h2>
+<p>You don't need any of this to make calls. Calls from your US numbers to US phones work without registering, including on the free trial, and they go out at level B from day one, because CallForges' own business is verified with the carrier. Level A takes one free registration, the Business profile:</p>
 <ol>
   <li>Open <strong>Compliance center</strong> in the sidebar. Under <strong>Carrier registrations</strong>, click <strong>Register now</strong> on the <strong>Business profile</strong>.</li>
-  <li>Fill in <strong>General information</strong>, <strong>Business information</strong> and <strong>Point of contact</strong>. The Business profile accepts a registration ID from any country, such as a US EIN or DUNS number. The form saves itself as a draft, so you can stop and come back.</li>
+  <li>Fill in <strong>General information</strong>, <strong>Business information</strong> and <strong>Point of contact</strong>. It accepts a registration ID from any country, such as a US EIN or a DUNS number, and saves itself as a draft so you can stop and come back.</li>
   <li>Check <strong>Review</strong> and click <strong>Submit for review</strong>. Approval usually takes about 1 to 2 days.</li>
-  <li>That's it. <strong>Caller verification (SHAKEN/STIR)</strong> starts by itself within 15 minutes of approval for every US local and mobile number, with nothing to fill in. Carriers review it in about 72 hours, and then calls from those numbers are signed at level A.</li>
+  <li>There's nothing else to fill in. <strong>Caller verification (SHAKEN/STIR)</strong> starts by itself within 15 minutes of approval for every US local and mobile number. Carriers review it in about 72 hours, and then calls from those numbers are signed at level A.</li>
 </ol>
-<p>What you can count on after that:</p>
-<ul>
-  <li><strong>New numbers join by themselves.</strong> A US number you buy later is added within 15 minutes while <strong>Verify my numbers automatically</strong> is on in <strong>Settings → Dialer settings</strong>, which it is by default. See <a href="/help/articles/buy-a-phone-number">Buy a phone number</a>.</li>
-  <li><strong>You can see every number's status.</strong> The <strong>Caller verification (SHAKEN/STIR)</strong> card under <strong>Carrier registrations</strong> lists every US number with its status, such as <strong>Approved</strong> or <strong>Pending</strong>, and its <strong>Not verified</strong> view shows only the numbers that need you. <strong>Phone Numbers</strong> has the same status in its <strong>Caller verification (SHAKEN/STIR)</strong> column.</li>
-  <li><strong>You hear back without checking.</strong> A Business profile in review is checked with the carriers every 4 hours, and the workspace owner gets an email when the carriers approve or reject it.</li>
-  <li><strong>It costs nothing.</strong> Registering is free, calls from a verified number cost the same, and you can register during the <a href="/help/articles/start-your-free-trial">free trial</a>. The <a href="/pricing.html">pricing page</a> lists what each plan includes.</li>
-</ul>
-<p>Caller verification covers US local and mobile numbers. Toll-free and non-US numbers are not covered, and Canada has its own system, where only Canadian carriers sign Canadian numbers.</p>
+<p>A US number you buy later joins within 15 minutes while <strong>Verify my numbers automatically</strong> is on in <strong>Settings → Dialer settings</strong>, which it is by default (<a href="/help/articles/buy-a-phone-number">Buy a phone number</a>). The <strong>Caller verification (SHAKEN/STIR)</strong> card under <strong>Carrier registrations</strong> lists every US number with its status, such as <strong>Approved</strong> or <strong>Pending</strong>, and its <strong>Not verified</strong> view shows only the numbers that need you. <strong>Phone Numbers</strong> has the same status in its <strong>Caller verification (SHAKEN/STIR)</strong> column. While the Business profile is in review, CallForges checks it with the carriers every 4 hours, and the workspace owner gets an email when the carriers approve or reject it.</p>
+<p>Registering is free, and calls from a verified number cost the same (<a href="/pricing.html">pricing</a>). Caller verification covers US local and mobile numbers. Toll-free and non-US numbers aren't covered, and Canada has its own system, where only Canadian carriers sign Canadian numbers.</p>
+<p>Expect a few days between submitting and level A: a day or two for the profile, then about 72 hours for the carriers. Your team can call the whole time, so <a href="/help/articles/start-your-free-trial">start your free trial</a> and submit the profile on day one.</p>
 
-<p>A call that gets answered needs all three: verified caller ID, your name and a clean number. Read next: <a href="/blog/what-is-cnam">What is CNAM?</a> and <a href="/blog/phone-number-reputation">Phone number reputation</a>.</p>
-
-<h2 id="faq">Frequently asked questions</h2>
-<h3>Do I need STIR/SHAKEN to call US numbers?</h3>
-<p>No. Your phone company signs your calls, and you don't have to register anything to make them. In CallForges, calls to US phones work without a Business profile, including on the free trial, and are signed at level B. Registering moves them to level A.</p>
-<h3>Will level A stop my calls showing as spam?</h3>
-<p>Not by itself. It is the most your phone company can vouch for, but networks weigh it with how your number calls and with spam reports. <strong>Phone number reputation</strong>, a separate registration in the same Compliance center, registers your numbers with the carriers to lower that risk.</p>
+<p>Read next: <a href="/blog/what-is-cnam">What is CNAM?</a> for the name on your calls, and <a href="/blog/phone-number-reputation">Phone number reputation</a> for the spam labels.</p>

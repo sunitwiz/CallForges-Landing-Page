@@ -3,84 +3,72 @@ title: What is a parallel dialer?
 desc: A parallel dialer rings several leads at once and connects you to the first who answers. How it works, when two answer, and the US and UK calling rules.
 date: 2026-11-17
 -->
-<p class="lead">A parallel dialer is an auto dialer that rings several leads at the same time and connects you to the first person who picks up. The other lines are hung up, so on lists where most calls go unanswered you spend less of each hour waiting for someone to answer.</p>
+<p class="lead">An SDR has 400 company main lines from an old trade-show list. On a one-line dialer, most of the hour goes to six rings and a voicemail greeting, over and over. A parallel dialer is an auto dialer that rings several of those leads at once and connects you to the first who picks up. It hangs up the other lines, so on a list where most calls go unanswered, more of your hour goes to talking.</p>
+
+<div class="takeaways"><strong>Key takeaways</strong><ul>
+  <li>A parallel dialer rings a few leads at once for one rep, puts the first answer through and hangs up the rest.</li>
+  <li>It pays off on big cold business lists where most calls ring out. Warm leads and consumer lists belong on a power dialer.</li>
+  <li>When two people answer together, the second gets hung up on. US and UK rules target that call, so ring few lines.</li>
+</ul></div>
 
 <h2 id="how-it-works">How does a parallel dialer work?</h2>
-<p>Most of a manual calling session is waiting. You dial, it rings, nobody picks up, and you dial again. A power dialer removes the dialing by hand, but it still rings one lead at a time. A parallel dialer rings a small batch of leads together and gives you the first one who answers.</p>
-<p>In CallForges, each round of a parallel campaign runs like this:</p>
+<p>Your own line connects first, so leads ring only while you're ready to talk. Then the dialer works the list in batches:</p>
 <ol>
-  <li>You click <strong>Start Campaign</strong>. Your own line connects first, so the dialer only rings leads while you are ready to talk.</li>
-  <li>The dialer rings the next leads on the list. The session bar shows how many lines are live, for example <strong>3/3 lines</strong>, and the <strong>Active batch</strong> table shows each line and its status.</li>
-  <li>When a line ends without an answer, the dialer rings the next lead in its place, so the batch stays full.</li>
-  <li>The first person who answers is connected to you. The other lines are hung up at once.</li>
-  <li>The session bar reads <strong>Connected</strong> and the lead's contact page opens, so you can see who you are talking to.</li>
+  <li>It rings the next few leads together. You pick how many lines.</li>
+  <li>When a line ends without an answer, it rings the next lead in its place, so the batch stays full.</li>
+  <li>The first person who answers is put through to you, with their contact page open, and the dialer hangs up the other lines at once.</li>
+  <li>After the call you log the outcome, a short countdown runs, and the next round starts.</li>
 </ol>
-<p>When the call ends, the post-call form opens so you can log the outcome and notes. A countdown shows <strong>Next call in N secs</strong>. Click it to skip the wait, or click <strong>Extend</strong> for more time. The next round starts when the countdown ends and the form is closed. When no leads are left, the campaign is completed.</p>
-<p>You set how many leads ring at once in <strong>Number of parallel calls</strong>, up to 5 lines. One user runs a parallel campaign at a time, in the browser, with the CallForges tab open. The full walkthrough is in the help article <a href="/help/articles/how-the-parallel-dialer-works">How the parallel dialer works</a>.</p>
-
-<h2 id="why-use-one">Why do sales teams use a parallel dialer?</h2>
-<p>Cold lists ring out a lot. Many calls end with no answer, a busy line or voicemail, and on a one-line dialer each of those is dead time for the rep. A parallel dialer runs those misses side by side. While one line rings out, the others are still ringing, and a line that fails is refilled with the next lead straight away, so more of a rep's hour goes to conversations.</p>
-<p>The trade is preparation time. The lead who answers could be any of the ones ringing, so CallForges opens their contact page the moment they are connected.</p>
-<h3>What happens with voicemail?</h3>
-<p>With <strong>Auto machine detection</strong> on in <strong>Settings → Dialer settings</strong>, a machine that answers hears the campaign's <strong>Voicemail drop</strong>, a recorded message you pick when you set up the campaign, and the dialer moves on without you. With detection off, an answering machine counts as an answer and is connected to you the same way a person would be.</p>
+<p>On a one-line dialer you wait through each miss in turn; here the misses ring side by side. As an example, say one lead in ten picks up. One line at a time, you sit through about ten calls for each conversation. With three lines ringing together, you're talking after about four rounds.</p>
+<p>The trade is preparation: you can't read up on a lead before you know who'll answer.</p>
 
 <h2 id="two-answer">What happens when two leads answer at once?</h2>
-<p>This is the cost of parallel dialing. You can only talk to one lead, so if two pick up within a moment of each other, the first is connected to you and the second has nobody to talk to.</p>
-<p>In CallForges, the dialer hangs up a lead and marks it <strong>Cancelled</strong> when:</p>
-<ul>
-  <li>another lead answered first while this one was still ringing,</li>
-  <li>the lead answered but nobody was free to take the call, or</li>
-  <li>you chose <strong>Pause now</strong> while the line was ringing.</li>
-</ul>
-<p>The second case is the one the person you called notices. They picked up, and the call ended. CallForges does not play them a message before it hangs up.</p>
-<p>The <strong>Re-dial cancelled leads</strong> setting decides what happens next. With <strong>Never</strong>, the default, a cancelled lead is not called again in that campaign. Set a number instead and the lead goes back to the bottom of the list, up to that many times.</p>
-<p>Collisions grow with the number of lines and with how well your list answers. On the <strong>Dashboard</strong>, the <strong>Outbound</strong> tab's <strong>From dial to outcome</strong> card counts them as <strong>Picked up, no user free (parallel)</strong>, so check it after each session.</p>
+<p>You get the first, and the dialer hangs up on the second. From their side, they picked up and the line went dead.</p>
+<p>CallForges marks that lead cancelled. It does the same to a lead still ringing when another answers first, and to the lines ringing when you pause right away.</p>
+<p>By default, a cancelled lead isn't called again in that campaign, or you can send it back to the bottom of the list a set number of times. More lines and a list that answers well both mean more cuts, so we'd start at two lines, with re-dial off unless the list is short. If a session leaves a pile of cancelled leads on the campaign's list, ring one line fewer next time; <a href="/blog/parallel-dialer-setup#lines">How many lines should you ring at once?</a> works through the maths.</p>
 
 <h2 id="is-it-legal">Is parallel dialing legal?</h2>
-<p>The US and UK rules below are about what happens to the person who answers. A call that is answered and then dropped is what they target, and who you call matters as much as how you call them.</p>
-<h3>United States: the Telemarketing Sales Rule</h3>
-<p>Under the FTC's <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-310/section-310.4" target="_blank" rel="noopener">Telemarketing Sales Rule</a>, a call is abandoned when a person answers and is not connected to a sales representative within two seconds of finishing their greeting. Abandoning calls is prohibited. The rule's safe harbor protects a seller only if it meets every part of it:</p>
+<p>It can be, and who you call decides most of it. These rules protect the person who answers and then gets hung up on.</p>
+<h3>United States: two federal rules</h3>
+<p>Both are law. Under the FTC's <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-310/section-310.4" target="_blank" rel="noopener">Telemarketing Sales Rule (16 CFR 310.4, as amended in 2024)</a>, a call is abandoned when a person answers and isn't connected to a sales representative within two seconds of finishing their greeting. Abandoning calls is prohibited, and the rule's safe harbor protects a seller only if it meets every part of it:</p>
 <ul>
-  <li>no more than 3 percent of calls answered by a person are abandoned, per campaign, measured over each 30-day period;</li>
-  <li>an unanswered call rings for at least 15 seconds or four rings before it is hung up;</li>
-  <li>when no representative is free within two seconds, a recorded message gives the seller's name and phone number;</li>
+  <li>no more than 3 percent of calls answered by a person are abandoned, per campaign, over each 30-day period;</li>
+  <li>an unanswered call rings for at least 15 seconds or four rings;</li>
+  <li>when no rep is free within two seconds, a recorded message gives the seller's name and phone number;</li>
   <li>records show all of this.</li>
 </ul>
-<p>The FTC's guide, <a href="https://www.ftc.gov/business-guidance/resources/complying-telemarketing-sales-rule" target="_blank" rel="noopener">Complying with the Telemarketing Sales Rule</a>, applies this to dialers that call several consumers for each available representative. The rule is aimed at calls to consumers. <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-310/section-310.6" target="_blank" rel="noopener">Most calls between a telemarketer and a business are exempt</a>, with exceptions: calls selling nondurable office or cleaning supplies are covered, and the FTC treats a call to a business line that pitches an employee something for personal use as covered too. The FCC has its own rule under the TCPA, <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200" target="_blank" rel="noopener">47 CFR 64.1200</a>. It sets a similar 3 percent limit and two-second test for telemarketing calls, requires an identification and opt-out message, and bars hanging up an unanswered telemarketing call before 15 seconds or four rings. Its text has no business-to-business exemption, so check it with your counsel even for B2B lists.</p>
-<h3>United Kingdom: Ofcom's rules on silent and abandoned calls</h3>
-<p>Ofcom's <a href="https://www.ofcom.org.uk/siteassets/resources/documents/consultations/category-1-10-weeks/7837-review-of-how-we-use-persistent-misuse-powers/summary/persistent-misuse-policy-statement.pdf" target="_blank" rel="noopener">statement of policy on persistent misuse</a>, which applies from 1 March 2017, treats both silent and abandoned calls as misuse. A silent call includes one where the caller hangs up as soon as, or shortly after, the person picks up, with no message. An abandoned call is one where a recorded message plays because no agent is free. Ofcom says callers should make neither, and it sees silent calls as the more harmful kind.</p>
-<p>Where there are not enough agents, Ofcom expects an information message within two seconds that says who called and gives a number to ring to decline further calls. Ofcom may act on any caller who makes abandoned calls, and the abandoned call rate is one factor in which cases it pursues. It also weighs calls cut off before they have rung for 15 seconds, repeat calls to the same number within 72 hours without a live agent guaranteed, and answering machine detection that mistakes a person for a machine.</p>
-<p>The statement is written mainly about calls to consumers, but Ofcom's powers cover harm to "someone else, especially consumers", and it sets out no exemption for business numbers.</p>
-<h3>What this means for a CallForges parallel campaign</h3>
-<p>Read against these rules, a second answer that CallForges hangs up with no message is an abandoned call under the TSR's definition and a silent call under Ofcom's. A line that is still ringing when another lead answers is hung up at once, which can be before it has rung for 15 seconds. That points the parallel dialer at business-to-business calling, where the TSR mostly does not apply. For consumer lists in the US or the UK, use the power dialer, which keeps you on the line for every call it places. Our <a href="/blog/power-dialer-vs-parallel-dialer">power dialer vs parallel dialer</a> guide compares the two.</p>
-<p>Settings that help, whoever you call:</p>
+<p><a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-310/section-310.6" target="_blank" rel="noopener">Most calls between a telemarketer and a business are exempt</a>, but calls selling nondurable office or cleaning supplies are covered. The FTC's guide, <a href="https://www.ftc.gov/business-guidance/resources/complying-telemarketing-sales-rule" target="_blank" rel="noopener">Complying with the Telemarketing Sales Rule</a>, also treats a call to a business line that pitches an employee something for personal use as covered.</p>
+<p>The FCC's rule under the TCPA, <a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200" target="_blank" rel="noopener">47 CFR 64.1200 (as amended in 2025)</a>, sets a similar 3 percent limit and two-second test for telemarketing calls, requires an identification and opt-out message, and bars hanging up an unanswered call before 15 seconds or four rings. Its text has no business-to-business exemption, so check it with counsel even for B2B lists.</p>
+<h3>United Kingdom: Ofcom's policy on silent and abandoned calls</h3>
+<p>This one is a regulator's enforcement policy, made under the Communications Act 2003. Ofcom's <a href="https://www.ofcom.org.uk/siteassets/resources/documents/consultations/category-1-10-weeks/7837-review-of-how-we-use-persistent-misuse-powers/summary/persistent-misuse-policy-statement.pdf" target="_blank" rel="noopener">statement of policy on persistent misuse</a>, which applies from 1 March 2017, treats silent and abandoned calls as misuse and says callers should make neither. A silent call includes one where the caller hangs up as soon as, or shortly after, the person picks up, with no message. An abandoned call is one where a recorded message plays because no agent is free. Ofcom sees silent calls as the more harmful kind.</p>
+<p>If agents run short, Ofcom expects a message within two seconds that says who called and gives a number to ring to decline further calls. In picking cases, it may weigh:</p>
 <ul>
-  <li>Keep <strong>Number of parallel calls</strong> low. Fewer lines means fewer collisions.</li>
-  <li>Leave <strong>Re-dial cancelled leads</strong> at <strong>Never</strong> unless you have a reason to call cut leads again soon.</li>
-  <li>Turn on <strong>Respect Do-Not-Call (DNC) lists</strong> and set calling hours with <strong>Use the lead/contact's local time zone to call during their active hours</strong> when you create the campaign.</li>
+  <li>the abandoned call rate;</li>
+  <li>calls cut off before they have rung for 15 seconds;</li>
+  <li>repeat calls to the same number within 72 hours, without a live agent guaranteed;</li>
+  <li>answering machine detection that mistakes a person for a machine.</li>
 </ul>
-<p>Consent, calling hours and do-not-call rules are your responsibility under the CallForges <a href="/terms.html#dialer">Terms</a>.</p>
+<p>The statement is written mainly about consumers, but Ofcom's powers cover harm to "someone else, especially consumers", and it sets out no exemption for business numbers.</p>
+<h3>What this means for a CallForges parallel campaign</h3>
+<p>Under those definitions, a second answer that the dialer hangs up is an abandoned call for the TSR and a silent call for Ofcom. A line still ringing when another lead answers is hung up at once, which can be before 15 seconds. We point the parallel dialer at business-to-business calling, where the TSR mostly does not apply, and we'd put consumer lists in the US or the UK on the power dialer, which keeps you on the line for every call. Whoever you call, set do-not-call and calling hours on the campaign. Consent, calling hours and do-not-call rules are your responsibility under the CallForges <a href="/terms.html#dialer">Terms</a>.</p>
 <p class="note">This is general information, not legal advice. The rules depend on who you call, what you sell and where. Check with a lawyer who knows telemarketing law before you run any auto dialer on consumer lists.</p>
 
 <h2 id="who-should-use-it">Who should use a parallel dialer?</h2>
-<p>A parallel dialer suits teams with a lot of numbers to get through and a low chance that any one call is answered:</p>
-<ul>
-  <li>SDR teams working large business-to-business lists, such as company main lines and older data.</li>
-  <li>Agencies running outbound for clients.</li>
-  <li>Founders and small teams who block an hour for prospecting.</li>
-  <li>Anyone working back through leads who never answered, with a follow-up campaign built from them.</li>
-</ul>
-<p>It is a poor fit for consumer lists in the US or the UK, for the reasons above, and for warm leads such as inbound leads and booked callbacks, which tend to answer and so collide more. For those, and for named accounts you want to research before each call, the power dialer is the better tool.</p>
+<p>Teams with a lot of numbers and a low chance that any one answers: SDRs on big business-to-business lists, agencies running outbound for clients, and founders who block an hour for prospecting.</p>
+<p>Keep consumer lists in the US or the UK off it, for the reasons above, and warm leads too. Inbound leads and booked callbacks answer more, so they collide more, and a warm lead you hang up on is an expensive mistake. We decide per list: if most calls ring out and losing the odd lead to a hang-up is fine, parallel; if every lead matters, power.</p>
 
-<h2 id="set-up">How do you set up a parallel dialer in CallForges?</h2>
+<h2 id="set-up">Set up a parallel dialer in CallForges</h2>
+<p>Campaigns start with a paid plan. One user runs a parallel campaign at a time, with the CallForges tab open.</p>
 <ol>
   <li>Open <strong>Campaigns</strong> and click <strong>Create campaign</strong>.</li>
-  <li>Under <strong>Dialer Type</strong>, choose <strong>Parallel Dialer</strong>. Then set <strong>Number of parallel calls</strong>, <strong>Re-dial cancelled leads</strong> and, if you like, a <strong>Voicemail drop</strong>.</li>
-  <li>Under <strong>Call Via</strong>, pick the number your leads see, and set the <strong>Cooldown duration between two calls</strong>.</li>
-  <li>Under <strong>Audience</strong>, pick a contact list or upload a CSV file with a phone number column.</li>
-  <li>Choose the recording, Do Not Call and calling hours options, then click <strong>Create Campaign</strong>.</li>
-  <li>Open the campaign, allow the browser to use your microphone, and click <strong>Start Campaign</strong>.</li>
+  <li>Under <strong>Dialer Type</strong>, choose <strong>Parallel Dialer</strong>. You can't change it later, so pick it per list.</li>
+  <li>Set <strong>Number of parallel calls</strong> and <strong>Re-dial cancelled leads</strong> (<strong>Never</strong> is the default), and pick a <strong>Voicemail drop</strong> if you've recorded one.</li>
+  <li>Under <strong>Call Via</strong>, pick the number your leads see and set the <strong>Cooldown duration between two calls</strong>. Under <strong>Audience</strong>, pick a contact list or upload a CSV with a phone number column.</li>
+  <li>Turn on <strong>Respect Do-Not-Call (DNC) lists</strong> and <strong>Use the lead/contact's local time zone to call during their active hours</strong>, then click <strong>Create Campaign</strong>.</li>
+  <li>Open the campaign, allow your microphone, and click <strong>Start Campaign</strong>.</li>
 </ol>
-<p>The dialer type can't be changed after the campaign is created, so pick it per list. <a href="/help/articles/create-a-campaign">Create a campaign</a> covers every option on the form.</p>
-<p>Campaigns start with a paid plan, and every paid plan includes both the parallel and the power dialer. Dialer calls use minutes the same way as manual calls. See <a href="/pricing.html">pricing</a> for the plans and minutes, and the <a href="/auto-dialer.html">auto dialer</a> page for the rest of the dialer. You can <a href="https://app.callforges.com/signup">start a free trial</a> to get your number and try calling first.</p>
+<p>The session bar shows the live lines (<strong>3/3 lines</strong>), and cut leads show <strong>Cancelled</strong>. For a break, <strong>Pause now</strong> hangs up the ringing lines and <strong>Pause after this round</strong> lets them finish. The voicemail drop plays only with <strong>Auto machine detection</strong> on in <strong>Settings → Dialer settings</strong>, and the dialer moves on without you. With it off, a machine counts as an answer and is put through to you, and the dialer hangs up the leads still ringing.</p>
+<p>Every field is in <a href="/help/articles/how-the-parallel-dialer-works">How the parallel dialer works</a> and <a href="/help/articles/create-a-campaign">Create a campaign</a>.</p>
+
+<p>We built the CallForges parallel dialer for that SDR with a cold list and an hour, and the leads it cuts can go into a follow-up campaign. Every paid plan includes the parallel and the power dialer, from $15 per user a month billed annually, and dialer calls use minutes like manual calls (<a href="/pricing.html">pricing</a>, <a href="/auto-dialer.html">auto dialer</a>). <a href="https://app.callforges.com/signup">Start a free trial</a> to get your number and try calling first: 14 days, no card to start.</p>
 <p>Read next: <a href="/blog/parallel-dialer-setup">How to set up a parallel dialer</a> and <a href="/blog/power-dialer-vs-parallel-dialer">Power dialer vs parallel dialer</a>.</p>
