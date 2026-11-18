@@ -471,6 +471,8 @@ def blog_card(p, featured):
             f'<p class="bc-desc">{html.escape(p["desc"])}</p><p class="b-meta">{blog_meta(p)}</p></div></a></li>')
 
 
+# The blog's footer leaves out the country codes the other pages show on the right.
+blog_end = body_end.replace('<span class="mono">+1 · +44 · +61</span>', '')
 BLOG_HERO = f'''<section class="bh" aria-labelledby="blog-h"><div class="wrap">
 <p class="bh-kick">Guides for teams that call</p>
 <h1 id="blog-h">The CallForges Blog</h1>
@@ -500,7 +502,7 @@ write('blog.html', head('CallForges Blog', BLOG_DESC, '/blog',
                              'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': f'{SITE}/blog/{p["slug"]}', 'datePublished': p['iso']} for p in POSTS]},
                             breadcrumb_ld([('Home', '/'), ('Blog', '/blog')])]}).replace('</head>', '<link rel="stylesheet" href="/blog.css?v=3">\n</head>')
       + site_top + '<main id="main" class="blog-home">\n' + BLOG_HERO + blog_list + BLOG_CTA + '</main>'
-      + body_end.replace('</body>', '<script src="/blog.js?v=1" defer></script>\n</body>'))
+      + blog_end.replace('</body>', '<script src="/blog.js?v=1" defer></script>\n</body>'))
 
 for p in POSTS:
     for ref in re.findall(r'href="/blog/([^"#]+)', p['body']):
@@ -529,7 +531,7 @@ for p in POSTS:
           + (f'<nav class="toc" aria-label="In this post"><strong>In this post</strong><ol>{toc}</ol></nav>\n' if toc else '')
           + absolutize(body).strip() + '\n'
           + '</article>\n' + related
-          + TRY + '</div>\n</main>' + body_end)
+          + TRY + '</div>\n</main>' + blog_end)
 
 sm_path = os.path.join(REPO, 'sitemap.xml')
 sm = [ln for ln in open(sm_path).read().splitlines() if 'callforges.com/help' not in ln and 'callforges.com/blog' not in ln]
