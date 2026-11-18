@@ -1,6 +1,6 @@
 ---
 name: callforges-blog
-description: Write, update or check a post on the CallForges blog (callforges.com/blog), from picking the topic to the cover image, the build, the preview and the LinkedIn post. Use whenever someone asks to write a blog post, pick the next topic, make a cover or a figure for a post, or review a post before it goes live.
+description: Write, update, check or audit a post on the CallForges blog (callforges.com/blog), from the research brief to the cover image, the build, the preview and the LinkedIn post. Use whenever someone asks to write a blog post, pick the next topic, make a cover or a figure for a post, review a post before it goes live, or audit one post or every post ("audit <slug>", "audit all posts").
 ---
 
 # CallForges blog
@@ -45,6 +45,12 @@ serves that. The site rules in `README.md` (no vendor names, no competitor names
   missing and ask.
 - Calling and recording rules: link the official source, say who the rule applies to, and end that section with
   "This is general information, not legal advice." Never say whether CallForges' own calls comply.
+- Say what kind of rule it is: **a law** (the FCC's rule, a state statute), **a carrier policy** (what a network or
+  a call-labelling company does, which changes without notice) or **a best practice**. Never present a best practice
+  as a law.
+- Say when it **varies by carrier, state or use case**, and check every date, threshold and exception against the
+  source itself. For STIR/SHAKEN, CNAM, 10DLC, number registration, TCPA, DNC and spam labelling, a wrong detail is
+  worse than a missing one.
 
 ## 2a. Sell
 
@@ -97,7 +103,9 @@ steps, table or example.</p>
 ## 3a. Sound like a person who has run a calling team, not like a manual
 
 Write as a sales or support leader explaining to a peer. The reader should feel they talked to someone who has done
-the job.
+the job. The reader is a business owner, sales manager, insurance agent, call center operator or technical buyer:
+smart, busy, and not always fluent in telecom terms. Explain a term in plain words the first time it appears.
+Clear, conversational American English; plain words over clever ones.
 
 - **Open with a scene, not a definition.** A rep working 300 old leads; an agency owner whose phone rings at 7pm; an
   insurance agent whose number turned "Scam Likely" in enrollment season. Answer the title in the next sentences.
@@ -107,13 +115,25 @@ the job.
 - **Use the words of the floor:** call block, dials, talk time, connect rate, pipeline, no-shows, callbacks.
 - **Show the maths** with numbers clearly marked as an example ("say 300 leads and one in ten picks up"), never
   presented as research.
+- **Explain why, then what to do.** Every claim earns its place by saying why it happens and what the reader should
+  check or change. Scenes are examples ("say five agents share one number"), never customers or results we can't show.
 - **App labels in bold belong in the one "how to do it in CallForges" section.** Everywhere else, say what happens in
   plain words.
 - **Sentences:** use contractions (you're, it's, don't) and vary the length. Never list more than three things in a
   sentence; use a table or bullets instead. Two examples beat three. No "not X, but Y". No closing line that sounds
-  like a slogan.
+  like a slogan, and not every paragraph needs a catchy line.
+- **No filler:** no "In today's fast-paced world", "Let's dive in", "Furthermore", "Moreover" or "In conclusion". No
+  closing section that repeats the post; end on the next step and the free trial. Say each idea once, in the section
+  it belongs to. At most one rhetorical question per post outside the headings.
 
-Before and after, same facts:
+Before and after:
+
+> **Before (vague):** Poor call management can negatively affect your business reputation.
+>
+> **After (practical):** If five agents share one outbound number and make 300 calls a day between them, people may
+> start seeing that number labelled spam. Before you buy more numbers, look at how often you call the same people,
+> your pickup rate and who's complaining.
+
 
 > **Before (a manual):** To set up a parallel dialer in CallForges, create a campaign, choose Parallel Dialer, set the
 > Number of parallel calls, pick the number you call from and add your leads.
@@ -131,6 +151,24 @@ Before and after, same facts:
 
 Our rules win where the two skills differ: no em dashes at all; a heading may be a question; app labels stay **bold**
 in the CallForges section; a product fact may say "always" or "never" when it is true.
+
+## 3b. Audit a post
+
+"Audit <slug>" or "audit all posts" checks a live post and fixes it in place. Keep the slug, the date and every
+correct fact and link; change only what fails a check. For "all posts", give each post to its own subagent if you
+can (at most 5 at a time), then read every result yourself.
+
+1. **Accuracy.** Check every product fact against `blog-instructions/README.md` section 3, the site's pages and the
+   help articles, and every number and rule against its source (section 2): a dead link, a changed price, a feature
+   that isn't live or a best practice called a law is fixed or cut.
+2. **Search.** The title is the phrase people search (Google autocomplete, section 1); the lead answers it; the desc
+   is at most 160 characters; the headings say what each section answers; it links the topic's other posts (the A
+   post first) and a help article.
+3. **Reader.** Sections 3 and 3a: a scene up front, an opinion with its trade-off, "we" not "I", app labels only in
+   the CallForges section, 1,000 to 1,500 words, no closing summary.
+4. **AI patterns.** The humanizer pass, then stop-slop, 40 of 50 or more.
+5. **Build and report.** Build, preview, and report per post: what failed, what you changed, the stop-slop score and
+   the word count. Ask before pushing.
 
 ## 4. Images
 

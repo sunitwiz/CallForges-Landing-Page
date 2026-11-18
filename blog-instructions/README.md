@@ -146,6 +146,8 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
 - **Ask before every push.** A push to `main` publishes the site. Commit only the post's files
   (`git add _blog blog blog.html sitemap.xml`).
 - **Quality over volume:** if a post can't be made good today, write 3 instead of 4 and say why.
+- **Audit:** "audit <slug>" or "audit all posts" re-checks live posts for accuracy, search, the reader and AI patterns
+  (callforges-blog skill, section 3b). Run it whenever a rule here changes.
 
 ## 7. After publishing
 
