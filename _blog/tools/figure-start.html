@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block">
+<style>
+  /* Site colours. Keep the white ground: the post puts a border and a shadow around the image. */
+  :root{--fg:#0b0d12;--muted:#565d6b;--line:#e3e5ea;--panel:#f0f2f5;--amber:#ad4708;--amber-fill:#ff8a3d;--teal:#066b5b;--rose:#c23a52}
+  *{box-sizing:border-box;margin:0}
+  body{width:1000px;background:#fff;color:var(--fg);font:400 22px/1.4 "Geist","Helvetica Neue",Arial,sans-serif;padding:48px 56px}
+  h3{font-weight:600;font-size:30px;letter-spacing:-.03em;margin-bottom:28px}
+  .label{font:500 15px/1 "Geist Mono",Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  /* Example: a left-to-right flow. Replace with what the post needs. */
+  .flow{display:flex;align-items:stretch;gap:18px}
+  .step{flex:1;border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+  .step b{display:block;font-weight:600;margin:10px 0 6px}
+  .step p{color:var(--muted);font-size:19px}
+  .step.good{border-color:var(--teal)}
+  .step.bad{border-color:var(--rose)}
+  .arrow{align-self:center;color:var(--amber-fill);font-size:34px}
+</style>
+</head>
+<body>
+<h3>Title of the picture, in plain words</h3>
+<div class="flow">
+  <div class="step"><span class="label">Step 1</span><b>Something happens</b><p>One short line.</p></div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="label">Step 2</span><b>Then this</b><p>One short line.</p></div>
+  <div class="arrow">→</div>
+  <div class="step good"><span class="label">Result</span><b>The outcome</b><p>One short line.</p></div>
+</div>
+</body>
+</html>

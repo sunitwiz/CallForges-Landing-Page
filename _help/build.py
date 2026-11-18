@@ -11,6 +11,7 @@ import json
 import os
 import re
 import struct
+import subprocess
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(REPO, '_help', 'src')
@@ -169,8 +170,9 @@ def shot_figures(sec, slug):
     return re.sub(r'<figure data-shot="([^"]+)">(.*?)</figure>', render, sec, flags=re.S)
 
 
-def head(title, desc, path, ld):
+def head(title, desc, path, ld, image=None):
     url = SITE + path
+    image = image or SITE + '/og-image.png'
     t, d = html.escape(title), html.escape(desc)
     return f'''<!doctype html>
 <html lang="en">
@@ -187,13 +189,13 @@ def head(title, desc, path, ld):
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/og-image.png">
+<meta property="og:image" content="{image}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}">
-<meta name="twitter:image" content="{SITE}/og-image.png">
+<meta name="twitter:image" content="{image}">
 <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
 <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -368,6 +370,7 @@ for a in ARTICLES:
 
 # blog: /blog and /blog/<slug>
 BLOG_SRC = os.path.join(REPO, '_blog', 'src')
+BLOG_IMG = os.path.join(REPO, 'blog', 'img')
 MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
 POSTS = []
 for name in sorted(os.listdir(BLOG_SRC)) if os.path.isdir(BLOG_SRC) else []:
@@ -387,15 +390,47 @@ for name in sorted(os.listdir(BLOG_SRC)) if os.path.isdir(BLOG_SRC) else []:
     if not lead:
         raise SystemExit(f'_blog/src/{name}: no <p class="lead">')
     y, mo, d = meta['date'].split('-')
+    body = src[lead.end():]
+    box = re.match(r'\s*(<div class="takeaways">.*?</div>)', body, re.S)
+    cover = os.path.exists(os.path.join(BLOG_IMG, name[:-5] + '.png'))
     POSTS.append({'slug': name[:-5], 'title': meta['title'], 'desc': meta['desc'], 'iso': meta['date'],
-                  'shown': f'{int(d)} {MONTHS[int(mo) - 1]} {y}', 'lead': lead.group(1).strip(), 'body': src[lead.end():]})
+                  'shown': f'{int(d)} {MONTHS[int(mo) - 1]} {y}', 'lead': lead.group(1).strip(),
+                  'takeaways': box.group(1) if box else '',
+                  'body': body[box.end():] if box else body,
+                  'image': f'{SITE}/blog/img/{name[:-5]}.png' if cover else SITE + '/og-image.png'})
+
+
+def first_committed(slug):
+    try:
+        out = subprocess.run(['git', 'log', '--diff-filter=A', '--format=%ct', '--', f'_blog/src/{slug}.html'],
+                             cwd=REPO, capture_output=True, text=True).stdout.split()
+    except OSError:
+        out = []
+    return int(out[-1]) if out else 1e11 + os.path.getmtime(os.path.join(BLOG_SRC, slug + '.html'))
+
+
 POSTS.sort(key=lambda p: p['title'])
+POSTS.sort(key=lambda p: first_committed(p['slug']), reverse=True)
 POSTS.sort(key=lambda p: p['iso'], reverse=True)
 POST_SLUGS = {p['slug'] for p in POSTS}
 TRY = '''<div class="stillhelp"><p><strong>Try CallForges free for 14 days</strong>A free local number, 50 inbound and 50 outbound minutes. No card required to start.</p><a class="btn btn-primary btn-sm" href="https://app.callforges.com/signup">Start Free Trial</a></div>
 '''
 BLOG_DESC = 'Practical guides for sales teams that call: power and parallel dialers, caller ID, calling rules and more conversations per hour.'
 PUBLISHER = {'@type': 'Organization', 'name': 'CallForges', 'logo': {'@type': 'ImageObject', 'url': SITE + '/logo.png'}}
+
+
+def blog_figures(body, slug):
+    def render(m):
+        name, text = m.group(1), ' '.join(html.unescape(m.group(2)).split())
+        if not os.path.exists(os.path.join(BLOG_IMG, name)):
+            raise SystemExit(f'_blog/src/{slug}.html: missing image blog/img/{name}')
+        if not text:
+            raise SystemExit(f'_blog/src/{slug}.html: image {name} needs a caption')
+        w, h = png_size(os.path.join(BLOG_IMG, name))
+        tall = ' style="max-width:480px;margin-inline:auto"' if h > w else ''
+        return f'<figure><img src="/blog/img/{name}" alt="{html.escape(text)}" width="{w}" height="{h}"{tall} loading="lazy" decoding="async"><figcaption>{html.escape(text)}</figcaption></figure>'
+    return re.sub(r'<figure data-img="([^"]+)">(.*?)</figure>', render, body, flags=re.S)
+
 
 lis = ''.join(f'<li><a href="/blog/{p["slug"]}"><div><strong>{html.escape(p["title"])}</strong><span>{html.escape(p["desc"])}</span><span>{p["shown"]}</span></div>{ARROW}</a></li>' for p in POSTS)
 write('blog.html', head('CallForges Blog', BLOG_DESC, '/blog',
@@ -414,7 +449,7 @@ for p in POSTS:
     for ref in re.findall(r'href="/help/articles/([^"#]+)', p['body']):
         if ref not in SLUGS:
             raise SystemExit(f'_blog/src/{p["slug"]}.html: links to missing help article {ref}')
-    body = re.sub(r'(<table\b.*?</table>)', r'<div class="tbl">\1</div>', p['body'], flags=re.S)
+    body = blog_figures(re.sub(r'(<table\b.*?</table>)', r'<div class="tbl">\1</div>', p['body'], flags=re.S), p['slug'])
     toc = ''.join(f'<li><a href="#{sid}">{t}</a></li>' for sid, t in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body))
     others = [o for o in POSTS if o is not p][:3]
     rel = ''.join(f'<li><a href="/blog/{o["slug"]}">{html.escape(o["title"])}{ARROW}</a></li>' for o in others)
@@ -422,14 +457,15 @@ for p in POSTS:
     path = f'/blog/{p["slug"]}'
     ld = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'BlogPosting', 'headline': p['title'], 'description': p['desc'], 'datePublished': p['iso'], 'dateModified': p['iso'],
-         'image': SITE + '/og-image.png', 'author': {'@type': 'Organization', 'name': 'CallForges'}, 'publisher': PUBLISHER, 'mainEntityOfPage': SITE + path},
+         'image': p['image'], 'author': {'@type': 'Organization', 'name': 'CallForges'}, 'publisher': PUBLISHER, 'mainEntityOfPage': SITE + path},
         breadcrumb_ld([('Blog', '/blog'), (p['title'], path)])]}
     write(f'blog/{p["slug"]}.html',
-          head(f'{p["title"]} | CallForges', p['desc'], path, ld)
+          head(f'{p["title"]} | CallForges', p['desc'], path, ld, p['image'])
           + site_top + '<main id="main">\n' + '<div class="help-main">\n' + crumbs([('Blog', '/blog'), (p['title'], None)])
           + '<article class="article">\n'
           + f'<h1>{html.escape(p["title"])}</h1>\n<p class="lead">{p["lead"]}</p>\n'
           + f'<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">CallForges team · {p["shown"]}</p>\n'
+          + (p['takeaways'] + '\n' if p['takeaways'] else '')
           + (f'<nav class="toc" aria-label="In this post"><strong>In this post</strong><ol>{toc}</ol></nav>\n' if toc else '')
           + absolutize(body).strip() + '\n'
           + '</article>\n' + related

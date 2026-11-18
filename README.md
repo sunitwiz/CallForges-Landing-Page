@@ -50,9 +50,12 @@ goes to the app and shows its 404. Inside help and blog pages every link and fil
 
 - A post's source is `_blog/src/<slug>.html`; the file name is the URL (`/blog/<slug>`). Never edit `blog.html`,
   `blog/` or the `/blog` lines of `sitemap.xml` by hand: `python3 _help/build.py` writes them, newest post first.
-- A post starts with a comment holding `title:` (the words people search for), `desc:` (160 characters at most) and
-  `date:` (`YYYY-MM-DD`), then a `<p class="lead">` that answers the title in one or two sentences, then 4 to 7
-  `<h2 id="…">` sections. Allowed inside: the same tags as a help article. The build adds the title, the byline, the
+- How to write one, step by step: the `callforges-blog` skill (`.claude/skills/callforges-blog/SKILL.md`).
+- A post starts with a comment holding `title:` (the words people search for), `desc:` (160 characters at most),
+  and `date:` (`YYYY-MM-DD`), then a `<p class="lead">` that answers the title in one or two sentences, a `<div class="takeaways">` box, then 4 to 7 `<h2 id="…">` sections.
+- Each post has a cover, `blog/img/<slug>.png` (`python3 _blog/tools/make_cover.py <slug>`): the picture LinkedIn shows.
+  A figure is `<figure data-img="<name>.png">caption</figure>` with the PNG in `blog/img/`, made from HTML by
+  `_blog/tools/render_png.py`. Allowed inside: the same tags as a help article. The build adds the title, the byline, the
   contents box, a table's sideways scroll on phones, "More from the blog" and the "Start Free Trial" box.
 - Links inside a post are root-absolute (`/pricing.html`, `/help/articles/<slug>`, `/blog/<slug>`); the build stops on
   a link to a post or help article that does not exist. Outside links take `target="_blank" rel="noopener"`.
