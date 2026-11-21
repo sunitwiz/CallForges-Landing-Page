@@ -88,13 +88,16 @@ COLLECTIONS = [
 ]
 ARTICLES = [
     {'p': 'attio', 'name': 'Attio', 'slug': 'attio-integration', 'collection': 'crm-integrations',
+     'updated': '22 November 2026', 'iso': '2026-11-22',
+     'listing': ("Listed in Attio's app marketplace", 'Install CallForges straight from Attio.', 'https://attio.com/apps/call-forges'),
      'desc': 'Connect Attio, map users, log calls as notes or Calls records, create people for unknown numbers, import people, log past calls and disconnect.'},
     {'p': 'hubspot', 'name': 'HubSpot', 'slug': 'hubspot-integration', 'collection': 'crm-integrations',
      'desc': 'Connect HubSpot, map users to owners, log calls as HubSpot calls or notes, create contacts for unknown numbers, import contacts, log past calls and disconnect.'},
     {'p': 'pipedrive', 'name': 'Pipedrive', 'slug': 'pipedrive-integration', 'collection': 'crm-integrations',
      'desc': 'Connect Pipedrive, map users, log calls as Call activities or notes, create people for unknown numbers, import people, log past calls and disconnect.'},
     {'p': 'highlevel', 'name': 'HighLevel', 'slug': 'highlevel-integration', 'collection': 'crm-integrations',
-     'updated': '7 November 2026', 'iso': '2026-11-07',
+     'updated': '22 November 2026', 'iso': '2026-11-22',
+     'listing': ('Listed in the HighLevel Marketplace', 'Install CallForges straight from HighLevel.', 'https://marketplace.gohighlevel.com/integration/6aee33ea48e8c98116e6f4e6/versions/6aee33ea48e8c98116e6f4e6'),
      'desc': 'Connect a HighLevel sub-account, map users, log calls in conversations or as notes, tag dispositions, import contacts, log past calls and disconnect.'},
     {'p': 'clio', 'name': 'Clio', 'slug': 'clio-integration', 'collection': 'crm-integrations',
      'updated': '7 November 2026', 'iso': '2026-11-07',
@@ -318,6 +321,18 @@ ARROW = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><pat
 SLUGS = {a['slug'] for a in ARTICLES}
 
 
+STORE_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg>'
+
+
+def listing_card(listing):
+    if not listing:
+        return ''
+    title, note, url = listing
+    return (f'<a class="listing" href="{html.escape(url)}"><span class="listing-icon">{STORE_ICON}</span>'
+            f'<span class="listing-text"><strong>{html.escape(title)}</strong><span>{html.escape(note)}</span></span>'
+            f'<span class="listing-go">View listing{ARROW}</span></a>\n')
+
+
 def crm_body(a):
     src = open(os.path.join(SRC, f'{a["p"]}.html')).read()
     lead = re.search(r'<p class="legal-meta">.*?</p>\s*<p>(.*?)</p>', src, re.S).group(1)
@@ -362,6 +377,7 @@ for a in ARTICLES:
             + '<article class="article">\n'
             + f'<h1>{html.escape(a["title"])}</h1>\n<p class="lead">{lead}</p>\n'
             + f'<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">Written by CallForges Support · Updated {a["updated"]}</p>\n'
+            + listing_card(a.get('listing'))
             + toc_box
             + absolutize(''.join(out))
             + '</article>\n' + related
