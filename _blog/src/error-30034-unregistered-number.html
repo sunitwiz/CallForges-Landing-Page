@@ -1,0 +1,66 @@
+<!--
+title: Error 30034: texts blocked from an unregistered number
+desc: Error 30034 means US carriers blocked a text because the number isn't in an approved 10DLC campaign. The causes, most likely first, and how to fix each.
+date: 2026-11-27
+kicker: SMS
+-->
+<p class="lead">Your follow-up texts went out on Monday, and by Tuesday the delivery report is a column of failures marked "30034". That code means the US carriers blocked the text because the number sending it isn't registered: it's not in an approved A2P 10DLC campaign. The fix is to register the number, or finish the registration that's still in review, before you send again.</p>
+
+<div class="takeaways"><strong>Key takeaways</strong><ul>
+  <li>Error 30034 means the sending number isn't in an approved 10DLC campaign, so US carriers refused the text.</li>
+  <li>The usual causes are a number never registered, a campaign still in review, or a number added after approval.</li>
+  <li>Registering takes one to three weeks, so check every sending number before you plan a texting push.</li>
+</ul></div>
+
+<h2 id="meaning">What error 30034 means</h2>
+<p>Texting platforms that report carrier errors by number use 30034 for "message from an unregistered number". HighLevel users ask about it often enough that "error 30034 go high level" is one of Google's top suggestions for the code. Your platform may word it differently, but the carriers' reason is the same.</p>
+<p>US carriers block business texts sent from a local number that isn't in an approved 10DLC campaign. That's carrier policy rather than a law, but it's enforced on every text, so an unregistered number simply can't reach US phones. Our guide to <a href="/blog/what-is-a2p-10dlc">what A2P 10DLC registration is</a> explains the whole process.</p>
+<p>Calls aren't affected. A number can be blocked for texts and still make and take calls normally.</p>
+
+<h2 id="causes">The causes, most likely first</h2>
+<table>
+  <thead><tr><th>Cause</th><th>How to tell</th><th>The fix</th></tr></thead>
+  <tbody>
+    <tr><td>The number was never registered</td><td>No campaign lists it</td><td>Add it to an approved campaign, or submit a new one</td></tr>
+    <tr><td>The campaign is still in review</td><td>The campaign shows In review</td><td>Wait for approval; it usually takes one to three weeks</td></tr>
+    <tr><td>The number was added after approval</td><td>The campaign is approved, but this number isn't in it</td><td>Add the number to the campaign</td></tr>
+    <tr><td>The carriers refused that one number</td><td>The campaign lists it as refused, with a reason</td><td>Fix the reason and add it again, or use another number</td></tr>
+    <tr><td>The campaign was deleted or rejected</td><td>It's gone, or shows Rejected</td><td>Fix and resubmit, or register again</td></tr>
+  </tbody>
+</table>
+<h3>A new number that never joined the campaign</h3>
+<p>This one is easy to miss. You registered your main number months ago, then bought a second number for a new rep. The campaign covers only the numbers you chose when you submitted it, so the new one sends nothing until you add it.</p>
+<h3>A campaign that isn't approved yet</h3>
+<p>While the carriers review the campaign, its numbers can't text US phones. Plan for one to three weeks, and don't schedule a texting campaign for the week you submit.</p>
+<h3>A campaign that disappeared</h3>
+<p>Campaigns can go away for reasons that have nothing to do with texting. In CallForges, when a plan ends, your numbers are released and every texting campaign is deleted on the date shown in red on Billing. Registering again means a new review.</p>
+
+<h2 id="not-30034">When it isn't a registration problem</h2>
+<p>A few texts fail for other reasons and are easy to mix up with 30034:</p>
+<ul>
+  <li>Texting a US contact from a number outside the US. US carriers don't accept those texts at all. Text from a US number.</li>
+  <li>Texting from a toll-free or landline number, which can't send texts in CallForges.</li>
+  <li>A contact who replied STOP. Their opt-out stops further texts until they reply START.</li>
+</ul>
+
+<h3>Questions people ask about 30034</h3>
+<p><strong>Does a number I ported in need registering?</strong> Yes. A number you moved from another provider follows the same rules as one you bought, so it needs its own place in an approved campaign before it can text US phones.</p>
+<p><strong>Can I text US customers from my UK or Canadian number while I wait?</strong> No. US carriers don't accept texts from numbers outside the US, so the text fails for a different reason. Wait for approval, or text from a registered US number.</p>
+<p><strong>Will it affect my calls?</strong> No. Registration covers texting only. Your calls go out the same whether a number is registered or not.</p>
+
+<h2 id="prevent">How to stop it happening again</h2>
+<p>Make registration part of buying a number. The day a new US number arrives, add it to a campaign, and it's ready by the time anyone needs it.</p>
+<p>Keep one person in charge of the texting registration. In small teams, 30034 usually turns up because the person who registered the main number months ago isn't the person who bought the new one. And before any big send, check that every number on the list of senders shows it can text. Five minutes of checking beats a day of failed reminders and customers who never heard from you.</p>
+
+<h2 id="callforges">How to fix it in CallForges</h2>
+<p>CallForges shows you which numbers can text before you send, so you're less likely to see 30034 in the first place.</p>
+<ol>
+  <li>Open <strong>Phone Numbers</strong>. In the <strong>Capabilities</strong> column, a number that can text has the SMS chip. A grey or red chip opens the reason and the next step, such as <strong>Add to campaign</strong>, <strong>Register now</strong> or <strong>Register business</strong>.</li>
+  <li>For a number that isn't in a campaign, click <strong>Add to campaign</strong> on its chip, or use <strong>View unregistered numbers</strong> in the <strong>Compliance center</strong>.</li>
+  <li>With no campaign yet, open <strong>Text messaging (A2P 10DLC)</strong> in the <strong>Compliance center</strong> and click <strong>Add campaign</strong>. It needs an approved <strong>Business profile</strong> first.</li>
+  <li>If a campaign shows <strong>Rejected</strong>, read the carriers' reason under its name and click <strong>Fix and resubmit</strong>.</li>
+</ol>
+<p>The Inbox also tells you when the number you've picked can't text, and why. The full steps are in <a href="/help/articles/register-for-sms-in-the-us">Register for SMS in the US</a>, and <a href="/help/articles/get-started-with-sms">Get started with SMS</a> covers which numbers can text.</p>
+<p>You can register during the free trial, and the carriers' fees are paid on your card when you submit. <a href="https://app.callforges.com/signup">Start a free trial</a> and register your number the day you get it.</p>
+
+<p>Read next: <a href="/blog/what-is-a2p-10dlc">What is A2P 10DLC registration?</a> and <a href="/blog/10dlc-registration-fees">10DLC registration fees and how long approval takes</a>.</p>
