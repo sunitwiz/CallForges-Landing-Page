@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block">
+<style>
+  /* Site colours. Keep the white ground: the post puts a border and a shadow around the image. */
+  :root{--fg:#0b0d12;--muted:#565d6b;--line:#e3e5ea;--panel:#f0f2f5;--amber:#ad4708;--amber-fill:#ff8a3d;--teal:#066b5b;--rose:#c23a52}
+  *{box-sizing:border-box;margin:0}
+  /* Rendered 640px wide so the text stays readable when a phone shows it about 360px wide. */
+  body{width:640px;background:#fff;color:var(--fg);font:400 23px/1.3 "Geist","Helvetica Neue",Arial,sans-serif;padding:30px 30px 34px}
+  h3{font-weight:600;font-size:36px;letter-spacing:-.03em;line-height:1.1;margin-bottom:22px}
+  .label{display:block;font:500 21px/1 "Geist Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
+  .card{border:2px solid var(--line);border-radius:18px;padding:20px 22px;background:#fff}
+  .card b{display:block;font-weight:600;font-size:29px;letter-spacing:-.02em;margin:10px 0 4px}
+  .down{display:block;text-align:center;color:var(--amber-fill);font-size:34px;line-height:1;margin:9px 0}
+  .pill{display:inline-block;background:var(--panel);border-radius:14px;padding:9px 15px;font-size:22px;font-weight:500;margin-top:12px}
+  .out{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .path{border:2px solid var(--line);border-radius:14px;padding:12px 18px}
+  .path .top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+  .path .key{font-weight:600;font-size:26px;letter-spacing:-.02em;white-space:nowrap}
+  .path .hours{color:var(--muted);font-size:20px;white-space:nowrap}
+  .path .who{color:var(--muted);font-size:21px;margin-top:4px}
+  .path.good{border-color:var(--teal)}
+  .path.good .key{color:var(--teal)}
+  .path.fall{border-color:var(--rose)}
+  .path.fall .key{color:var(--rose)}
+</style>
+</head>
+<body>
+<h3>One main number, three departments</h3>
+
+<div class="card">
+  <span class="label">1 · The call comes in</span>
+  <b>A short menu answers</b>
+  <span class="pill">"For sales, press 1. For service, press 2. For parts, press 3."</span>
+</div>
+<span class="down" aria-hidden="true">↓</span>
+
+<div class="card">
+  <span class="label">2 · Each key, its own team and hours</span>
+  <div class="out">
+    <div class="path good"><div class="top"><span class="key">1 · Sales</span><span class="hours">Open 9 to 8</span></div><div class="who">The sales team, in round robin</div></div>
+    <div class="path good"><div class="top"><span class="key">2 · Service</span><span class="hours">Open 7 to 6</span></div><div class="who">Every advisor at once, then hold music</div></div>
+    <div class="path good"><div class="top"><span class="key">3 · Parts</span><span class="hours">Open 7:30 to 5</span></div><div class="who">The counter first, then the parts manager</div></div>
+    <div class="path"><div class="top"><span class="key">No key</span></div><div class="who">The front desk</div></div>
+  </div>
+</div>
+<span class="down" aria-hidden="true">↓</span>
+
+<div class="card">
+  <span class="label">3 · Nobody free, or closed</span>
+  <div class="out">
+    <div class="path fall"><div class="top"><span class="key">Missed in hours</span></div><div class="who">Voicemail, then a text to the caller</div></div>
+    <div class="path fall"><div class="top"><span class="key">After hours</span></div><div class="who">The AI voice agent answers from your documents and books a callback</div></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!--
+title: How to set up an IVR phone menu
+desc: Set up an IVR phone menu in CallForges and write one callers get through on the first try: how many keys, what to say, an emergency key and a way to a person.
+date: 2026-11-27
+kicker: Workflows
+-->
+<p class="lead">Your office manager spends Monday mornings passing calls along. The caller wanted billing, she does scheduling, and billing is on another line. A phone menu sorts those calls before anyone picks up. To set one up, pick three or four options, write the message with each reason before its key, then build it. In CallForges that means an IVR menu step in your number's call workflow, a step under each key, and publishing it.</p>
+
+<div class="takeaways"><strong>Key takeaways</strong><ul>
+  <li>Keep the first menu to three or four options, with the most common reason on key 1.</li>
+  <li>Say the reason before the key ("For billing, press 2"), and put your welcome in the menu message itself.</li>
+  <li>Give callers a way to reach a person, and send anyone who presses nothing somewhere useful.</li>
+</ul></div>
+
+<h2 id="how-many">How many options should a phone menu have?</h2>
+<p>Three or four on the first menu. Callers hear the options once, in order, and hold them in their head while they decide, so each extra option makes the first ones harder to keep. <a href="/blog/what-is-an-ivr">What is an IVR?</a> covers whether you need one at all.</p>
+<p>If your callers' reasons won't fit into four, group them by the person or team who answers. "Service" can cover repairs and warranty questions if one team takes both. Put the most common reason on key 1, so most callers press it and never hear the rest; last month's call history shows which one that is.</p>
+<p>A short menu means broad options, and a few callers won't be sure which one is theirs. Give them a key that rings a person.</p>
+
+<h2 id="what-to-say">What should an IVR menu say?</h2>
+<p>Your business name, then the options, then how to reach a person. Callers listen for their own reason, so give the reason first and the key second. "For billing, press 2" lets a caller stop listening the moment they hear "billing". "Press 2 for billing" makes them hold on to a number until they find out whether it's theirs.</p>
+<p>Cut anything that delays the first option. "Please listen carefully, as our menu options have changed" costs every caller several seconds, and your regulars stopped hearing it long ago. Skip the website plug too: anyone calling has already picked the phone. Two scripts to start from:</p>
+<h3>Office hours menu</h3>
+<p class="note">"Thanks for calling [Business]. For a repair or a service visit, press 1. For billing, press 2. To talk to someone at the front desk, press 0."</p>
+<h3>After-hours menu</h3>
+<p class="note">"Thanks for calling [Business]. We're closed right now and open again at 8am. If you have a burst pipe, a leak or no heat, press 1 to reach the person on call. For anything else, press 2 to leave a message, and we'll call you back in the morning."</p>
+<p><a href="/blog/after-hours-answering">After-hours answering for small businesses</a> covers who should take night calls.</p>
+
+<h2 id="person">An emergency key and a way to a person</h2>
+<p>After hours, the emergency key is the reason to have a menu at all. Write down what counts before you record anything, such as a burst pipe or no heat in January, and say it in the menu. Send that key to the on-call person's mobile. Callers sort themselves, and the dripping tap waits for morning. If a caller could be in danger, a gas smell for example, tell them to hang up and call 911 (or your local emergency number) before you offer any key.</p>
+<p>In office hours, give every menu a way to a person; some callers won't find their reason on the list. One Hacker News commenter described a menu of X, Y and Z options: they pressed 0 to reach a person and heard "I'm sorry. I don't recognize that menu option. To hear the options again, please press 9" (<a href="https://news.ycombinator.com/item?id=45018245" target="_blank" rel="noopener">Hacker News, 2025</a>). Make 0 ring the front desk, and say so at the end of the menu.</p>
+<p>Then decide where callers go when they press nothing. Some are driving, and some missed the options. We'd send them to the front desk in office hours and to voicemail at night, never back to the start on a loop.</p>
+
+<h2 id="set-up">Set up the IVR menu in CallForges</h2>
+<p>You need the <strong>Owner</strong> or <strong>Admin</strong> role to build and publish workflows. The IVR menu comes with the Business and Scale plans (<a href="/pricing.html">see pricing</a>), and you can build one during the free trial. We think this is the easiest way to get a menu right: every key and the step under it sit on one canvas, so an empty path is hard to miss, and <strong>Publish</strong> won't put a menu live while it still lists a problem.</p>
+<ol>
+  <li>Open <strong>Workflows</strong>, click <strong>New workflow</strong>, pick <strong>Single-level IVR menu</strong> and click <strong>Use template</strong>. It starts with keys 1 and 2, each ringing the number's owner and then taking a voicemail. For a menu that plays only at night, pick <strong>Business hours + voicemail</strong> instead, set the <strong>Time rule</strong> to your hours and time zone, click <strong>+</strong> on the <strong>At any other time</strong> path and add an <strong>IVR menu</strong> (it may sit under <strong>View more blocks</strong>).</li>
+  <li>Click the <strong>IVR menu</strong> step to open its panel. Under <strong>Keys</strong>, give each key a short label, such as Key 1 "Emergency". Click <strong>Add key</strong> for each extra option.</li>
+  <li>On the canvas, add a step under each key: <strong>Ring users or teams</strong> for a team, <strong>Forward call</strong> for a mobile (with its country code), or <strong>Voicemail</strong>.</li>
+  <li>Turn on <strong>Repeat the menu</strong> so callers can hear the options again.</li>
+  <li>Write the <strong>Menu message (optional)</strong>. Choose <strong>Text to speech</strong> and type it, <strong>Custom message</strong> to upload an audio file, or <strong>Record audio</strong> to record it yourself. Name the keys in your message, or leave them out and CallForges reads the options after it. Put your welcome in this message too: keys a caller presses during an <strong>Audio message</strong> before the menu are lost.</li>
+  <li>Pick the <strong>Voice</strong> and <strong>Language</strong> callers hear.</li>
+  <li>Put a step under <strong>No valid key</strong>, the path for callers who don't press a key on the menu. We'd ring the front desk by day and take a <strong>Voicemail</strong> at night.</li>
+  <li>Click <strong>Save draft</strong>, then <strong>Publish</strong>. If something needs fixing, <strong>Can't publish yet</strong> lists each problem with its step.</li>
+  <li>Click <strong>Numbers</strong>, pick your numbers and click <strong>Save numbers</strong>.</li>
+</ol>
+<figure data-img="after-hours-answering-workflow.png">An After hours workflow with its IVR menu open. In business hours the call rings two users at once; at any other time the menu sends Key 1 (Emergency) to the on-call mobile and Key 2 to voicemail, and No valid key also goes to voicemail.</figure>
+<p>Add a <strong>Date rule</strong> so holidays take the night path, and change the menu message for the long weekends; <a href="/blog/holiday-voicemail-greeting">Holiday voicemail greetings for business</a> has scripts. Edit a live menu later and the status reads <strong>Published · unpublished changes</strong> until you publish again, and calls already in progress finish on the version they started with. <a href="/help/articles/build-a-call-workflow">Build a call workflow</a> has every step, with screenshots.</p>
+<p>For callers who'd rather ask than press, a key can lead to the AI voice agent, say key 3 for "questions about prices and hours", or the agent can take the whole <strong>At any other time</strong> path. Add the <strong>AI voice agent</strong> step from the <strong>CallForges AI</strong> section of the step picker. It answers only from the sources you give it, says it's an automated assistant, hands the caller to your team when they ask and books a callback when it can't answer. It comes with every paid plan, not the trial, and Business includes 100 agent minutes per user a month, pooled, then $0.12 a minute. <a href="/blog/how-to-set-up-an-ai-receptionist">How to set up an AI receptionist</a> covers its fields.</p>
+
+<h2 id="test">Test it before your customers do</h2>
+<p>Once it's published, call your number from your mobile and press every key. Call again and press nothing, then once more with a key that isn't on the menu. Each key should ring the phone you meant, and the caller who pressed nothing should reach a person or a voicemail. A path with nothing under it ends the call. If the menu only plays at night, call after closing time; a daytime test only proves your business hours path.</p>
+<p>Listen to the voice as a stranger would. A typed message that read well on screen can rush the options together when it's read out, so end each option with a period. And go back to the menu whenever your hours or your team change. A menu that still says "ask for Dave" six months after Dave left sends callers nowhere.</p>
+
+<p><a href="https://app.callforges.com/signup">Start a free trial</a>: 14 days, no card needed to start, with a free local US, UK, Canada or Australia number and 50 inbound and 50 outbound minutes. Build your menu, call it from your mobile and press every key.</p>
+<p>Read next: <a href="/blog/what-is-an-ivr">What is an IVR? A plain-English guide</a>, <a href="/blog/car-dealership-phone-system">Car dealership phone system: sales, service, parts routing</a>, <a href="/blog/after-hours-answering">After-hours answering for small businesses</a> and <a href="/blog/holiday-voicemail-greeting">Holiday voicemail greetings for business: 9 free templates</a>.</p>

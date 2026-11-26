@@ -1,0 +1,63 @@
+<!--
+title: AI receptionist making things up: how to stop wrong answers
+desc: AI receptionists give wrong answers when they guess past their sources or read old docs. The causes, the fix for each, and a test routine.
+date: 2026-11-27
+kicker: Voice agents
+-->
+<p class="lead">A caller rings your shop at 8pm and asks what a brake inspection costs. The AI receptionist answers in a calm voice with last spring's price, and the caller turns up on Monday expecting it. An AI receptionist gives wrong answers when it guesses past the information you gave it, when that information is old or contradicts itself, or when a vague question gets a specific answer. The fix starts with your documents: one current source for each fact, an agent that answers only from them, and a callback when the answer isn't there.</p>
+
+<div class="takeaways"><strong>Key takeaways</strong><ul>
+  <li>An AI receptionist goes wrong when it guesses past its sources, reads old or conflicting documents, or fills in a vague question.</li>
+  <li>Keep one current source for each fact, and write prices you quote case by case as "we confirm the price on a callback".</li>
+  <li>Before your callers do, call it with questions you never wrote down, and call again after every change to your hours or prices.</li>
+</ul></div>
+
+<h2 id="why">Why does an AI receptionist make things up?</h2>
+<p>A language model sounds as sure of a wrong answer as of a right one. In March 2026 a developer wrote up the AI receptionist she built for her brother's mechanic shop, and the post drew 320 points (<a href="https://news.ycombinator.com/item?id=47487536" target="_blank" rel="noopener">Hacker News, 2026</a>). Her instructions told the model to answer only from the shop's knowledge base and to say so when it didn't know, ending with "No hallucinations allowed." A commenter replied that the line "suggests a misunderstanding of how LLMs work. It will work great until it doesn't" (<a href="https://news.ycombinator.com/item?id=47501133" target="_blank" rel="noopener">Hacker News, 2026</a>). Another said callers can't tell a capable bot from a bad one, because they "all sound perfectly confident and correct even the ones who know nothing and will promise anything" (<a href="https://news.ycombinator.com/item?id=47487876" target="_blank" rel="noopener">Hacker News, 2026</a>).</p>
+<p>A hallucination is a fluent answer with nothing behind it. The language model inside the agent writes the most likely next words, and when the answer isn't in front of it, a likely-sounding price or opening time can come out instead. <a href="/blog/what-is-an-ai-voice-agent">What is an AI voice agent?</a> walks through how each turn of a call works.</p>
+<p>The first cause is the agent guessing past its sources. The fix has two parts: limit it to the documents you give it, and give it something to do when the answer isn't there, such as booking a callback or putting the caller through to a person.</p>
+
+<h2 id="old-docs">Old or conflicting documents</h2>
+<p>Say your website says you close at 6, a two-year-old PDF says 5:30, and a page about the holidays says you're closed Monday. The agent can't tell which one is true today, so it may read out any of them.</p>
+<p>A person at your front desk carries that context in their head. One commenter in the same thread said phone staff add the things a website lacks, such as "Oh the website isn't updated with..." (<a href="https://news.ycombinator.com/item?id=47494654" target="_blank" rel="noopener">Hacker News, 2026</a>). The agent doesn't know what changed last week unless you wrote it down.</p>
+<p>The fix is one place for each fact. Keep your hours in one source and your prices in another, and when you replace a document, delete the old one as you add the new one. Then name one person who updates the sources on the day your hours or prices change.</p>
+
+<h2 id="vague-and-prices">Vague questions and prices that change</h2>
+<p>"How much for brakes?" has no single answer. It depends on the car, the parts and what the mechanic finds. A model asked that question with a price list in front of it can pick the nearest line and read it out as a quote.</p>
+<p>Service advisors avoid that trap on purpose. A former advisor in the thread said they're trained to quote only for diagnostics over the phone (<a href="https://news.ycombinator.com/item?id=47495977" target="_blank" rel="noopener">Hacker News, 2026</a>). Write your sources the same way. Give the agent your fixed fees, such as a callout charge or an inspection, and for everything else write the rule: "We price brake work after we inspect the car. We can book a callback to talk it through." Then the right answer is in the source.</p>
+<p>Keep prices that move every few weeks, such as parts or materials, out of the sources. Write "we confirm the price on a callback" and let a person quote it. The trade-off is more callbacks in the morning, and we'd take that over one wrong quote.</p>
+
+<h2 id="callforges">How the CallForges agent sticks to your sources</h2>
+<p>We built the CallForges AI voice agent around these fixes. It answers only from the sources you give it: help articles, web pages, files or text. It says it's an automated assistant, hands the caller to your team when they ask, and books a callback when it can't answer, so a question your sources don't cover gets a call back from a person instead of a guess. It speaks 30+ languages.</p>
+<p>The agent is a step in a number's call routing. In <strong>Workflows</strong>, add the <strong>AI voice agent</strong> step from the <strong>CallForges AI</strong> section, on the <strong>At any other time</strong> path of a <strong>Time rule</strong> if you want it on nights and weekends. Its panel has the parts that matter for wrong answers:</p>
+<ul>
+  <li><strong>Knowledge</strong> lists the sources the agent answers from. <strong>Add source</strong> takes a web page, a file or your own text.</li>
+  <li><strong>Greeting</strong> is what callers hear first. Tell them how to reach a person, for example "Say a person at any time to reach our team."</li>
+  <li><strong>When the caller asks for a person</strong> sets who rings, such as Ring team: Support.</li>
+</ul>
+<p>Click <strong>Done</strong>, then <strong>Save draft</strong> and <strong>Publish</strong>. Click <strong>Numbers</strong>, pick your numbers and click <strong>Save numbers</strong>. <a href="/blog/how-to-set-up-an-ai-receptionist">How to set up an AI receptionist, step by step</a> has the full walk-through.</p>
+<figure data-img="ai-voice-agent-workflow.png">A published After hours workflow: in business hours the call rings two users at once; at any other time the AI voice agent answers, books a callback or hands the caller to the team.</figure>
+
+<h2 id="write-sources">How to write sources it can answer from</h2>
+<p>We'd give the agent short text sources in plain sentences. Five habits help:</p>
+<ul>
+  <li>Use the caller's words. Write "We work Saturdays from 9 to 1" rather than a table headed "Weekend availability".</li>
+  <li>Write down what you don't do. "We don't service motorcycles" gives the agent a true answer to a question it would otherwise guess at.</li>
+  <li>Give fixed prices as numbers and quoted work as a rule, with the callback in the same sentence.</li>
+  <li>Put service areas in by name. "We cover Riverside and Elm Park, not the city center" settles the call about the next town over.</li>
+  <li>Put a date at the top of each text source, so whoever updates it can see how old it is.</li>
+</ul>
+
+<h2 id="test">Test it before your callers do</h2>
+<p>Once your plan is on and the workflow is published, call your own number when the agent's path is live, after hours if it takes the night path. Then work through this list:</p>
+<ol>
+  <li>Ask the ten questions callers ask most, and check each answer against your sources.</li>
+  <li>Ask two things your sources don't cover, such as a price you never wrote down. It should offer a callback.</li>
+  <li>Ask a vague question, such as "how much is a repair?", and check it gives the rule you wrote, such as a callback for a quote.</li>
+  <li>Ask for a person halfway through an answer, and check the right team rings.</li>
+  <li>Fix the source behind any wrong answer, publish, and call again.</li>
+</ol>
+<p>Run the list again whenever your hours or prices change. It takes about ten minutes, and you hear the agent the way a caller at 8pm does.</p>
+
+<p><a href="https://app.callforges.com/signup">Start your free trial</a>: 14 days, no card to start, with a free local US, UK, Canada or Australia number. Set up your number and its call routing while you write the agent's sources, then choose a plan: the AI voice agent comes with every paid plan, from $15 per user a month billed annually.</p>
+<p>Read next: <a href="/blog/what-is-an-ai-voice-agent">What is an AI voice agent?</a>, <a href="/blog/how-to-set-up-an-ai-receptionist">How to set up an AI receptionist, step by step</a> and <a href="/blog/callers-hang-up-on-ai-receptionist">Callers hang up on AI receptionists: how to keep them on</a>.</p>

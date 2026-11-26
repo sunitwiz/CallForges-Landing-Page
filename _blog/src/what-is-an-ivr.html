@@ -1,0 +1,70 @@
+<!--
+title: What is an IVR? A plain-English guide
+desc: An IVR is the phone menu that answers a call and sends it on by the key the caller presses. How it works, its types, and when a small business needs one.
+date: 2026-11-27
+kicker: Workflows
+-->
+<p class="lead">It's 8:15 on a Monday at a six-person heating and cooling company. In ten minutes the office line gets a homeowner whose furnace quit overnight, a supplier chasing an invoice and someone asking about their zip code. Whoever's nearest grabs each call, and two of the three get passed along. An IVR, short for interactive voice response, is the phone menu that sorts those calls first: "For service, press 1. For billing, press 2." The caller presses a key, and the right person's phone rings.</p>
+
+<div class="takeaways"><strong>Key takeaways</strong><ul>
+  <li>An IVR answers a call, plays a short menu and sends the caller on by the key they press, or on some systems by what they say.</li>
+  <li>It pays off when different people take different calls, or when your nights need a way for emergencies to reach someone. If one or two people take every call, ring them both instead.</li>
+  <li>Keep the menu short, and give callers who don't fit any option a way to reach a person.</li>
+</ul></div>
+
+<h2 id="what-it-means">What does IVR stand for?</h2>
+<p>IVR stands for interactive voice response: a phone system that talks to callers and acts on their answers. Callers know it as the phone menu or phone tree, the recording that says "press 1 for sales" before anyone picks up.</p>
+<p>In a small business it mostly routes calls. The menu asks why someone's calling and sends them to the person or team who handles that. Banks and airlines wire their IVRs into their own systems, so the menu can read out a balance or take a card payment without a person. A team of five rarely needs that part.</p>
+
+<h2 id="how-it-works">How does an IVR work?</h2>
+<p>Every IVR runs the same loop: play a prompt, wait for an answer, act on it. A Hacker News commenter whose first job was programming IVRs put it this way: an IVR application "would typically play a recording to the user, then wait for the DTMF signal", the tone a keypad sends, and it "had to repeat a menu if the user made an invalid selection" (<a href="https://news.ycombinator.com/item?id=18449851" target="_blank" rel="noopener">Hacker News, 2018</a>). Step by step:</p>
+<ol>
+  <li>A call comes in, and the IVR answers before anyone's phone rings.</li>
+  <li>It plays a greeting and the menu, recorded or typed and read out by a synthetic voice (text to speech).</li>
+  <li>The caller presses a key. Each key makes its own tone, the beep you hear when you dial, so the system can tell which one it was.</li>
+  <li>The call goes down that key's path. It might ring a team, forward to a mobile, play a message or take a voicemail.</li>
+  <li>A caller who presses nothing, or a key the menu doesn't offer, hears the menu again, then goes to a fallback such as the front desk or voicemail.</li>
+</ol>
+<figure data-img="what-is-an-ivr-call-path.png">A call through a two-key menu: the IVR answers, plays the options and sends each key to its own team. A caller who presses nothing hears the menu again, then reaches the front desk.</figure>
+<p>Most of the design work goes into that last step. Callers who press nothing are often the ones whose reason isn't on the list, and if the menu keeps sending them back to the start, they hang up. We'd send them to whoever answers the main line.</p>
+
+<h2 id="vs-auto-attendant">IVR vs auto attendant</h2>
+<p>An auto attendant answers the call, offers a menu or lets the caller dial an extension, and transfers them. An IVR can also collect information, such as an account number, and look things up. In everyday use people call the same "press 1 for sales" menu by either name, and a small business rarely needs more than the auto attendant part.</p>
+<p>A phone tree is a menu with more menus under its keys. Extension dialing lets a caller type someone's extension and skip the menu.</p>
+
+<h2 id="types">Types of IVR: touch-tone, speech and AI</h2>
+<p>The three types differ in how the caller answers:</p>
+<table>
+  <thead><tr><th></th><th>Touch-tone menu</th><th>Speech menu</th><th>AI voice agent</th></tr></thead>
+  <tbody>
+    <tr><td>The caller</td><td>Presses a key</td><td>Says a word from a list, like "billing"</td><td>Asks in their own words</td></tr>
+    <tr><td>Works well for</td><td>Short menus, noisy places, every accent</td><td>Callers who are driving or have their hands full</td><td>Questions with a written answer, at any hour</td></tr>
+    <tr><td>Trips on</td><td>Long menus nobody can remember</td><td>Accents, background noise, words that aren't on its list</td><td>Questions nobody wrote an answer for</td></tr>
+  </tbody>
+</table>
+<p>Speech menus sound friendlier on paper, and some callers still prefer the keypad. On Hacker News, one commenter complained about systems that say "Just tell us what you need help with" and then don't understand, however you phrase it. The reply: "Bring back the 'press 5 for XYZ' phone trees, I never have problems getting the systems to understand what I'm trying to indicate there" (<a href="https://news.ycombinator.com/item?id=48572446" target="_blank" rel="noopener">Hacker News, 2026</a>).</p>
+<p>For a menu of three or four choices, we'd use keys: they work for every accent and over the noise of a job site. If callers have questions more than destinations ("are you open Saturday?", "do you cover my area?"), an AI voice agent fits better than a speech menu, since it can answer the question as well as route the call.</p>
+
+<h2 id="do-you-need-one">Does a small business need an IVR?</h2>
+<p>You need one when the person who picks up often isn't the person the caller wants. Pull up last month's calls and note why people rang and who ended up handling each kind. A menu earns its place when:</p>
+<ul>
+  <li>Different people take different calls: service and billing, or new customers and jobs already booked.</li>
+  <li>After hours, a real emergency has to reach the person on call while everything else waits for morning.</li>
+  <li>Your callers speak two languages, and a key can send Spanish speakers to a Spanish speaker.</li>
+</ul>
+<p>Skip it when one or two people take every call. Ring them both at once, with voicemail behind them; a menu would only add a wait before the caller hears a person. The same goes for a menu with one real option. If your callers' reasons won't fit into three or four options, those calls need a person, or an AI voice agent that can hear the question. Each option you add costs every caller a few seconds, so keep the list short and put the most common reason on key 1.</p>
+
+<h2 id="callforges">How CallForges handles IVR menus</h2>
+<p>In CallForges, a phone menu is the <strong>IVR menu</strong> step in a number's call workflow, the flow that also holds your business hours, who rings and your voicemail. The whole call sits on one canvas. We think that's where a menu belongs: when your hours or your on-call person change, you change the menu and its paths in one place.</p>
+<ul>
+  <li>The menu plays as typed text read out in the <strong>Voice</strong> and <strong>Language</strong> you pick (<strong>Text to speech</strong>), an audio file you upload (<strong>Custom message</strong>) or a message you record (<strong>Record audio</strong>).</li>
+  <li>Each key gets its own path, with any step under it: <strong>Ring users or teams</strong>, <strong>Forward call</strong> to a mobile, or <strong>Voicemail</strong>.</li>
+  <li>A <strong>No valid key</strong> path catches callers who don't press a key on the menu, so nobody falls off the end.</li>
+  <li>Put it behind a <strong>Time rule</strong> and it plays only when you want it, say at night, with an emergency key that forwards to the person on call.</li>
+</ul>
+<p>You can change a menu without touching your live line: <strong>Save draft</strong> keeps your changes, and a draft never takes calls. <strong>Publish</strong> lists anything that needs fixing first, and calls already in progress finish on the version they started with. The <strong>Single-level IVR menu</strong> template gives you a two-key menu to edit. <a href="/blog/how-to-set-up-ivr">How to set up an IVR phone menu</a> walks through each field, and <a href="/help/articles/build-a-call-workflow">Build a call workflow</a> has the full guide.</p>
+<p>The IVR menu listens for key presses. For callers who'd rather talk, put the AI voice agent on one key's path, or on the hours you're closed. It answers only from the sources you give it, says it's an automated assistant, hands the caller to your team when they ask and books a callback when it can't answer, in 30+ languages.</p>
+<p>The IVR menu comes with the Business and Scale plans; Starter has business hours and voicemail (<a href="/pricing.html">see pricing</a>). The AI voice agent comes with every paid plan, and Business includes 100 agent minutes per user a month, pooled, then $0.12 a minute.</p>
+
+<p><a href="https://app.callforges.com/signup">Start a free trial</a>: 14 days, no card needed to start, with a free local US, UK, Canada or Australia number and 50 inbound and 50 outbound minutes. Build a two-key menu, call your own number and press every key. The AI voice agent starts once you choose a plan.</p>
+<p>Read next: <a href="/blog/how-to-set-up-ivr">How to set up an IVR phone menu</a>, <a href="/blog/car-dealership-phone-system">Car dealership phone system: sales, service, parts routing</a>, <a href="/blog/after-hours-answering">After-hours answering for small businesses</a> and <a href="/blog/holiday-voicemail-greeting">Holiday voicemail greetings for business: 9 free templates</a>.</p>
