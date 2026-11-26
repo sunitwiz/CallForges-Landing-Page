@@ -1,36 +1,35 @@
 <!--
-title: What is CNAM? Show your business name on outgoing calls
-desc: CNAM is the caller ID name shown with your number. The called person's carrier looks it up in a database. How it works, where it shows and how to register it.
+title: What is CNAM? How caller ID names work in the US
+desc: CNAM is the caller ID name shown with your number. It isn't sent with the call: the called person's carrier looks it up in a CNAM database.
 date: 2026-11-18
+updated: 2026-11-27
 kicker: Reliability
 -->
-<p class="lead">A rep calls back a lead who filled in your form an hour ago, and the lead's phone shows a number from a city they don't know. CNAM (caller ID name) puts a short business name next to that number, such as ACME INC. Your call carries only the number: the called person's carrier looks the name up in a caller name database. To show your name, you register it so it's in those databases.</p>
+<p class="lead">A lead who filled in your form an hour ago sees your callback come in as a bare number from a city they don't know. CNAM, short for caller name, is the business name that shows next to that number, such as ACME INC, and your call doesn't carry it: the called person's carrier looks your number up in a CNAM database and shows the name it finds. To show yours, you register it so it's in those databases.</p>
 
 <div class="takeaways"><strong>Key takeaways</strong><ul>
-  <li>Your name isn't sent with the call. The called person's carrier looks your number up in a caller name database and shows what it finds.</li>
-  <li>Landlines with caller ID show the name. Many mobiles show it only with a caller ID service turned on, and a saved contact shows the name it was saved under.</li>
-  <li>A spam label can replace your name, so a caller ID name works alongside STIR/SHAKEN and number reputation.</li>
+  <li>Caller ID is your number and CNAM is your name. Only the number travels with the call; the called person's carrier looks the name up.</li>
+  <li>No single registry holds every name. Several CNAM databases do, and each network reads its own or pays for the lookup.</li>
+  <li>Landlines show the name, many mobiles only with a caller ID service on, and a saved contact or a spam label replaces it.</li>
 </ul></div>
 
-<h2 id="how-it-works">How your name reaches the phone you call</h2>
-<p>The called person's carrier looks the name up at the far end of the call: it takes your number, asks a caller name database which name belongs to it, and sends the answer to the phone. Without a name on file, the person sees your number, and usually its city and state.</p>
-<p>In the FCC's words, the phone network's signaling does "not transmit the name of the calling party along with the number", so caller ID services find the name "by sending a query to a centralized calling name (CNAM) database" (<a href="https://docs.fcc.gov/public/attachments/FCC-11-100A1.pdf" target="_blank" rel="noopener">FCC Truth in Caller ID order, 2011</a>). No single database holds every name. Some carriers run their own, and others buy the lookup from companies that gather listings from many sources, which may involve "a chain of feeds through several layers of providers and resellers" (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC report to Congress on caller ID, 2011</a>).</p>
-<figure data-img="what-is-cnam-lookup-path.png">How a caller name reaches the screen: you register the name, the call carries only your number, the called person's carrier looks the number up, and the phone shows your name, your number or a spam label.</figure>
-<p>Registering a name means getting it into those databases, which your carrier does for you. Because the called person's carrier does the lookup, it also decides whether to show a name at all, so what people see varies by carrier.</p>
+<h2 id="caller-id">Is CNAM the same as caller ID?</h2>
+<p>No. Caller ID is your number, and it travels with every call; CNAM is the name, which the called side adds by looking your number up. In the FCC's words, the phone network's signaling does "not transmit the name of the calling party along with the number", so caller ID services find the name "by sending a query to a centralized calling name (CNAM) database" (<a href="https://docs.fcc.gov/public/attachments/FCC-11-100A1.pdf" target="_blank" rel="noopener">FCC Truth in Caller ID order, 2011</a>).</p>
+<table>
+  <thead>
+    <tr><th></th><th>Caller ID number</th><th>CNAM (caller ID name)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>What it is</td><td>The number you call from</td><td>A short name filed against that number</td></tr>
+    <tr><td>How it reaches the phone</td><td>Sent with the call</td><td>Looked up by the called person's carrier</td></tr>
+    <tr><td>How you change it</td><td>Call from another number</td><td>Register a new name for the number</td></tr>
+    <tr><td>Where it shows</td><td>Phones with caller ID</td><td>Landlines, and mobiles that show caller names</td></tr>
+  </tbody>
+</table>
 
-<h2 id="where-it-shows">Why does my caller ID name show on some phones and not others?</h2>
-<p>Landlines with caller ID show it, and so do mobiles whose carrier shows caller names on that line. Caller name lookups began on landline phones (<a href="https://docs.fcc.gov/public/attachments/FCC-25-76A1.pdf" target="_blank" rel="noopener">FCC, 2025</a>). On some mobile networks, seeing an unknown caller's name is a feature the person has to turn on, or pay for. That's a carrier policy, and each network sets its own.</p>
-<p>Verizon's help page is a clear example. It says a caller's name appears on a Verizon mobile only when all of these are true, and that on other networks "it's the person's service provider (not Verizon) that displays a caller's name" (<a href="https://www.verizon.com/support/share-name-id-faqs/" target="_blank" rel="noopener">Verizon Share Name ID FAQs, checked 2026</a>):</p>
-<ul>
-  <li>The phone works with Verizon's Call Filter app.</li>
-  <li>The phone has Call Filter Plus or another caller ID service turned on.</li>
-  <li>The person hasn't saved your number as a contact.</li>
-</ul>
-<p>On Verizon, caller ID comes with Call Filter Plus, at $3.99 a month (<a href="https://www.verizon.com/support/call-filter-faqs/" target="_blank" rel="noopener">Verizon Call Filter FAQs, checked 2026</a>). If a rep says the name didn't show on their own mobile, nothing is broken. Don't burn an afternoon testing on your team's mobiles. Call a landline, or a phone with caller ID turned on.</p>
-
-<h2 id="naming-rules">Fitting your name into 15 characters</h2>
-<p>Plan for 15 characters, spaces included. Verizon caps the names of its own customers at "up to 15 characters with at least 1 letter" (<a href="https://www.verizon.com/support/share-name-id-faqs/" target="_blank" rel="noopener">Verizon Share Name ID FAQs, checked 2026</a>), and each provider sets its own allowed characters on top of that, so the details vary by carrier.</p>
-<p>Fifteen characters go fast, and CallForges allows only letters, numbers, spaces, periods and commas:</p>
+<h2 id="calling-party-name">What is the calling party name in CNAM?</h2>
+<p>It's the name a CNAM database holds for the number that's calling: for a business line, your business name, cut down to fit. The FCC describes CNAM databases as linking numbers "to the individuals and entities to whom the numbers have been assigned" (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC report to Congress on caller ID, 2011</a>).</p>
+<p>Plan for 15 characters, spaces included. Verizon caps the names of its own customers at "up to 15 characters with at least 1 letter" (<a href="https://www.verizon.com/support/share-name-id-faqs/" target="_blank" rel="noopener">Verizon Share Name ID FAQs, checked 2026</a>), and each provider sets its own allowed characters on top of that. In CallForges you get letters, numbers, spaces, periods and commas:</p>
 <table>
   <thead>
     <tr><th>Business name</th><th>Fits in 15</th><th>Why</th></tr>
@@ -41,37 +40,59 @@ kicker: Reliability
     <tr><td>Virelix Systems, sales team</td><td>VIRELIX SALES</td><td>A second name for the sales numbers</td></tr>
   </tbody>
 </table>
-<p>We'd use the name your leads know you by, the one on your website and your emails, over a legal name full of suffixes. Carriers check the name against US business records, though, so it has to match your business. Pick the shortest version that still does.</p>
+<p>We'd use the name your leads know you by, the one on your website, over a legal name full of suffixes. It still has to match your business, because carriers check it against US business records.</p>
 
-<h2 id="how-long">How long does it take for CNAM to show?</h2>
-<p>A new name doesn't appear everywhere at the same moment. Each network reads its own database, or buys the lookup from someone else (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC, 2011</a>), so a name can show on one network before another. In CallForges, plan for two waits: about 1 to 2 days for your Business profile, then 48 to 72 hours after the carriers approve the name. If it shows on a landline but not on a mobile, check the mobile's caller ID setting before anything else.</p>
+<h2 id="how-it-works">Who keeps the name? CNAM databases and providers</h2>
+<p>No single CNAM registry holds every name. Several CNAM databases do, and on each call the called person's carrier runs a lookup, which the trade calls a dip: it sends your number to a database and gets back a name, or nothing.</p>
+<p>The FCC counted "multiple CNAM databases used by providers of caller ID services" back in 2011 (<a href="https://docs.fcc.gov/public/attachments/FCC-11-100A1.pdf" target="_blank" rel="noopener">FCC, 2011</a>). Some carriers keep their own, and others buy the lookup from companies that gather listings "from a variety of sources", which can involve "a chain of feeds through several layers of providers and resellers" (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC report to Congress, 2011</a>). That gives two kinds of CNAM provider: a carrier with a database of its own, and a company that answers lookups for carriers without one.</p>
+<figure data-img="what-is-cnam-lookup-path.png">The lookup path: your call carries only your number, the called person's carrier looks it up, and their phone shows your name, your number or a spam label.</figure>
+<p>As the caller, you don't pick either kind: the carrier behind your number files your name, and the feeds pass it along. The called person's carrier still chooses whether to show a name at all.</p>
 
-<h2 id="stir-shaken">CNAM, STIR/SHAKEN and spam labels</h2>
-<p>A caller ID name shows who's calling. STIR/SHAKEN proves the number is yours, and number reputation affects whether the person sees a spam warning instead of your name.</p>
+<h2 id="where-it-shows">Why isn't my caller ID name showing?</h2>
+<p>Usually the phone you called doesn't show names, or something on it outranks yours. Caller name lookups began on landline phones (<a href="https://docs.fcc.gov/public/attachments/FCC-25-76A1.pdf" target="_blank" rel="noopener">FCC, 2025</a>), and on many mobile networks an unknown caller's name is a feature the person turns on or pays for, a carrier policy each network sets for itself.</p>
 <table>
   <thead>
-    <tr><th></th><th>What it does</th><th>What the person sees</th></tr>
+    <tr><th>What the person sees</th><th>The usual reason</th></tr>
   </thead>
   <tbody>
-    <tr><td>CNAM (caller ID name)</td><td>Puts your business name on your number in the caller name databases</td><td>ACME INC instead of a bare number</td></tr>
-    <tr><td>STIR/SHAKEN</td><td>Your carrier signs the call, so the called network can check the number wasn't faked</td><td>Usually nothing directly. Their network uses the signature when it judges the call.</td></tr>
-    <tr><td>Number reputation</td><td>Registers your numbers and why you call with the networks' spam analytics</td><td>A lower risk of a spam warning in place of your name</td></tr>
+    <tr><td>Your number with no name, on a mobile</td><td>That line has no caller ID service turned on</td></tr>
+    <tr><td>The name they saved you under</td><td>Their contact list wins</td></tr>
+    <tr><td>A spam warning</td><td>A spam label took your name's place</td></tr>
+    <tr><td>Someone else's name, or an old one</td><td>That network's database holds an earlier listing</td></tr>
+    <tr><td>No name on any phone</td><td>No approved name yet, or a toll-free or non-US number</td></tr>
   </tbody>
 </table>
-<p>STIR/SHAKEN is a set of standards that lets "authenticated information about a call" travel with it, and its level A says the signing carrier knows its customer and that customer's right to use the number (<a href="https://docs.fcc.gov/public/attachments/FCC-25-76A1.pdf" target="_blank" rel="noopener">FCC, 2025</a>). It doesn't put your name on the screen. The FCC says "legacy CNAM databases currently remain the only widespread source of caller name information", and in October 2025 it proposed requiring carriers to pass on a verified caller name with calls whose number is unlikely to be spoofed (same source). That's a proposal, not a rule.</p>
-<p>A registered name won't protect you from a spam label, which is each carrier's own call. On AT&amp;T's business phone service, a call judged to be spam is "delivered with Suspected Spam as the caller ID name" (<a href="https://www.att.com/support/smallbusiness/article/smb-digital-phone/KM1238090/" target="_blank" rel="noopener">AT&amp;T Call Protect, checked 2026</a>). If your team makes a lot of calls, we'd register all three.</p>
+<p>Verizon is a clear example. A caller's name shows on its mobiles only when the phone works with its Call Filter app, has Call Filter Plus or another caller ID service turned on, and hasn't saved your number as a contact (<a href="https://www.verizon.com/support/share-name-id-faqs/" target="_blank" rel="noopener">Verizon Share Name ID FAQs, checked 2026</a>). Call Filter Plus costs $3.99 a month (<a href="https://www.verizon.com/support/call-filter-faqs/" target="_blank" rel="noopener">Verizon Call Filter FAQs, checked 2026</a>). So when a rep says the name didn't show on their own mobile, don't burn an afternoon testing your team's phones: call a landline, or a phone with caller ID turned on.</p>
+<p>A wrong or old name has another cause. The FCC noted in 2025 that CNAM databases "reportedly are not reliably accurate" (<a href="https://docs.fcc.gov/public/attachments/FCC-25-76A1.pdf" target="_blank" rel="noopener">FCC, 2025</a>), and a recycled number can keep a previous owner's listing on one network after another shows yours.</p>
+
+<h2 id="stir-shaken">CNAM, STIR/SHAKEN and spam labels</h2>
+<p>STIR/SHAKEN does a different job from CNAM: your carrier signs the call so the called network can check the number wasn't faked, and the signature puts no name on the screen. The FCC says "legacy CNAM databases currently remain the only widespread source of caller name information", and in October 2025 it proposed requiring carriers to pass on a verified caller name with calls whose number is unlikely to be spoofed (<a href="https://docs.fcc.gov/public/attachments/FCC-25-76A1.pdf" target="_blank" rel="noopener">FCC, 2025</a>). In May 2026 that was still a proposal, not a rule (<a href="https://docs.fcc.gov/public/attachments/FCC-26-32A1.txt" target="_blank" rel="noopener">FCC, 2026</a>). Our <a href="/blog/what-is-stir-shaken">STIR/SHAKEN guide</a> covers the signing levels.</p>
+<p>A registered name won't stop a spam label either, because each carrier makes that call for itself. On AT&amp;T's business phone service, a call judged to be spam is "delivered with Suspected Spam as the caller ID name" (<a href="https://www.att.com/support/smallbusiness/article/smb-digital-phone/KM1238090/" target="_blank" rel="noopener">AT&amp;T Call Protect, checked 2026</a>). If your team makes a lot of calls, we'd register number reputation too: <a href="/blog/phone-number-reputation">Phone number reputation</a> explains how labels get there, and <a href="/blog/new-number-flagged-as-spam">why a new number gets flagged</a> covers a fresh line's first weeks.</p>
 <p class="note">This is general information, not legal advice.</p>
 
 <h2 id="in-callforges">How to show your business name with CallForges</h2>
-<p>You register a caller ID name in the <strong>Compliance center</strong> once your Business profile is approved. It's free for US numbers on every plan and during the free trial, and so are Caller verification (SHAKEN/STIR) and Phone number reputation.</p>
+<p>With CallForges you never touch a CNAM database. You fill in one form in the <strong>Compliance center</strong>, we send the name to the carriers, and it starts showing 48 to 72 hours after they approve it. It's free for US numbers on every plan and during the free trial, and so are Caller verification (SHAKEN/STIR) and Phone number reputation.</p>
 <ol>
   <li>Open <strong>Compliance center</strong> in the sidebar. Under <strong>Carrier registrations</strong>, click <strong>Register now</strong> on the <strong>Business profile</strong>. Fill in <strong>General information</strong>, <strong>Business information</strong> (with an EIN or DUNS number as the <strong>Registration ID type</strong>) and <strong>Point of contact</strong>, check <strong>Review</strong>, then click <strong>Submit for review</strong>.</li>
   <li>Once the profile is approved, go to <strong>Caller ID name (CNAM)</strong> and click <strong>Register caller ID name</strong>.</li>
   <li>Enter the <strong>Display name</strong>: up to 15 characters, spaces included (the field counts them), starting with a letter, and not just the name of a US state, such as TEXAS. Then choose the numbers that should show it. Only US local and mobile numbers can; toll-free and non-US numbers can't.</li>
   <li>Click <strong>Submit for review</strong>, or <strong>Save draft</strong> to finish later.</li>
 </ol>
-<p>Registrations in review are checked with the carriers every 4 hours, and the workspace owner gets an email when a caller ID name is approved or rejected, with the carriers' reasons for a rejection. <strong>Phone Numbers</strong> has a Caller ID name column, and each number's <strong>Compliance</strong> section shows the same (<a href="/help/articles/buy-a-phone-number">Buy a phone number</a>).</p>
-<p>A workspace can have up to 5 caller ID names, each on its own numbers, such as VIRELIX SYSTEMS on the main line and VIRELIX SALES for the sales team. A number shows one name at a time. A number you buy later doesn't join a name by itself: add it with <strong>Edit numbers</strong> in the <strong>…</strong> menu on the name's row, or click <strong>Register</strong> beside Caller ID name in the number's <strong>Compliance</strong> section. Branded calling (coming soon) adds a logo and the reason for your call on mobiles.</p>
-<p>The <a href="/pricing.html">pricing page</a> lists what each plan includes. <a href="/help/articles/start-your-free-trial">Start a free trial</a> and register your name before you pay for anything.</p>
+<p>We check registrations in review with the carriers every 4 hours, and the workspace owner gets an email when a name is approved or rejected, with the carriers' reasons for a rejection. You see each number's status in the Caller ID name column on <strong>Phone Numbers</strong> (<a href="/help/articles/buy-a-phone-number">Buy a phone number</a>).</p>
+<p>A workspace can have up to 5 caller ID names, each on its own numbers, such as VIRELIX SALES for the sales team. A number shows one name at a time. A number you buy later doesn't join a name by itself: add it with <strong>Edit numbers</strong> in the <strong>…</strong> menu on the name's row, or click <strong>Register</strong> beside Caller ID name in the number's <strong>Compliance</strong> section. Branded calling, which adds your logo, is coming soon.</p>
 
-<p>Read next: <a href="/blog/what-is-stir-shaken">What is STIR/SHAKEN?</a> for verified caller ID, and <a href="/blog/phone-number-reputation">Phone number reputation</a> for the spam labels.</p>
+<h2 id="faq">Questions about CNAM</h2>
+<h3>What does CNAM stand for?</h3>
+<p>Caller name, also called calling name: the FCC's 2011 report notes it "is also referred to as 'Calling' Name" (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC, 2011</a>). Its 2025 proposal writes "Caller ID Name (CNAM)".</p>
+<h3>What is CNAM delivery?</h3>
+<p>It's the called side's half of CNAM, a service on the called person's line: their carrier looks the name up "from a Caller Name (CNAM) database" and sends it to their phone (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC, 2011</a>). Their carrier runs it, so you can register a name but can't make a network show it.</p>
+<h3>How long does it take for CNAM to show?</h3>
+<p>In CallForges, 48 to 72 hours after the carriers approve the name, and the Business profile before it takes about 1 to 2 days. Each network reads its own database or buys the lookup (<a href="https://docs.fcc.gov/public/attachments/DA-11-1089A1_Rcd.pdf" target="_blank" rel="noopener">FCC, 2011</a>), so your name can show on one network before another.</p>
+<h3>What is a CNAM API?</h3>
+<p>It lets your own software run a dip: send a number, get back the name on file. It reads names and can't set yours, which takes a registration for the number you call from.</p>
+<h3>Is CNAM only used in the US?</h3>
+<p>CallForges registers caller ID names for the US only: US local and mobile numbers, calling US phones. The CNAM databases in this post are the US network's, and the FCC documents above are US rules.</p>
+
+<p><a href="https://app.callforges.com/signup">Start your free trial</a>: 14 days, no card to start, with a free local number. Submit your Business profile on day one and register your caller ID name the day it's approved, so the carriers review it while your team tries the dialer.</p>
+
+<p>Read next: <a href="/blog/what-is-stir-shaken">What is STIR/SHAKEN?</a> for verified caller ID, <a href="/blog/phone-number-reputation">Phone number reputation</a> for the spam labels, and <a href="/blog/new-number-flagged-as-spam">Why is my new business number flagged as spam?</a></p>
