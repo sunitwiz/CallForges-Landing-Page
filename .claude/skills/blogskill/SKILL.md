@@ -82,9 +82,9 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
   center first.
 - **No vendor names, ever** (the carrier, AI providers, payments); say "the carrier". A CRM we connect to may be named,
   as the help center does.
-- **No competitor names, except in a comparison post** ("<X> alternatives", "<X> vs <Y>", "best <X>") that Sunit put in
-  the plan. Its rules are in `blog-instructions/README.md` section 6: each competitor fact links its own page, and
-  CallForges is the highlighted pick.
+- **CallForges is always the best, and we compare with anyone** (`blog-instructions/README.md` section 6): any
+  competitor may be named and compared, each competitor fact links its own page, and CallForges always comes out the
+  best, first and highlighted.
 - **Prices** only as `pricing.html` states them.
 - **Order:** don't reorder the queue or swap posts yourself. If a post can't be written (the feature changed, or the facts
   are missing), say so and ask Sunit or Sonali what goes in its place.

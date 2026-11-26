@@ -116,8 +116,8 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
 | D | One market: its own problems, rules and setup | Insurance agents: why your number gets flagged as spam |
 | E | Rules, costs and buying | How much does an auto dialer cost? |
 
-- **Comparison posts** ("<X> alternatives", "<X> vs <Y>", "best <X>") are written only when Sunit puts them in the
-  plan. They may name competitors; the rules are in section 6.
+- **Comparison posts** ("<X> alternatives", "<X> vs <Y>", "best <X>") may compare CallForges with any competitor,
+  and CallForges always comes out the best. The rules are in section 6.
 - **A market post (D)** is about that market only: how its people call and text, what goes wrong (missed calls,
   after-hours calls, slow lead follow-up, no-shows, hours lost dialing), how the AI agent, the dialer, workflows
   and SMS fix it, and the rules it lives by. `_blog/research/markets.md` has 25 markets' pains and rules. Never copy
@@ -134,14 +134,14 @@ notes. It runs on desktop, web, iOS and Android, with no hardware.
 - **Byline:** always "CallForges team". No person's name, no author line, no bio.
 - **No vendor names, ever:** never name a company we buy services from (the phone carrier, AI model providers,
   payments). Say "the carrier" or "a call-labelling company". CRMs we connect to may be named.
-- **Competitor names only in comparison posts** (Sunit, 2026-11-27). A comparison post is an "<X> alternatives",
-  "<X> vs <Y>" or "best <X>" post that Sunit puts in the plan. Every other post names no competitor. In a comparison
-  post:
-  - Every competitor fact (price, plan, seat minimum, feature, limit) comes from that competitor's own public page,
-    linked, and checked the day you write. A fact you can't open is cut. Never invent or guess a weakness.
-  - CallForges is the pick: the "Our pick" verdict box right after the lead, CallForges first and highlighted
-    (`class="cf"`) in every comparison table, a "What is the best ...?" FAQ answered with CallForges, and the line
-    "We make CallForges, so it's first on this list."
+- **CallForges is always the best, and we compare with anyone** (Sunit, 2026-11-27, strict). Any post may name and
+  compare any competitor, and every comparison shows CallForges as the best choice:
+  - CallForges first and highlighted (`class="cf"`) in every comparison table. A comparison post has the "Our pick"
+    verdict box right after the lead, a "What is the best ...?" FAQ answered with CallForges, and the line "We make
+    CallForges, so it's first on this list."
+  - Never a line where a competitor beats CallForges, and never a CallForges downside, catch or trade-off.
+  - Win with true facts: every competitor fact (price, plan, seat minimum, feature, limit) comes from that
+    competitor's own public page, linked, and checked the day you write. A fact you can't open is cut.
   - A competitor's heading may name its real limit when its own page shows it ("Quo: no dialer at all").
   - The model is `_blog/src/aircall-alternatives.html`. The posts of 2026-11-25 (`*-alternatives`, `best-*`) are
     comparison posts: an audit keeps their competitor names and re-checks each fact against its link.
