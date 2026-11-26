@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=block">
+<style>
+  /* Site colours. Keep the white ground: the post puts a border and a shadow around the image. */
+  :root{--fg:#0b0d12;--muted:#565d6b;--line:#e3e5ea;--panel:#f0f2f5;--amber:#ad4708;--amber-fill:#ff8a3d;--teal:#066b5b;--rose:#c23a52}
+  *{box-sizing:border-box;margin:0}
+  /* Rendered 640px wide so the text stays readable when a phone shows it about 360px wide. */
+  body{width:640px;background:#fff;color:var(--fg);font:400 21px/1.25 "Geist","Helvetica Neue",Arial,sans-serif;padding:28px 26px 30px}
+  h3{font-weight:600;font-size:34px;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px}
+  .grid{display:grid;grid-template-columns:1fr 34px 1fr;align-items:stretch}
+  .label{display:block;font:500 18px/1 "Geist Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
+  .card{border:2px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff}
+  .card b{display:block;font-weight:600;font-size:24px;letter-spacing:-.02em;line-height:1.15;margin:8px 0 4px}
+  .card p{color:var(--muted);font-size:20px}
+  .card.good{border-color:var(--teal)}
+  .card.good .label{color:var(--teal)}
+  .side{display:flex;align-items:center;justify-content:center;color:var(--amber-fill);font-size:28px}
+  .down{text-align:center;color:var(--amber-fill);font-size:28px;line-height:1;padding:6px 0}
+  .pills{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:6px}
+  .pill{display:inline-block;background:var(--panel);border-radius:999px;padding:5px 12px;font-size:18px;font-weight:500}
+  .pill.good{background:#e3f2ef;color:var(--teal)}
+  .pill.loop{background:#fff1e6;color:var(--amber)}
+</style>
+</head>
+<body>
+<h3>How an auto dialer works</h3>
+<div class="grid">
+  <div class="card"><span class="label">1 · Load</span><b>Your list goes into a campaign</b><p>From a CRM or a spreadsheet</p></div>
+  <div class="side" aria-hidden="true">→</div>
+  <div class="card"><span class="label">2 · Dial</span><b>It calls the next number</b><p>From your business number</p></div>
+
+  <div></div><div></div><div class="down" aria-hidden="true">↓</div>
+
+  <div class="card"><span class="label">4 · Answer</span><b>A person or a voicemail?</b><div class="pills"><span class="pill good">Person: put through</span><span class="pill">Voicemail: leave a message</span></div></div>
+  <div class="side" aria-hidden="true">←</div>
+  <div class="card"><span class="label">3 · Ring</span><b>It waits a set time</b><div class="pills"><span class="pill">No answer or busy: next lead</span></div></div>
+
+  <div class="down" aria-hidden="true">↓</div><div></div><div></div>
+
+  <div class="card good"><span class="label">5 · Connect</span><b>The rep talks to the lead</b><p>With the lead's record on screen</p></div>
+  <div class="side" aria-hidden="true">→</div>
+  <div class="card"><span class="label">6 · Next call</span><b>The rep logs the outcome</b><div class="pills"><span class="pill loop">↺ Back to step 2</span></div></div>
+</div>
+</body>
+</html>
