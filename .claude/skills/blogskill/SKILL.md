@@ -47,7 +47,7 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
    callforges-blog skill.
 2. **Find today's posts.** No posts on Saturday or Sunday. In `_blog/plan.md`, take the first `todo` rows of
    "Priority" first (Sunit's picks from Search Console), then of "Queue": 4 in all (3 if Sunit or Sonali says so).
-   A Priority row that names a queue row (Q63) is that post: set the status on both rows. Each row has the kind, the topic, the title, the slug, Facts from
+   A Priority row that names a queue row (Q63) is that post: set the status on both rows. Write a Priority post for the searches in its row (callforges-blog skill section 3c). Each row has the kind, the topic, the title, the slug, Facts from
    and evidence links.
 3. **Claim them** so Sunit and Sonali never write the same posts:
    - Set their Status to `writing (<your name>)`.

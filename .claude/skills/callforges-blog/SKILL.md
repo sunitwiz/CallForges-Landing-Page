@@ -175,6 +175,28 @@ can (at most 5 at a time), then read every result yourself.
 5. **Build and report.** Build, preview, and report per post: what failed, what you changed, the stop-slop score and
    the word count. Ask before pushing.
 
+## 3c. Priority rows: write for the searches Google already shows us
+
+A row in `_blog/plan.md` → "Priority" lists real searches from Search Console, with impressions (how often Google
+showed us) and average position (1 to 10 is page 1, 11 to 20 page 2). The goal is page 1 for those exact searches.
+Sunit reads Search Console and updates the list; ask him for fresh numbers.
+
+1. **Title:** the strongest search in the row (most impressions, best position), written naturally, at most about
+   60 characters. "Auto dialer pricing: how much does an auto dialer cost?" beat "How much does an auto dialer cost?".
+2. **Lead:** answers the main search in its first two sentences. The scene can come third.
+3. **Every search in the row gets its own answer:** an H2 or an FAQ `<h3>` in the searcher's words ("Is CNAM the same
+   as caller ID?"), answered in its first two sentences.
+4. **Depth beats length:** add what a searcher needs that the post lacks (a table, a worked example, a script for
+   each date). Stay within about 1,000 to 1,700 words. A long post is restructured, not grown.
+5. **A refresh keeps** the slug, the `date:` and every correct fact and link, and adds `updated: <today>`.
+6. **A hub and a narrow post split the searches:** when a new post takes a search from an older one (the Christmas
+   post from the holiday one), the older post keeps a short section that links to it and repeats none of its text.
+7. **Seasonal searches go live at least four weeks before the peak.**
+8. **After a title changes:** remake the cover (`make_cover.py <slug>`), and update the link text in every other
+   post's "Read next:" line that points to it.
+9. Then the section 3 checklist, section 5 (build, check, preview), and set the row's Status to `live: <date>`, on
+   the queue row too if it has a Q number.
+
 ## 4. Images
 
 - **Cover, always:** `python3 _blog/tools/make_cover.py <slug>` writes `blog/img/<slug>.png` (1200×630). LinkedIn,

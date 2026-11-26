@@ -69,7 +69,7 @@
 Sunit's picks, 2026-11-27, from Google Search Console (the 90 days to 2026-11-27): searches where Google already shows
 callforges.com, so a post or a fix moves fastest. Take these `todo` rows before the Queue, top down. A row with a Q
 number is that queue row: when it goes live, set the Status on both rows. "Refresh" means improve the live post in
-place (keep its slug and `date:`, and add `updated: <today>` to its header: the byline then shows it and Google gets the new date), then run the callforges-blog checklist.
+place (keep its slug and `date:`, and add `updated: <today>` to its header: the byline then shows it and Google gets the new date), then run the callforges-blog checklist. How to write a Priority post for its searches: callforges-blog skill section 3c.
 
 | # | Kind | Title | Slug | Facts from | Search Console, 90 days (impressions, average position) | Status |
 |---|---|---|---|---|---|---|
