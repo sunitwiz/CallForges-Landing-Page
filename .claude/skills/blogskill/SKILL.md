@@ -45,8 +45,9 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
 
 1. **Pull and load.** Run `git pull`, read `blog-instructions/README.md` (the context and rules), then load the
    callforges-blog skill.
-2. **Find today's posts.** No posts on Saturday or Sunday. In `_blog/plan.md` → "Queue", take the first 4 rows whose
-   Status is `todo` (3 if Sunit or Sonali says so). Each row has the kind, the topic, the title, the slug, Facts from
+2. **Find today's posts.** No posts on Saturday or Sunday. In `_blog/plan.md`, take the first `todo` rows of
+   "Priority" first (Sunit's picks from Search Console), then of "Queue": 4 in all (3 if Sunit or Sonali says so).
+   A Priority row that names a queue row (Q63) is that post: set the status on both rows. Each row has the kind, the topic, the title, the slug, Facts from
    and evidence links.
 3. **Claim them** so Sunit and Sonali never write the same posts:
    - Set their Status to `writing (<your name>)`.
@@ -79,8 +80,11 @@ numbers, covers, checklist, publishing) is the **callforges-blog** skill: load i
   parallel dialers, recording, AI notes, CRM logging, numbers and porting are live. Branded calling is "coming soon"
   only. The full live and not-live lists are in `blog-instructions/README.md`. Anything else: check the site and help
   center first.
-- **No names:** no competitor or vendor name, ever. Not even the products the research looked at; say "the carrier".
-  A CRM we connect to may be named, as the help center does.
+- **No vendor names, ever** (the carrier, AI providers, payments); say "the carrier". A CRM we connect to may be named,
+  as the help center does.
+- **No competitor names, except in a comparison post** ("<X> alternatives", "<X> vs <Y>", "best <X>") that Sunit put in
+  the plan. Its rules are in `blog-instructions/README.md` section 6: each competitor fact links its own page, and
+  CallForges is the highlighted pick.
 - **Prices** only as `pricing.html` states them.
 - **Order:** don't reorder the queue or swap posts yourself. If a post can't be written (the feature changed, or the facts
   are missing), say so and ask Sunit or Sonali what goes in its place.

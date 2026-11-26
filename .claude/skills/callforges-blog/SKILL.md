@@ -7,7 +7,7 @@ description: Write, update, check or audit a post on the CallForges blog (callfo
 
 The blog exists to bring sales teams to callforges.com who then start a free trial. A post earns that by being
 the most useful, most correct answer to one question people type into Google or ask ChatGPT. Everything below
-serves that. The site rules in `README.md` (no vendor names, no competitor names, prices only from
+serves that. The site rules in `README.md` (no vendor names, no competitor names outside comparison posts, prices only from
 `pricing.html`, only what is live) hold for every post; this skill adds how to write one.
 
 ## 0. Before anything
@@ -62,7 +62,9 @@ why CallForges is the way to do it, and end with a reason to start the free tria
 - Measurable claims need proof: never "most reliable", "#1", "highest answer rates" or a number we can't show.
 - Sell with what is true: every feature, price and limit you name must be live, as the site and help center state it.
   An invented feature or result is the one thing that loses a customer we already won.
-- Never name or compare competitors.
+- Never name or compare competitors, except in a comparison post Sunit put in the plan ("<X> alternatives",
+  "<X> vs <Y>", "best <X>"). There every competitor fact links that competitor's own page, and CallForges is the
+  highlighted pick (`blog-instructions/README.md` section 6, model `_blog/src/aircall-alternatives.html`).
 
 ## 3. Write the post: `_blog/src/<slug>.html`
 
@@ -86,6 +88,8 @@ steps, table or example.</p>
 ```
 
 - `title` is the phrase people search, at most about 60 characters. The file name is the URL: lowercase, hyphens.
+- `updated` is optional (YYYY-MM-DD): set it when you change a live post's content, never for a typo. The byline
+  shows it, and the sitemap and `dateModified` use it.
 - `kicker` is optional: two or three words shown above the title on the cover (default "Blog").
 - The takeaways box must come straight after the lead; the build moves it above "In this post".
 - 4–6 `<h2 id="…">` sections. Mix plain statements and questions; use a question only where it is the phrase people
@@ -160,7 +164,8 @@ can (at most 5 at a time), then read every result yourself.
 
 1. **Accuracy.** Check every product fact against `blog-instructions/README.md` section 3, the site's pages and the
    help articles, and every number and rule against its source (section 2): a dead link, a changed price, a feature
-   that isn't live or a best practice called a law is fixed or cut.
+   that isn't live or a best practice called a law is fixed or cut. A comparison post (`*-alternatives`, `*-vs-*`,
+   `best-*`) keeps its competitor names: re-check each competitor fact against its own linked page instead.
 2. **Search.** The title is the phrase people search (Google autocomplete, section 1); the lead answers it; the desc
    is at most 160 characters; the headings say what each section answers; it links the topic's other posts (the A
    post first) and a help article.
@@ -195,7 +200,7 @@ can (at most 5 at a time), then read every result yourself.
    - [ ] The takeaways are true and add up to the post.
    - [ ] Every number has its source, year and a working link; nothing is invented.
    - [ ] Every product fact matches the **Facts from** files, with the app's exact labels; nothing that isn't live.
-   - [ ] No competitor names and no vendor names ("the carrier"); a CRM we connect to may be named, as the help center does.
+   - [ ] No vendor names ("the carrier"); no competitor names outside a comparison post, and in one, every competitor fact links its own page; a CRM we connect to may be named, as the help center does.
    - [ ] Prices only as `pricing.html` states them.
    - [ ] Title is the search phrase; `desc` answers it in 160 characters or fewer.
    - [ ] Cover made and looked at; every figure has a caption and is easy to read on a phone.

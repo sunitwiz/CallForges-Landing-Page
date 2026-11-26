@@ -62,7 +62,7 @@ goes to the app and shows its 404. Inside help and blog pages every link and fil
   contents box, a table's sideways scroll on phones, "More from the blog" and the "Start Free Trial" box.
 - Links inside a post are root-absolute (`/pricing.html`, `/help/articles/<slug>`, `/blog/<slug>`); the build stops on
   a link to a post or help article that does not exist. Outside links take `target="_blank" rel="noopener"`.
-- The rules below hold for posts too: no vendor names, no competitor names (they stay on `compare.html`), prices only as
+- The rules below hold for posts too: no vendor names, no competitor names outside `compare.html` and the comparison posts (`blog-instructions/README.md` section 6), prices only as
   `pricing.html` states them, and only what is live in the app. A number about the industry links its public source.
 - After pushing a post, share it on LinkedIn from a founder's profile with the link.
 
@@ -74,7 +74,7 @@ goes to the app and shows its 404. Inside help and blog pages every link and fil
    `site.webmanifest`. If an icon file ever does change, bump its `?v=` on every page and in `_help/build.py`, or
    returning visitors keep the old one.
 2. **No vendor names.** Page copy never names the companies we buy services from (the phone carrier, payments, AI).
-   It says "the carrier". CRMs we integrate with are named on purpose; competitors appear only on `compare.html`.
+   It says "the carrier". CRMs we integrate with are named on purpose; competitors appear only on `compare.html` and in the blog's comparison posts.
 3. **Prices, limits and numbers** are stated only as `pricing.html`, `fair-usage.html` and `terms.html` state them.
 4. **Links into the app** are `https://app.callforges.com/login` and `https://app.callforges.com/signup`.
 5. **A design from elsewhere is applied as edits, never as a replacement.** A zip, a Lovable project or a mock is built

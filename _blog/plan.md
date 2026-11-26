@@ -64,6 +64,31 @@
 | 49 | Business texting etiquette | Messaging | `business-texting-etiquette` | `add-text-signature` | `customer-texts-on-personal-phones` | `lawyers-texting-clients` (Law firms) | `employee-texting-policy` |
 | 50 | AI appointment reminder calls | Voice agents | `automated-appointment-reminder-calls` | `ai-appointment-reminder-calls` | `reduce-no-shows-reminder-calls` | `salon-no-show-policy-reminders` (Salons and med spas) | `are-ai-phone-calls-legal` |
 
+## Priority
+
+Sunit's picks, 2026-11-27, from Google Search Console (the 90 days to 2026-11-27): searches where Google already shows
+callforges.com, so a post or a fix moves fastest. Take these `todo` rows before the Queue, top down. A row with a Q
+number is that queue row: when it goes live, set the Status on both rows. "Refresh" means improve the live post in
+place (keep its slug and `date:`, and add `updated: <today>` to its header: the byline then shows it and Google gets the new date), then run the callforges-blog checklist.
+
+| # | Kind | Title | Slug | Facts from | Search Console, 90 days (impressions, average position) | Status |
+|---|---|---|---|---|---|---|
+| P1 | Refresh | How much does an auto dialer cost? | `auto-dialer-cost` | pricing, fair-usage | "auto dialer pricing" 18 at 17; "auto dialer cost" 9 at 14; "how much does a dialer cost" 2 at 12; "auto dialer price" 3 at 15. Page 2: get it to page 1 | writing (Sunit) |
+| P2 | Refresh | Holiday voicemail greetings: add Christmas and New Year | `holiday-voicemail-greeting` | help:build-a-call-workflow | page 69 at 17; "holiday voicemail greeting examples" 2 at 15; "christmas voicemail greeting" 2 at 49. Peaks in December | writing (Sunit) |
+| P3 | B | Christmas voicemail greeting examples for business | `christmas-voicemail-greeting` | help:build-a-call-workflow, live post holiday-voicemail-greeting | "christmas voicemail greeting" at 49, "christmas out of office phone message" at 29. Publish before 1 December | writing (Sunit) |
+| P4 | Refresh | What is an auto dialer and how does it work? | `what-is-an-auto-dialer` | auto-dialer, pricing | "how do auto dialers work" at 7; "how does an auto dialer work" at 10.5; "how does a dialer work" at 31: answer it at the top | writing (Sunit) |
+| P5 | Refresh | What is CNAM? | `what-is-cnam` | kb:app_compliance.md, live post | page 45 at 38; about 15 CNAM questions at 10 to 45 ("what does cnam stand for", "is cnam the same as caller id", "cnam database", "cnam usa") | writing (Sunit) |
+| P6 | Comparison | Dialpad vs Aircall: pricing, dialers and a better pick | `dialpad-vs-aircall` | each company's own pricing page; live posts aircall-alternatives, dialpad-alternatives; `_blog/research/alternatives-phone-systems.md`; pricing | "dialpad vs aircall" 37 at 72; "aircall vs dialpad" 6 at 74. Comparison rules: `blog-instructions/README.md` section 6 | todo |
+| P7 | B | How to set up missed call text back (Q63) | `set-up-missed-call-text-back` | as Q63 | "missed call text back" 56 at 70, our most-seen search; "how does missed call text back work" 4 at 71 | todo |
+| P8 | E | Is missed call text back legal? (Q71) | `is-missed-call-text-back-legal` | as Q71 | "is missed call text back legal" 2 at 71 | todo |
+| P9 | D | Missed call text back for UK small businesses (Q225) | `missed-call-text-back-uk` | as Q225 | "missed call text back uk" 4 at 74; "missed call text back service uk" 4 at 76 | todo |
+| P10 | B | Business voicemail greeting examples (Q131) | `business-voicemail-greeting-examples` | as Q131 | the holiday greeting searches outside the season | todo |
+| P11 | B | How to register your business with the carriers (Q198) | `register-business-with-carriers` | as Q198 | "stir shaken verification phone number" 2 at 18; "stir/shaken verification" at 34 | todo |
+| P12 | D | Dialer for law firms that use Clio (Q111) | `dialer-for-law-firms-clio` | as Q111 | "clio sales dialer" 1 at 9 | todo |
+| P13 | A | What is call attestation? A, B and C explained | `what-is-call-attestation` | live post what-is-stir-shaken, kb:app_compliance.md | "call attestation" 6 at 93 | todo |
+| P14 | B | How to text customers in other countries | `send-international-sms` | help:sms-to-other-countries, pricing | "send international sms" at 42; the help article ranks at 21 | todo |
+| P15 | D | Missed call text back for contractors (Q56) | `missed-call-text-back-contractors` | as Q56 | the missed call text back searches above | todo |
+
 ## Queue
 
 | # | Kind | Topic | Title | Slug | Facts from | Evidence | Source | Status |

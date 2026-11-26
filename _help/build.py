@@ -402,6 +402,10 @@ for name in sorted(os.listdir(BLOG_SRC)) if os.path.isdir(BLOG_SRC) else []:
         raise SystemExit(f'_blog/src/{name}: desc is longer than 160 characters')
     if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', meta['date']):
         raise SystemExit(f'_blog/src/{name}: date must be YYYY-MM-DD')
+    upd = meta.get('updated', meta['date'])
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', upd) or upd < meta['date']:
+        raise SystemExit(f'_blog/src/{name}: updated must be YYYY-MM-DD, on or after date')
+    uy, umo, ud = upd.split('-')
     lead = re.search(r'<p class="lead">(.*?)</p>', src, re.S)
     if not lead:
         raise SystemExit(f'_blog/src/{name}: no <p class="lead">')
@@ -409,8 +413,9 @@ for name in sorted(os.listdir(BLOG_SRC)) if os.path.isdir(BLOG_SRC) else []:
     body = src[lead.end():]
     box = re.match(r'\s*(<div class="takeaways">.*?</div>)', body, re.S)
     cover = os.path.exists(os.path.join(BLOG_IMG, name[:-5] + '.png'))
-    POSTS.append({'slug': name[:-5], 'title': meta['title'], 'desc': meta['desc'], 'iso': meta['date'],
+    POSTS.append({'slug': name[:-5], 'title': meta['title'], 'desc': meta['desc'], 'iso': meta['date'], 'mod': upd,
                   'shown': f'{int(d)} {MONTHS[int(mo) - 1]} {y}', 'lead': lead.group(1).strip(),
+                  'shown_mod': f'{int(ud)} {MONTHS[int(umo) - 1]} {uy}' if upd != meta['date'] else '',
                   'takeaways': box.group(1) if box else '',
                   'body': body[box.end():] if box else body,
                   'image': f'{SITE}/blog/img/{name[:-5]}.png' if cover else SITE + '/og-image.png'})
@@ -532,7 +537,7 @@ for p in POSTS:
     related = f'<section class="related" aria-labelledby="related-h"><h2 id="related-h">More from the blog</h2><ul>{rel}</ul></section>\n' if rel else ''
     path = f'/blog/{p["slug"]}'
     ld = {'@context': 'https://schema.org', '@graph': [
-        {'@type': 'BlogPosting', 'headline': p['title'], 'description': p['desc'], 'datePublished': p['iso'], 'dateModified': p['iso'],
+        {'@type': 'BlogPosting', 'headline': p['title'], 'description': p['desc'], 'datePublished': p['iso'], 'dateModified': p['mod'],
          'image': p['image'], 'author': {'@type': 'Organization', 'name': 'CallForges'}, 'publisher': PUBLISHER, 'mainEntityOfPage': SITE + path},
         breadcrumb_ld([('Blog', '/blog'), (p['title'], path)])]}
     write(f'blog/{p["slug"]}.html',
@@ -540,7 +545,7 @@ for p in POSTS:
           + site_top + '<main id="main">\n' + '<div class="help-main">\n' + crumbs([('Blog', '/blog'), (p['title'], None)])
           + '<article class="article">\n'
           + f'<h1>{html.escape(p["title"])}</h1>\n<p class="lead">{p["lead"]}</p>\n'
-          + f'<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">CallForges team · {p["shown"]}</p>\n'
+          + f'<p class="byline"><img src="/callforge-mark.png" alt="" width="28" height="28">CallForges team · {p["shown"]}{" · Updated " + p["shown_mod"] if p["shown_mod"] else ""}</p>\n'
           + (p['takeaways'] + '\n' if p['takeaways'] else '')
           + (f'<nav class="toc" aria-label="In this post"><strong>In this post</strong><ol>{toc}</ol></nav>\n' if toc else '')
           + absolutize(body).strip() + '\n'
@@ -553,7 +558,7 @@ urls = [f'  <url><loc>{SITE}/help</loc><lastmod>2026-10-31</lastmod><priority>0.
 urls += [f'  <url><loc>{SITE}/help/collections/{c["slug"]}</loc><lastmod>2026-10-31</lastmod><priority>0.5</priority></url>' for c in LISTED]
 urls += [f'  <url><loc>{SITE}/help/articles/{a["slug"]}</loc><lastmod>{a["iso"]}</lastmod><priority>0.5</priority></url>' for a in ARTICLES]
 urls += [f'  <url><loc>{SITE}/blog</loc><lastmod>{POSTS[0]["iso"]}</lastmod><priority>0.6</priority></url>'] if POSTS else []
-urls += [f'  <url><loc>{SITE}/blog/{p["slug"]}</loc><lastmod>{p["iso"]}</lastmod><priority>0.6</priority></url>' for p in POSTS]
+urls += [f'  <url><loc>{SITE}/blog/{p["slug"]}</loc><lastmod>{p["mod"]}</lastmod><priority>0.6</priority></url>' for p in POSTS]
 end = sm.index('</urlset>')
 open(sm_path, 'w').write('\n'.join(sm[:end] + urls + sm[end:]) + '\n')
 
