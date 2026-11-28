@@ -107,12 +107,13 @@ section{position:relative}
 
 /* Footer */
 .foot{border-top:1px solid var(--line);padding-block:56px 40px;background:#fff}
-.foot-grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(5,1fr);gap:32px}
 .foot h4{font:500 .74rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
 .foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .foot a{color:var(--muted);text-decoration:none;font-size:.93rem}
 .foot a:hover{color:var(--fg)}
 .foot-note{margin-top:40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dim);font-size:.85rem}
+@media (max-width:1000px){.foot-grid{grid-template-columns:repeat(3,1fr)}.foot-grid>div:first-child{grid-column:1/-1}}
 @media (max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid>div:first-child{grid-column:1/-1}}
 
 /* Final CTA */

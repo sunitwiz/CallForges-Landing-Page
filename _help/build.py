@@ -12,6 +12,7 @@ import os
 import re
 import struct
 import subprocess
+from html.parser import HTMLParser
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(REPO, '_help', 'src')
@@ -561,5 +562,109 @@ urls += [f'  <url><loc>{SITE}/blog</loc><lastmod>{POSTS[0]["iso"]}</lastmod><pri
 urls += [f'  <url><loc>{SITE}/blog/{p["slug"]}</loc><lastmod>{p["mod"]}</lastmod><priority>0.6</priority></url>' for p in POSTS]
 end = sm.index('</urlset>')
 open(sm_path, 'w').write('\n'.join(sm[:end] + urls + sm[end:]) + '\n')
+
+LLM_PAGES = [('Product', 'index.html', '/'), ('Product', 'auto-dialer.html', '/auto-dialer.html'),
+             ('Product', 'ai-agent.html', '/ai-agent.html'), ('Product', 'pricing.html', '/pricing.html'),
+             ('Product', 'compare.html', '/compare.html'), ('For AI agents', 'for-agents.html', '/for-agents.html'),
+             ('Optional', 'contact.html', '/contact.html'), ('Optional', 'security.html', '/security.html'),
+             ('Optional', 'fair-usage.html', '/fair-usage.html'), ('Optional', 'terms.html', '/terms.html'),
+             ('Optional', 'privacy.html', '/privacy.html')]
+LLM_SUMMARY = ('CallForges is a cloud phone system for sales and support teams: local numbers in the US, UK, Canada and '
+               'Australia, a power and parallel dialer, AI call notes, an AI voice agent, two-way SMS, call routing and '
+               'CRM call logging. Every plan starts with a 14-day free trial.')
+LLM_ABOUT = ('The app is at https://app.callforges.com (sign up at https://app.callforges.com/signup). Plans and prices: '
+             f'{SITE}/pricing.html. Help center: {SITE}/help. The full text of this site: {SITE}/llms-full.txt. AI tools '
+             f'can connect to a CallForges workspace through its MCP server: {SITE}/for-agents.html.')
+VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'}
+
+
+class PageText(HTMLParser):
+    """A page's readable text as Markdown: headings, paragraphs, list items, table rows and code. Menus, buttons,
+    scripts, pictures (the sample app is role="img") and anything aria-hidden are left out, and so is loose text."""
+    BLOCKS = {'h1': '# ', 'h2': '## ', 'h3': '### ', 'h4': '#### ', 'p': '', 'li': '- ', 'summary': '### ',
+              'dt': '', 'dd': '', 'blockquote': '> ', 'tr': '', 'figcaption': '', 'pre': ''}
+    SKIP = {'script', 'style', 'svg', 'nav', 'button', 'template', 'noscript', 'form', 'select'}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.lines, self.buf, self.block, self.skip = [], [], None, 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in VOID:
+            if tag == 'br' and self.block is not None:
+                self.buf.append(' ' if self.block != 'pre' else '\n')
+            return
+        a = dict(attrs)
+        if self.skip or tag in self.SKIP or a.get('aria-hidden') == 'true' or a.get('role') == 'img':
+            self.skip += 1
+            return
+        if tag in self.BLOCKS and self.block is None:
+            self.block, self.buf = tag, []
+        elif tag in ('td', 'th') and self.block == 'tr':
+            self.buf.append(' | ')
+        elif tag == 'code' and self.block not in (None, 'pre'):
+            self.buf.append('`')
+        elif self.block not in (None, 'pre'):
+            self.buf.append(' ')
+
+    def handle_endtag(self, tag):
+        if tag in VOID:
+            return
+        if self.skip:
+            self.skip -= 1
+            return
+        if tag == 'code' and self.block not in (None, 'pre'):
+            self.buf.append('`')
+        if tag != self.block:
+            return
+        text = ''.join(self.buf)
+        if tag == 'pre':
+            self.lines.append('```\n' + text.strip('\n') + '\n```')
+        else:
+            text = re.sub(r'\(\s+', '(', re.sub(r'\s+([.,;:!?)])', r'\1', re.sub(r'\s+', ' ', text))).strip(' |')
+            if text:
+                self.lines.append(self.BLOCKS[tag] + text)
+        self.block = None
+
+    def handle_data(self, data):
+        if not self.skip and self.block is not None:
+            self.buf.append(data)
+
+
+def page_text(path, start, stop):
+    src = open(os.path.join(REPO, path)).read()
+    i = src.find(start)
+    if i < 0:
+        raise SystemExit(f'llms-full.txt: {path} has no {start}')
+    parser = PageText()
+    parser.feed(src[i:src.index(stop, i)])
+    return '\n\n'.join(parser.lines)
+
+
+def page_meta(path):
+    src = open(os.path.join(REPO, path)).read()
+    title = html.unescape(re.search(r'<title>(.*?)</title>', src, re.S).group(1)).strip()
+    title = re.sub(r'^callforges\s*\|\s*|\s*\|\s*callforges$', '', title, flags=re.I)
+    desc = re.search(r'<meta name="description" content="(.*?)">', src, re.S)
+    return title, html.unescape(desc.group(1)) if desc else ''
+
+
+def page_links(section):
+    return '\n'.join(f'- [{t}]({SITE}{u}): {d}' for t, d, u in ((*page_meta(f), u) for s, f, u in LLM_PAGES if s == section))
+
+
+llms = [f'# CallForges\n\n> {LLM_SUMMARY}\n\n{LLM_ABOUT}', '## Product\n\n' + page_links('Product'),
+        '## For AI agents\n\n' + page_links('For AI agents')
+        + '\n- [MCP server](https://api.callforges.com/mcp): the MCP endpoint for AI tools; setup is on the For AI agents page.',
+        '## Help center\n\n' + '\n'.join(f'- [{a["title"]}]({SITE}/help/articles/{a["slug"]}): {a["desc"]}' for a in ARTICLES)]
+llms += ['## Blog\n\n' + '\n'.join(f'- [{p["title"]}]({SITE}/blog/{p["slug"]}): {p["desc"]}' for p in POSTS)] if POSTS else []
+llms += ['## Optional\n\n' + page_links('Optional')]
+full = [f'# CallForges\n\n> {LLM_SUMMARY}\n\n{LLM_ABOUT}\n\nThis file holds the text of the website and the help center. '
+        f'The blog posts are listed, with links, in {SITE}/llms.txt.']
+full += [f'URL: {SITE}{u}\n\n' + page_text(f, '<main', '</main>') for s, f, u in LLM_PAGES]
+full += [f'URL: {SITE}/help/articles/{a["slug"]}\n\n' + page_text(f'help/articles/{a["slug"]}.html', '<article', '</article>')
+         for a in ARTICLES]
+open(os.path.join(REPO, 'llms.txt'), 'w').write('\n\n'.join(llms) + '\n')
+open(os.path.join(REPO, 'llms-full.txt'), 'w').write('\n\n---\n\n'.join(full) + '\n')
 
 print('images used:', sorted(used_images))

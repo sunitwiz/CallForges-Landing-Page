@@ -16,7 +16,8 @@ and CSS with one generator for the help center and the blog. The app (app.callfo
 
 | URL | File |
 |---|---|
-| `/`, `/pricing.html`, `/auto-dialer.html`, `/ai-agent.html`, `/compare.html`, `/contact.html`, `/fair-usage.html`, `/security.html`, `/terms.html`, `/privacy.html`, `/404.html` | the repo root, shared styles in `site.css` |
+| `/`, `/pricing.html`, `/auto-dialer.html`, `/ai-agent.html`, `/compare.html`, `/contact.html`, `/fair-usage.html`, `/security.html`, `/for-agents.html`, `/terms.html`, `/privacy.html`, `/404.html` | the repo root, shared styles in `site.css` |
+| `/llms.txt`, `/llms-full.txt` | written by `_help/build.py`: the site for AI assistants (llmstxt.org), see "For AI agents" below |
 | `/help` | `help.html`, written by `_help/build.py` |
 | `/help/collections/<slug>` | `help/collections/<slug>.html`, written by `_help/build.py` |
 | `/help/articles/<slug>` | `help/articles/<slug>.html`, written by `_help/build.py` |
@@ -27,6 +28,18 @@ and CSS with one generator for the help center and the blog. The app (app.callfo
 Only top-level files, `/help/…` and `/blog/…` are served. A file in any other folder (`/docs/x.html`) is not: that URL
 goes to the app and shows its 404. Inside help and blog pages every link and file is root-absolute (`/site.css`, not
 `site.css`).
+
+## For AI agents
+
+- Every page's footer has a "For AI agents" column: Connect AI tools (`/for-agents.html`), `llms.txt`,
+  `llms-full.txt` and the sitemap. A new page copies the footer of `fair-usage.html`, which has it.
+- `/for-agents.html` explains the two files and how to connect an AI tool to a workspace through the app's MCP server
+  (`https://api.callforges.com/mcp`, and `/mcp/key` for a key). Its steps follow the app's Settings → MCP access screen.
+- Never edit `llms.txt` or `llms-full.txt` by hand: `python3 _help/build.py` writes them. `llms.txt` lists the pages in
+  `LLM_PAGES`, every help article and every blog post, each with its description. `llms-full.txt` holds the text of
+  those pages and the help articles (blog posts stay out, to keep it readable). A new top-level page goes into
+  `LLM_PAGES` and, by hand, into `sitemap.xml`.
+- No `.md` files at the root: GitHub Pages runs Jekyll, which would turn `index.md` into `index.html`.
 
 ## Help center articles
 
